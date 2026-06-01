@@ -1,0 +1,233 @@
+{
+    "site": {
+        "name": "Zaylore Studio",
+        "title": "Zaylore Studio — Premium Clothing Brand, T-Shirts & Hoodies",
+        "description": "Shop Zaylore Studio - premium clothing brand offering exclusive t-shirts, hoodies, streetwear, and fashion apparel. Trendy designer clothing for men and women.",
+        "url": "https://zaylorestudio.com",
+        "language": "en-US",
+        "locale": "en_US"
+    },
+    "pages": {
+        "home": {
+            "title": "Zaylore Studio — Premium Clothing Brand, T-Shirts & Hoodies | Buy Designer Apparel",
+            "description": "Shop Zaylore Studio - premium clothing brand offering exclusive t-shirts, hoodies, streetwear, and fashion apparel. Trendy designer clothing for men and women. Built Different. Made to Lead.",
+            "keywords": [
+                "Zaylore",
+                "Zaylore Studio",
+                "clothing brand",
+                "t-shirt",
+                "hoodies",
+                "apparel",
+                "streetwear",
+                "designer clothing",
+                "premium t-shirts",
+                "men's clothing",
+                "women's clothing",
+                "casual wear",
+                "streetwear fashion",
+                "trendy clothing",
+                "fashion brand",
+                "exclusive apparel",
+                "custom clothing",
+                "urban fashion",
+                "graphic tees",
+                "crew neck",
+                "oversized hoodie",
+                "sweatshirt"
+            ],
+            "path": "/",
+            "priority": 1.0
+        },
+        "about": {
+            "title": "About Zaylore Studio — Premium Clothing Brand, T-Shirts & Hoodies | Our Story",
+            "description": "Learn about Zaylore Studio - a premium clothing brand specializing in t-shirts, hoodies, streetwear, and designer apparel. Discover our story, vision, and commitment to quality fashion for creators and culture enthusiasts.",
+            "keywords": [
+                "Zaylore Studio about",
+                "clothing brand story",
+                "premium streetwear",
+                "t-shirt manufacturer",
+                "hoodie brand",
+                "fashion brand mission",
+                "apparel company",
+                "designer clothing brand"
+            ],
+            "path": "/about.html",
+            "priority": 0.85
+        },
+        "collections_tshirts": {
+            "title": "Premium T-Shirts | Zaylore Studio - Designer Tees & Graphic T-Shirts",
+            "description": "Explore Zaylore Studio's exclusive collection of premium t-shirts, graphic tees, and designer casual wear. High-quality apparel for men and women.",
+            "keywords": [
+                "t-shirts",
+                "premium t-shirts",
+                "graphic tees",
+                "casual t-shirt",
+                "designer t-shirts",
+                "men's t-shirts",
+                "women's t-shirts",
+                "crew neck shirts",
+                "quality tees"
+            ],
+            "path": "/collections/tshirts",
+            "priority": 0.95
+        },
+        "collections_hoodies": {
+            "title": "Hoodies & Sweatshirts | Zaylore Studio - Premium Apparel",
+            "description": "Shop Zaylore Studio's premium hoodies and sweatshirts. Comfortable, stylish apparel for casual wear, streetwear, and everyday fashion.",
+            "keywords": [
+                "hoodies",
+                "sweatshirts",
+                "premium hoodies",
+                "oversized hoodie",
+                "crew neck hoodie",
+                "pullover hoodies",
+                "casual wear",
+                "streetwear hoodies",
+                "designer hoodies"
+            ],
+            "path": "/collections/hoodies",
+            "priority": 0.95
+        },
+        "collections_apparel": {
+            "title": "Premium Apparel | Zaylore Studio - Clothing Brand",
+            "description": "Browse Zaylore Studio's complete collection of premium apparel including t-shirts, hoodies, jackets, and streetwear fashion.",
+            "keywords": [
+                "apparel",
+                "clothing",
+                "premium apparel",
+                "fashion apparel",
+                "designer clothing",
+                "quality apparel",
+                "streetwear clothing"
+            ],
+            "path": "/collections/apparel",
+            "priority": 0.9
+        },
+        "gallery": {
+            "title": "Gallery | Zaylore Studio - Product Showcase",
+            "description": "View Zaylore Studio's product gallery featuring our latest collections of t-shirts, hoodies, and fashion apparel.",
+            "keywords": [
+                "gallery",
+                "product showcase",
+                "clothing gallery",
+                "fashion photos",
+                "apparel gallery"
+            ],
+            "path": "/gallery.html",
+            "priority": 0.8
+        },
+        "events": {
+            "title": "Events | Zaylore Studio - Fashion & Pop-Up Events",
+            "description": "Stay updated on Zaylore Studio's upcoming fashion events, pop-up stores, and exclusive releases.",
+            "keywords": [
+                "events",
+                "fashion events",
+                "pop-up events",
+                "clothing events",
+                "brand events",
+                "fashion releases"
+            ],
+            "path": "/events.html",
+            "priority": 0.8
+        },
+        "creators": {
+            "title": "Creators | Zaylore Studio - Collaborate with Us",
+            "description": "Join Zaylore Studio's creator community. Collaborate with our premium clothing brand and showcase your style.",
+            "keywords": [
+                "creators",
+                "collaborate",
+                "creator program",
+                "fashion creators",
+                "brand ambassadors"
+            ],
+            "path": "/creators.html",
+            "priority": 0.75
+        },
+        "contact": {
+            "title": "Contact Zaylore Studio — Premium T-Shirt & Hoodie Brand | Partnerships & Orders",
+            "description": "Contact Zaylore Studio for bulk orders, collaborations, partnerships, and inquiries about our premium clothing brand. Order custom t-shirts, hoodies, and streetwear apparel.",
+            "keywords": [
+                "contact",
+                "Zaylore contact",
+                "bulk orders",
+                "custom apparel",
+                "clothing partnerships",
+                "inquiries"
+            ],
+            "path": "/contact.html",
+            "priority": 0.8
+        }
+    },
+    "global_keywords": {
+        "primary": [
+            "Zaylore",
+            "Zaylore Studio",
+            "clothing brand",
+            "premium clothing"
+        ],
+        "product": [
+            "t-shirt",
+            "hoodies",
+            "apparel",
+            "streetwear",
+            "sweatshirt",
+            "casual wear",
+            "graphic tees",
+            "designer clothing"
+        ],
+        "category": [
+            "men's clothing",
+            "women's clothing",
+            "unisex apparel",
+            "urban fashion",
+            "streetwear fashion"
+        ],
+        "attributes": [
+            "premium",
+            "exclusive",
+            "designer",
+            "quality",
+            "trendy",
+            "custom",
+            "bulk orders"
+        ],
+        "long_tail": [
+            "best clothing brand",
+            "premium t-shirt collection",
+            "quality hoodies",
+            "streetwear apparel",
+            "designer casual wear"
+        ]
+    },
+    "seo_recommendations": {
+        "title_format": "{Primary Keyword} | {Category} | Zaylore Studio",
+        "description_length": "150-160 characters",
+        "heading_hierarchy": "Use H1 for page title, H2 for main sections, H3 for subsections",
+        "image_alt_text": "Include relevant keywords in alt text (e.g., 'Zaylore Studio premium t-shirt - red graphic tee')",
+        "internal_linking": "Link to related collections and products throughout content",
+        "schema_markup": "Use Organization, Product, and LocalBusiness schemas"
+    },
+    "trending_keywords_2026": {
+        "fashion": [
+            "sustainable fashion",
+            "ethical clothing",
+            "vintage streetwear",
+            "customizable apparel",
+            "limited edition clothing"
+        ],
+        "ecommerce": [
+            "online shopping",
+            "free shipping",
+            "bulk discounts",
+            "wholesale clothing",
+            "dropshipping"
+        ],
+        "social": [
+            "fashion influencers",
+            "TikTok fashion",
+            "Instagram aesthetic",
+            "creator collaborations",
+            "branded content"
+        ]
+    }
+}

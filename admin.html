@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Center | Zaylore Studio</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --red: #d41920;
+            --red-dim: rgba(212,25,32,0.15);
+            --red-border: rgba(212,25,32,0.25);
+            --bg: #050505;
+            --bg2: #0a0a0a;
+            --card: rgba(14,14,14,0.95);
+            --border: rgba(255,255,255,0.06);
+            --text: #e8e8e8;
+            --muted: #555;
+            --muted2: #888;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Particle Canvas ── */
+        #particles-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        /* ── Admin Nav ── */
+        .admin-nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 68px;
+            background: rgba(8,8,8,0.98);
+            border-bottom: 1px solid var(--red-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .admin-logo {
+            width: 36px; height: 36px;
+            border-radius: 6px;
+            border: 1px solid var(--red);
+            object-fit: cover;
+        }
+
+        .admin-brand-text {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+
+        .admin-brand-sub {
+            font-size: 0.55rem;
+            color: var(--red);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+
+        .admin-menu {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .menu-item {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--muted2);
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.25s;
+            background: transparent;
+        }
+
+        .menu-item:hover { color: #fff; background: rgba(255,255,255,0.04); }
+
+        .menu-item.active {
+            color: var(--red);
+            border-color: var(--red-border);
+            background: var(--red-dim);
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-info { text-align: right; }
+
+        .profile-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .profile-role {
+            font-size: 0.6rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .terminate-btn {
+            background: transparent;
+            border: 1px solid var(--red-border);
+            color: var(--red);
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .terminate-btn:hover { background: var(--red); color: #fff; }
+
+        /* ── Layout ── */
+        .admin-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            margin: 88px auto 80px;
+            padding: 0 40px;
+        }
+
+        .tab-content { display: none; animation: fadeUp 0.4s ease-out forwards; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Page Header ── */
+        .view-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 36px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .view-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .view-title span { color: var(--red); }
+
+        .view-subtitle {
+            font-size: 0.75rem;
+            color: var(--muted2);
+            letter-spacing: 1px;
+            margin-top: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* ── Stat Cards ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .stat-card:hover { border-color: var(--red-border); }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--red);
+            opacity: 0.6;
+        }
+
+        .stat-num {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.4rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .stat-icon {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 1.4rem;
+            opacity: 0.15;
+        }
+
+        /* ── Data Cards ── */
+        .data-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
+        }
+
+        .data-card:hover { border-color: rgba(255,255,255,0.08); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::before {
+            content: '';
+            width: 8px; height: 8px;
+            background: var(--red);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        /* ── Tables ── */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            text-align: left;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 700;
+        }
+
+        .admin-table td {
+            padding: 16px 10px;
+            font-size: 0.82rem;
+            color: var(--muted2);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            vertical-align: middle;
+        }
+
+        .admin-table tr:hover td { color: #fff; }
+        .admin-table tr:last-child td { border-bottom: none; }
+
+        /* ── Badges ── */
+        .badge {
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-active  { background: rgba(0,200,80,0.12); color: #00c850; }
+        .badge-pending { background: rgba(255,165,0,0.12); color: #ffa500; }
+        .badge-red     { background: rgba(212,25,32,0.12); color: #d41920; }
+
+        /* ── Buttons ── */
+        .action-btn {
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .btn-remove { border-color: var(--red-border); color: var(--red); background: transparent; }
+        .btn-remove:hover { background: var(--red); color: #fff; }
+
+        .btn-approve { background: #00c850; color: #000; border-color: #00c850; }
+        .btn-approve:hover { background: #00a840; border-color: #00a840; }
+
+        .btn-reject { background: transparent; border-color: #333; color: #666; }
+        .btn-reject:hover { background: #222; color: #aaa; }
+
+        /* ── Forms ── */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-grid.cols-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        .form-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            color: var(--muted2);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            transition: border-color 0.25s, background 0.25s;
+            width: 100%;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--red);
+            background: rgba(212,25,32,0.05);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder { color: #444; }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-select option { background: #111; }
+
+        /* Image URL row */
+        .img-url-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 12px;
+        }
+
+        .img-preview-box {
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            position: relative;
+            background: #111;
+        }
+
+        .img-preview-box img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .img-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #333;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .img-label-icon { font-size: 1.4rem; }
+
+        /* Stock toggle */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 46px; height: 24px;
+        }
+
+        .toggle-switch input { display: none; }
+
+        .toggle-track {
+            position: absolute;
+            inset: 0;
+            background: #222;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: background 0.3s;
+        }
+
+        .toggle-track::after {
+            content: '';
+            position: absolute;
+            top: 3px; left: 3px;
+            width: 16px; height: 16px;
+            background: #555;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .toggle-switch input:checked + .toggle-track { background: var(--red); border-color: var(--red); }
+        .toggle-switch input:checked + .toggle-track::after { left: 23px; background: #fff; }
+
+        .toggle-label {
+            font-size: 0.8rem;
+            color: var(--muted2);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover { background: #b31218; transform: translateY(-1px); }
+        .submit-btn:disabled { background: #333; cursor: not-allowed; transform: none; }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            padding: 10px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+        }
+
+        .search-input:focus { outline: none; border-color: var(--red); }
+        .search-input::placeholder { color: #444; }
+
+        .filter-select {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #aaa;
+            padding: 10px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+
+        .filter-select:focus { outline: none; border-color: var(--red); }
+        .filter-select option { background: #111; }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #333;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Product thumb */
+        .prod-thumb {
+            width: 44px; height: 44px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid #222;
+            background: #111;
+        }
+
+        /* Divider */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 28px 0;
+        }
+
+        /* Founder-only sections */
+        .founder-only { display: none; }
+        body[data-role="founder"] .founder-only { display: block; }
+        body[data-role="founder"] .founder-only-flex { display: flex; }
+
+        /* Stock bar */
+        .stock-bar-wrap {
+            width: 80px; height: 5px;
+            background: #1a1a1a;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .stock-bar-fill { height: 100%; background: var(--red); border-radius: 3px; }
+
+        /* Admin link */
+        .admin-link {
+            color: var(--red);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .admin-link:hover { color: #fff; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .admin-nav { padding: 0 20px; }
+            .admin-container { padding: 0 20px; }
+            .admin-menu { gap: 2px; }
+            .menu-item { padding: 7px 10px; font-size: 0.65rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+            .img-url-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .admin-nav { height: auto; flex-wrap: wrap; padding: 12px 16px; gap: 12px; }
+            .admin-menu { width: 100%; flex-wrap: wrap; justify-content: center; }
+            .admin-container { margin-top: 130px; }
+            .view-title { font-size: 2rem; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .img-url-grid { grid-template-columns: 1fr 1fr; }
+            .form-grid.cols-3 { grid-template-columns: 1fr; }
+            .profile-info { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-row { grid-template-columns: 1fr; }
+            .admin-table { font-size: 0.75rem; }
+            .view-title { font-size: 1.6rem; }
+            .data-card { padding: 20px 16px; }
+        }
+    </style>
+</head>
+
+<body class="admin-mode" data-role="staff">
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ── Admin Navigation ── -->
+    <nav class="admin-nav">
+        <a href="index.html" class="admin-brand">
+            <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="admin-logo">
+            <div>
+                <div class="admin-brand-text">ZAYLORE</div>
+                <div class="admin-brand-sub">Command Center</div>
+            </div>
+        </a>
+
+        <div class="admin-menu">
+            <button class="menu-item active" onclick="showTab('dashboard')">Overview</button>
+            <button class="menu-item" onclick="showTab('products')">Products</button>
+            <button class="menu-item" onclick="showTab('events')">Events</button>
+            <button class="menu-item" onclick="showTab('subscribers')">Subscribers</button>
+            <button class="menu-item founder-only" onclick="showTab('staff')">Staff</button>
+        </div>
+
+        <div class="admin-profile">
+            <div class="profile-info">
+                <div class="profile-name" id="display-name">Loading...</div>
+                <div class="profile-role" id="display-role">—</div>
+            </div>
+            <button class="terminate-btn" onclick="terminateSession()">◀ Exit</button>
+        </div>
+    </nav>
+
+    <!-- ── Main Container ── -->
+    <div class="admin-container">
+
+        <!-- ══════════════════════════════════════════════
+             TAB 1: DASHBOARD OVERVIEW
+        ══════════════════════════════════════════════ -->
+        <div id="dashboard" class="tab-content active">
+            <div class="view-header">
+                <div>
+                    <h1 class="view-title">SYSTEM <span>OVERVIEW</span></h1>
+                    <p class="view-subtitle">Real-time Syndicate Command Matrix</p>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-num" id="stat-orders">—</div>
+                    <div class="stat-label">Orders Today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">₹</div>
+                    <div class="stat-num" id="stat-revenue">—</div>
+                    <div class="stat-label">Revenue (24h)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📧</div>
+                    <div class="stat-num" id="stat-subscribers">0</div>
+                    <div class="stat-label">Total Subscribers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👕</div>
+                    <div class="stat-num" id="stat-products">0</div>
+                    <div class="stat-label">Active Products</div>
+                </div>
+            </div>
+
+            <!-- Pending Staff Requests (Founder Only) -->
+            <div class="data-card founder-only" id="staff-requests-card">
+                <div class="card-header">
+                    <h3 class="card-title">PENDING STAFF APPLICATIONS</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Applicant</th>
+                            <th>Email</th>
+                            <th>Role Requested</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="staff-requests-body">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+                <div id="no-requests" class="empty-state" style="display:none;">No pending staff applications in queue.</div>
+            </div>
+
+            <!-- System Logs -->
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">SYSTEM ACTIVITY LOG</h3>
+                    <span class="badge badge-active">Live</span>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Entity</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>System Initialized</td>
+                            <td>Zaylore Command Center</td>
+                            <td id="log-time-1">Now</td>
+                            <td><span class="badge badge-active">Online</span></td>
+                        </tr>
+                        <tr>
+                            <td>DB Engine Active</td>
+                            <td>ZayloreDB Local Mode</td>
+                            <td id="log-time-2">Now</td>
+                            <td><span class="badge badge-active">Connected</span></td>
+                        </tr>
+                        <tr>
+                            <td>Pre-launch Countdown</td>
+                            <td>Drop: August 23, 2026</td>
+                            <td>Ongoing</td>
+                            <td><span class="badge badge-pending">Counting Down</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             TAB 2: PRODUCTS MANAGEMENT
+        ══════════════════════════════════════════════ -->
+        <div id="products" class="tab-content">
+            <div class="view-header">
+                <div>
+                    <h1 class="view-title">CATALOG <span>MATRIX</span></h1>
+                    <p class="view-subtitle">Add, manage and destroy product catalog entries</p>
+                </div>
+            </div>
+
+            <!-- Add Product Form -->
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">ADD NEW PRODUCT</h3>
+                </div>
+
+                <form id="admin-add-product-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="prod-title">Product Title *</label>
+                            <input class="form-input" id="prod-title" type="text" placeholder="e.g. Z-Signature Oversized Tee" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="prod-price">Price (₹) *</label>
+                            <input class="form-input" id="prod-price" type="number" placeholder="e.g. 2299" min="1" required>
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label" for="prod-desc">Description *</label>
+                            <textarea class="form-textarea" id="prod-desc" placeholder="Detailed product description — materials, fit, dimensions..." required></textarea>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+
+                    <!-- Image URLs -->
+                    <div class="form-group full" style="margin-bottom:16px;">
+                        <label class="form-label">Product Images (4 Required) *</label>
+                        <p style="font-size:0.75rem;color:#555;margin-top:4px;">Enter image URLs. Images will appear on the product card and detail overlay.</p>
+                    </div>
+
+                    <div class="img-url-grid">
+                        <div>
+                            <input class="form-input" id="prod-img1" type="url" placeholder="Image 1 URL (Main)" style="margin-bottom:8px;" required>
+                            <div class="img-preview-box" id="preview-1">
+                                <div class="img-label"><span class="img-label-icon">🖼️</span>Preview 1</div>
+                                <img id="preview-img-1" alt="Preview 1">
+                            </div>
+                        </div>
+                        <div>
+                            <input class="form-input" id="prod-img2" type="url" placeholder="Image 2 URL" style="margin-bottom:8px;">
+                            <div class="img-preview-box" id="preview-2">
+                                <div class="img-label"><span class="img-label-icon">🖼️</span>Preview 2</div>
+                                <img id="preview-img-2" alt="Preview 2">
+                            </div>
+                        </div>
+                        <div>
+                            <input class="form-input" id="prod-img3" type="url" placeholder="Image 3 URL" style="margin-bottom:8px;">
+                            <div class="img-preview-box" id="preview-3">
+                                <div class="img-label"><span class="img-label-icon">🖼️</span>Preview 3</div>
+                                <img id="preview-img-3" alt="Preview 3">
+                            </div>
+                        </div>
+                        <div>
+                            <input class="form-input" id="prod-img4" type="url" placeholder="Image 4 URL" style="margin-bottom:8px;">
+                            <div class="img-preview-box" id="preview-4">
+                                <div class="img-label"><span class="img-label-icon">🖼️</span>Preview 4</div>
+                                <img id="preview-img-4" alt="Preview 4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="section-divider">
+
+                    <div class="toggle-row" style="margin-bottom:20px;">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="prod-stock" checked>
+                            <span class="toggle-track"></span>
+                        </label>
+                        <span class="toggle-label">In Stock (uncheck to mark as Out of Stock)</span>
+                    </div>
+
+                    <button class="submit-btn" type="submit" id="add-prod-btn">ADD PRODUCT TO CATALOG</button>
+                </form>
+            </div>
+
+            <!-- Products Table -->
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">LIVE CATALOG</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-tbody">
+                        <tr><td colspan="5" class="empty-state">Loading catalog...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             TAB 3: EVENTS & LAUNCH SETTINGS
+        ══════════════════════════════════════════════ -->
+        <div id="events" class="tab-content">
+            <div class="view-header">
+                <div>
+                    <h1 class="view-title">LAUNCH <span>MATRIX</span></h1>
+                    <p class="view-subtitle">Control drop countdown and event parameters syndicate-wide</p>
+                </div>
+            </div>
+
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">EVENT CONFIGURATION</h3>
+                    <span class="badge badge-pending">Synced to All Pages</span>
+                </div>
+
+                <p style="font-size:0.8rem;color:#555;margin-bottom:24px;line-height:1.6;">
+                    Changes here immediately propagate across the homepage countdown, products page timer, and event details. The launch date controls when products are automatically revealed.
+                </p>
+
+                <form id="admin-event-settings-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="evt-launch-date">Product Drop / Launch DateTime *</label>
+                            <input class="form-input" id="evt-launch-date" type="text" placeholder="e.g. August 23, 2026 11:00:00" required>
+                            <p style="font-size:0.7rem;color:#444;margin-top:4px;">Format: Month DD, YYYY HH:MM:SS — this controls the countdown timer on all pages.</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="evt-date-display">Event Display Date</label>
+                            <input class="form-input" id="evt-date-display" type="text" placeholder="e.g. 23 August 2026">
+                            <p style="font-size:0.7rem;color:#444;margin-top:4px;">Human-readable date shown on the event cards.</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="evt-location">Event Location</label>
+                            <input class="form-input" id="evt-location" type="text" placeholder="e.g. Bangalore Showcase Event Arena">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="evt-ticket-link">Ticket Purchase Link</label>
+                            <input class="form-input" id="evt-ticket-link" type="url" placeholder="https://...">
+                        </div>
+                    </div>
+
+                    <button class="submit-btn" type="submit">UPDATE EVENT PARAMETERS</button>
+                </form>
+            </div>
+
+            <!-- Current Values Preview -->
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">CURRENT LIVE VALUES</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Launch Date (Countdown)</td><td id="live-launch">Loading...</td></tr>
+                        <tr><td>Display Date</td><td id="live-date">Loading...</td></tr>
+                        <tr><td>Location</td><td id="live-location">Loading...</td></tr>
+                        <tr><td>Ticket Link</td><td id="live-ticket">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             TAB 4: SUBSCRIBERS DIRECTORY
+        ══════════════════════════════════════════════ -->
+        <div id="subscribers" class="tab-content">
+            <div class="view-header">
+                <div>
+                    <h1 class="view-title">SUBSCRIBER <span>DIRECTORY</span></h1>
+                    <p class="view-subtitle">All newsletter signups and product alert registrations</p>
+                </div>
+            </div>
+
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">SYNDICATE ALERTS DATABASE</h3>
+                </div>
+
+                <!-- Search & Filter -->
+                <div class="search-bar">
+                    <input class="search-input" id="sub-search" type="search" placeholder="🔍  Search by email...">
+                    <select class="filter-select" id="sub-filter">
+                        <option value="all">All Sources</option>
+                        <option value="newsletter">Newsletter Only</option>
+                        <option value="notify">Product Alerts Only</option>
+                    </select>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Email Address</th>
+                            <th>Source</th>
+                            <th>Date Joined</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscribers-tbody">
+                        <tr><td colspan="4" class="empty-state">Loading subscriber data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════
+             TAB 5: STAFF OPERATIONS (FOUNDER ONLY)
+        ══════════════════════════════════════════════ -->
+        <div id="staff" class="tab-content founder-only">
+            <div class="view-header">
+                <div>
+                    <h1 class="view-title">STAFF <span>OPERATIONS</span></h1>
+                    <p class="view-subtitle">Founder-level access: manage approved staff credentials</p>
+                </div>
+            </div>
+
+            <div class="data-card">
+                <div class="card-header">
+                    <h3 class="card-title">ACTIVE STAFF SQUAD</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="active-staff-tbody">
+                        <!-- Dynamically loaded -->
+                    </tbody>
+                </table>
+                <div id="no-staff" class="empty-state" style="display:none;">No approved staff on record.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ── Particle Background ── -->
+    <script>
+    (function () {
+        const canvas = document.getElementById('particles-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function init() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 18000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    size: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height)  p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212,25,32,${p.alpha})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+
+        init(); draw();
+        window.addEventListener('resize', init);
+    })();
+    </script>
+
+    <!-- ── Image preview on URL input ── -->
+    <script>
+    (function () {
+        [1, 2, 3, 4].forEach(n => {
+            const input = document.getElementById('prod-img' + n);
+            const img   = document.getElementById('preview-img-' + n);
+            if (!input || !img) return;
+            input.addEventListener('input', () => {
+                const url = input.value.trim();
+                if (url) {
+                    img.src = url;
+                    img.style.display = 'block';
+                    img.onerror = () => { img.style.display = 'none'; };
+                } else {
+                    img.style.display = 'none';
+                }
+            });
+        });
+    })();
+    </script>
+
+    <!-- ── Staff Tab loader ── -->
+    <script>
+    function loadActiveStaff() {
+        const tbody = document.getElementById('active-staff-tbody');
+        const empty = document.getElementById('no-staff');
+        if (!tbody) return;
+
+        const approved = JSON.parse(localStorage.getItem('staffRequestsApproved') || '[]');
+        tbody.innerHTML = '';
+
+        if (approved.length === 0) {
+            if (empty) empty.style.display = 'block';
+            return;
+        }
+
+        if (empty) empty.style.display = 'none';
+        approved.forEach((staff, idx) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="font-family:'Space Grotesk',sans-serif;color:#d41920;">${staff.username}</td>
+                <td>${staff.name || '—'}</td>
+                <td><span class="badge badge-pending">Staff</span></td>
+                <td><button class="action-btn btn-remove" onclick="revokeStaff(${idx})">Revoke</button></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function revokeStaff(idx) {
+        if (!confirm('PERMANENTLY REVOKE THIS STAFF ACCESS?')) return;
+        let approved = JSON.parse(localStorage.getItem('staffRequestsApproved') || '[]');
+        approved.splice(idx, 1);
+        localStorage.setItem('staffRequestsApproved', JSON.stringify(approved));
+        loadActiveStaff();
+    }
+
+    // Log time
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString();
+    const t1 = document.getElementById('log-time-1');
+    const t2 = document.getElementById('log-time-2');
+    if (t1) t1.textContent = timeStr;
+    if (t2) t2.textContent = timeStr;
+    </script>
+
+    <!-- ── Live Event Preview loader ── -->
+    <script>
+    async function refreshLiveEventPreview() {
+        if (window.ZayloreDB) {
+            try {
+                const ev = await window.ZayloreDB.getEventDetails();
+                const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || '—'; };
+                setEl('live-launch', ev.launchDate);
+                setEl('live-date', ev.date);
+                setEl('live-location', ev.location);
+                const tick = document.getElementById('live-ticket');
+                if (tick) {
+                    if (ev.ticketLink) {
+                        tick.innerHTML = `<a href="${ev.ticketLink}" target="_blank" class="admin-link">${ev.ticketLink}</a>`;
+                    } else {
+                        tick.textContent = '—';
+                    }
+                }
+            } catch (e) {}
+        }
+    }
+    </script>
+
+    <!-- ── DB + Admin Controller ── -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- ── Extra tab logic for events & staff tabs ── -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Wire up events tab extra loaders
+        const origShowTab = window.showTab;
+        if (origShowTab) {
+            const wrapped = window.showTab;
+            window.showTab = function(tabId) {
+                wrapped(tabId);
+                if (tabId === 'events')     { setTimeout(refreshLiveEventPreview, 300); }
+                if (tabId === 'staff')      { loadActiveStaff(); }
+            };
+        }
+
+        // Load active staff on initial dash
+        setTimeout(() => {
+            if (document.body.getAttribute('data-role') === 'founder') {
+                loadActiveStaff();
+            }
+        }, 600);
+    });
+    </script>
+</body>
+</html>

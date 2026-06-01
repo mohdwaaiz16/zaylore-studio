@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Zaylore Studio</title>
+    <meta name="description" content="Witness the upcoming premium streetwear drop from Zaylore Studio. Check the live countdown, save silhouettes to your wishlist, and get notified on drop day.">
+    <meta name="keywords" content="oversized streetwear, premium streetwear, drop countdown, clothing drop, oversized hoodie, baggy jeans, Zaylore products">
+    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+    <link rel="canonical" href="https://www.zaylorestudio.in/products.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* ===== PRODUCTS SHOP STYLES ===== */
+        .shop-page {
+            min-height: 100vh;
+            background-color: var(--bg);
+            padding: 140px 4% 80px;
+            position: relative;
+        }
+
+        .shop-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .shop-eyebrow {
+            font-family: var(--ff-ui);
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .shop-title {
+            font-family: var(--ff-display);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            color: #fff;
+            line-height: 0.95;
+            text-transform: uppercase;
+            text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .shop-subtitle {
+            font-family: var(--ff-ui);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: #ccc;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        /* --- Countdown Layout --- */
+        .countdown-timer-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .drop-banner {
+            font-family: var(--ff-ui);
+            font-size: 0.78rem;
+            color: #fff;
+            background: rgba(212, 25, 32, 0.1);
+            border: 1px solid var(--accent);
+            padding: 10px 24px;
+            border-radius: 4px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: inline-block;
+            box-shadow: 0 0 20px var(--accent-glow), inset 0 0 10px rgba(212, 25, 32, 0.1);
+        }
+
+        /* --- Products Grid --- */
+        .products-grid-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: rgba(15, 15, 15, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 25, 32, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 25, 32, 0.05);
+        }
+
+        .product-media-wrap {
+            aspect-ratio: 1;
+            width: 100%;
+            background-color: #0c0c0c;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .product-media-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .product-card:hover .product-media-wrap img {
+            transform: scale(1.04);
+        }
+
+        /* Locked blurs */
+        .product-media-wrap img.blur-lock {
+            filter: blur(20px) brightness(0.35);
+        }
+
+        /* Padlock overlay */
+        .product-lock-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .lock-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1.5px solid var(--accent);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .product-card:hover .lock-circle {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .lock-label {
+            font-family: var(--ff-ui);
+            font-size: 0.72rem;
+            color: #fff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.8);
+        }
+
+        /* Out of stock tag */
+        .product-outofstock-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .product-outofstock-overlay span {
+            font-family: var(--ff-ui);
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Card details */
+        .product-info-wrap {
+            padding: 24px;
+        }
+
+        .product-card-title {
+            font-family: var(--ff-ui);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card-subtitle {
+            font-family: var(--ff-body);
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        .product-card-price {
+            font-family: var(--ff-ui);
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Action layout inside cards */
+        .product-card-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+        }
+
+        .prod-btn {
+            flex: 1;
+            background: transparent;
+            border: 1px solid #444;
+            color: #ccc;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: var(--ff-ui);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prod-btn:hover {
+            color: #fff;
+            border-color: #888;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .prod-btn.notify-btn {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .prod-btn.notify-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        .prod-btn.checkout-btn {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .prod-btn.checkout-btn:hover {
+            background: var(--accent-bright);
+            border-color: var(--accent-bright);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .prod-btn.checkout-btn.disabled {
+            border-color: #222;
+            background: #111;
+            color: #444;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .prod-wish-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prod-wish-icon:hover {
+            border-color: rgba(212, 25, 32, 0.3);
+            color: var(--accent);
+        }
+
+        .prod-wish-icon.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            background: rgba(212, 25, 32, 0.05);
+        }
+
+        /* ─────────────────────────────────────────────────────────────────────────────
+        MODAL OVERLAYS (NOTIFY ALERT POPUP)
+        ───────────────────────────────────────────────────────────────────────────── */
+        .auth-modal-panel {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        /* --- Auth Toast --- */
+        .auth-toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 25, 32, 0.15);
+            z-index: 10000;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s;
+            text-align: center;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .auth-toast.show {
+            bottom: 40px;
+        }
+
+        .auth-toast.error {
+            border-color: #d41920;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 25, 32, 0.3);
+        }
+
+        .auth-toast.success {
+            border-color: #00ff00;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .countdown-timer-container {
+                gap: 10px;
+            }
+
+            .cd-box {
+                min-width: 75px;
+                padding: 10px;
+            }
+
+            .cd-box span {
+                font-size: 1.8rem;
+            }
+
+            .shop-title {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="shop-page">
+    <!-- Particle canvas background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Glowing accent overlays -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <div class="grain"></div>
+
+    <!-- Navigation Header -->
+    <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                <span class="logo-text">ZAYLORE</span>
+            </a>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="products.html" class="nav-link active">Products</a>
+                <a href="creators.html" class="nav-link">Creators</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-right">
+                <a href="account.html" class="nav-action mobile-visible" id="nav-profile-btn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Main Header -->
+    <header class="shop-header">
+        <span class="shop-eyebrow">PRE-LAUNCH ACCESS</span>
+        <h1 class="shop-title">THE FIRST DROP</h1>
+        <h2 class="shop-subtitle">NOT JUST CLOTHING. A MOVEMENT.</h2>
+
+        <!-- Countdown Timer -->
+        <div id="countdown-timer-wrap" style="margin-bottom: 30px;">
+            <div class="countdown-timer-container">
+                <div class="cd-box"><span id="cd-days">00</span><span class="cd-label">DAYS</span></div>
+                <div class="cd-box"><span id="cd-hours">00</span><span class="cd-label">HRS</span></div>
+                <div class="cd-box"><span id="cd-mins">00</span><span class="cd-label">MINS</span></div>
+                <div class="cd-box"><span id="cd-secs">00</span><span class="cd-label">SECS</span></div>
+            </div>
+        </div>
+
+        <!-- Release alert banner -->
+        <div class="drop-banner" id="drop-status-banner">
+            DROP GOES LIVE ON EVENT DAY
+        </div>
+    </header>
+
+    <!-- Products Grid Section -->
+    <main class="products-grid-container">
+        <div class="products-grid" id="products-grid">
+            <!-- Loaded dynamically by products.js -->
+        </div>
+    </main>
+
+    <!-- ─────────────────────────────────────────────────────────────────────────────
+    NOTIFY ALERT MODAL POPUP
+    ───────────────────────────────────────────────────────────────────────────── -->
+    <div class="modal-backdrop" id="notify-modal">
+        <div class="modal-panel glass-card auth-modal-panel">
+            <div class="modal-header">
+                <h3 class="modal-title">EARLY DROP ALERT</h3>
+                <p class="modal-sub">Enter email to secure Early-Access notifications</p>
+            </div>
+            <form id="actual-notify-form" class="auth-form" style="margin-top:20px;">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="notify-email" class="form-input" placeholder="name@example.com" required>
+                </div>
+                <button type="submit" class="auth-btn">CONFIRM NOTIFICATION</button>
+                <button type="button" class="auth-btn btn-reject" onclick="closeNotifyModal()" style="background:transparent;border:1px solid #444;color:#888;margin-top:10px;">CANCEL</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Syndicate Footer -->
+    <footer id="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col-brand">
+                <a href="index.html" class="footer-logo-wrap">
+                    <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
+                    <span class="footer-brand-name">ZAYLORE</span>
+                </a>
+                <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and aesthetic culture to the bold and the fearless.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/zaylorestudio" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="Twitter">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mohd-waaiz/" class="social-btn" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Shop</h4>
+                <ul class="footer-menu">
+                    <li><a href="products.html" class="footer-menu-link">All Products</a></li>
+                    <li><a href="products#oversized" class="footer-menu-link">Oversized T-Shirts</a></li>
+                    <li><a href="products#hoodies" class="footer-menu-link">Hoodies</a></li>
+                    <li><a href="products#accessories" class="footer-menu-link">Accessories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Company</h4>
+                <ul class="footer-menu">
+                    <li><a href="about.html" class="footer-menu-link">About Us</a></li>
+                    <li><a href="creators.html" class="footer-menu-link">Creators</a></li>
+                    <li><a href="events.html" class="footer-menu-link">Events</a></li>
+                    <li><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-newsletter">
+                <h4 class="footer-col-title">Newsletter</h4>
+                <p class="footer-desc">Join the studio for exclusive drops and early access.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email Address" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 ZAYLORE STUDIO. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="privacy.html" class="legal-link">Privacy Policy</a>
+                <a href="terms.html" class="legal-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Database & Page Controllers -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/products.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

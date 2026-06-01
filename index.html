@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaylore Studio | Premium Streetwear Brand | Oversized T-Shirts & Hoodies</title>
+    <meta name="description" content="Zaylore Studio is a premium streetwear brand by PM Mohammed Waaiz offering luxury oversized t-shirts, hoodies, baggy jeans, cargo pants, and aesthetic fashion apparel. Join the movement.">
+    <meta name="keywords" content="Zaylore Studio, oversized t-shirts, streetwear hoodies, premium streetwear brand, luxury streetwear, PM Mohammed Waaiz, waaiz, pm waaiz, MW Zawion, Bangalore streetwear, India streetwear brand">
+    <meta name="author" content="PM Mohammed Waaiz">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.zaylorestudio.in/">
+    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zaylorestudio.in/">
+    <meta property="og:title" content="Zaylore Studio | Premium Streetwear Brand">
+    <meta property="og:description" content="Discover Zaylore Studio's premium aesthetic streetwear. Featuring high-quality oversized t-shirts, hoodies, bomber jackets, and baggy jeans. Not just clothing — a movement.">
+    <meta property="og:image" content="https://www.zaylorestudio.in/img/hero-bg.jpg">
+    <meta property="og:site_name" content="Zaylore Studio">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@zaylorestudio">
+    <meta name="twitter:creator" content="@md_waaizz">
+    <meta name="twitter:title" content="Zaylore Studio | Premium Streetwear Brand">
+    <meta name="twitter:description" content="Not just clothing. A movement. Join Zaylore Studio — India's next-generation premium streetwear brand.">
+    <meta name="twitter:image" content="https://www.zaylorestudio.in/img/hero-bg.jpg">
+
+    <meta name="theme-color" content="#0a0a0a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.zaylorestudio.in/#organization",
+      "name": "Zaylore Studio",
+      "url": "https://www.zaylorestudio.in",
+      "logo": { "@type": "ImageObject", "url": "https://www.zaylorestudio.in/img/logo-full.jpg" },
+      "founder": {
+        "@type": "Person",
+        "name": "PM Mohammed Waaiz",
+        "alternateName": ["Waaiz", "PM Waaiz", "Mohammed Waaiz"],
+        "birthDate": "2007-06-09",
+        "nationality": "Indian",
+        "jobTitle": "Founder & Creative Director",
+        "url": "https://www.zaylorestudio.in/founder"
+      },
+      "description": "Premium next-generation streetwear and culture brand built around creators, community, fashion, events, and modern streetwear.",
+      "sameAs": [
+        "https://www.instagram.com/zaylorestudio",
+        "https://www.linkedin.com/in/mohd-waaiz/"
+      ]
+    }
+    </script>
+
+    <style>
+        /* ══════════════════════════════════════════
+           HOMEPAGE EXTRA SECTIONS
+        ══════════════════════════════════════════ */
+
+        /* ── Culture Section ── */
+        .culture-section {
+            padding: 120px 0;
+            background: #050505;
+            overflow: hidden;
+        }
+
+        .culture-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #d41920;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-eyebrow::before {
+            content: '';
+            width: 30px; height: 1px;
+            background: #d41920;
+        }
+
+        .section-title-lg {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .section-title-lg span { color: #d41920; }
+
+        .section-lead {
+            font-size: 1.05rem;
+            color: #777;
+            line-height: 1.7;
+            max-width: 580px;
+            margin-bottom: 60px;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .culture-card {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #0d0d0d;
+        }
+
+        .culture-card:first-child {
+            grid-row: span 2;
+            aspect-ratio: unset;
+        }
+
+        .culture-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) brightness(0.7);
+            transition: transform 0.7s ease, filter 0.5s ease;
+        }
+
+        .culture-card:hover img {
+            transform: scale(1.06);
+            filter: grayscale(0%) brightness(0.8);
+        }
+
+        .culture-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(5,5,5,0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+        }
+
+        .culture-card-tag {
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            color: #d41920;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .culture-card-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.6rem;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        /* Pillars Row */
+        .culture-pillars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            margin-top: 2px;
+            background: #111;
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+        }
+
+        .culture-pillar {
+            background: #080808;
+            padding: 28px 24px;
+            transition: background 0.3s;
+        }
+
+        .culture-pillar:hover { background: #0d0d0d; }
+
+        .pillar-icon {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .pillar-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .pillar-desc {
+            font-size: 0.78rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* ── Founder Section ── */
+        .founder-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #050505 0%, #080808 50%, #050505 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-section::before {
+            content: 'WAAIZ';
+            position: absolute;
+            top: 50%;
+            left: -2%;
+            transform: translateY(-50%);
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(10rem, 20vw, 20rem);
+            color: rgba(212, 25, 32, 0.04);
+            letter-spacing: -5px;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+        }
+
+        .founder-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .founder-visual {
+            position: relative;
+        }
+
+        .founder-img-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: #0d0d0d;
+            border: 1px solid rgba(212,25,32,0.15);
+        }
+
+        .founder-img-frame img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter 0.5s;
+        }
+
+        .founder-img-frame:hover img { filter: grayscale(0%); }
+
+        .founder-img-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(5,5,5,0.8) 100%);
+        }
+
+        .founder-badge {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            background: #d41920;
+            color: #fff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-family: 'Anton', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            box-shadow: 0 8px 30px rgba(212,25,32,0.4);
+            z-index: 2;
+        }
+
+        .founder-badge-sub {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            opacity: 0.85;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .founder-content { }
+
+        .founder-name {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 0.95;
+            margin-bottom: 8px;
+        }
+
+        .founder-name span { color: #d41920; }
+
+        .founder-role-tag {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .founder-bio {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .founder-bio strong { color: #d41920; font-weight: 600; }
+
+        .founder-quote {
+            border-left: 3px solid #d41920;
+            padding-left: 20px;
+            margin: 28px 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .founder-stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 28px 0;
+        }
+
+        .founder-stat {
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.02);
+            text-align: center;
+        }
+
+        .founder-stat-num {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.8rem;
+            color: #d41920;
+        }
+
+        .founder-stat-label {
+            font-size: 0.65rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .founder-cta-row {
+            display: flex;
+            gap: 14px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .founder-cta-primary {
+            background: #d41920;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .founder-cta-primary:hover {
+            background: #b31218;
+            transform: translateY(-2px);
+        }
+
+        .founder-cta-ghost {
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #aaa;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .founder-cta-ghost:hover {
+            border-color: rgba(255,255,255,0.35);
+            color: #fff;
+        }
+
+        /* ── Events Section ── */
+        .events-section {
+            padding: 120px 0;
+            background: #050505;
+            overflow: hidden;
+        }
+
+        .events-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .events-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .events-hero-card {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 0;
+            border: 1px solid rgba(212,25,32,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            background: #090909;
+            min-height: 480px;
+            position: relative;
+        }
+
+        .events-hero-visual {
+            position: relative;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .events-hero-visual img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) grayscale(20%);
+            transition: filter 0.5s;
+        }
+
+        .events-hero-card:hover .events-hero-visual img {
+            filter: brightness(0.6) grayscale(0%);
+        }
+
+        .events-visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 60%, #090909 100%);
+        }
+
+        .events-hero-info {
+            padding: 50px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .event-live-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(212,25,32,0.12);
+            border: 1px solid rgba(212,25,32,0.3);
+            border-radius: 50px;
+            padding: 5px 14px;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #d41920;
+            text-transform: uppercase;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+
+        .event-live-dot {
+            width: 6px; height: 6px;
+            background: #d41920;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .event-name {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.6rem;
+            text-transform: uppercase;
+            line-height: 1;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .event-name span { color: #d41920; }
+
+        .event-meta-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: #888;
+        }
+
+        .event-meta-icon {
+            font-size: 0.9rem;
+            width: 18px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .event-meta-value { color: #ccc; }
+
+        .event-cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .event-ticket-btn {
+            background: #d41920;
+            color: #fff;
+            padding: 13px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .event-ticket-btn:hover { background: #b31218; transform: translateY(-2px); }
+
+        .event-details-btn {
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #888;
+            padding: 13px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .event-details-btn:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
+
+        /* ── Newsletter CTA Section ── */
+        .newsletter-cta-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #050505, #080808 50%, #050505);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(212,25,32,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .newsletter-cta-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-cta-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #d41920;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-cta-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            text-transform: uppercase;
+            line-height: 1;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-cta-title span { color: #d41920; }
+
+        .newsletter-cta-sub {
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .newsletter-cta-form {
+            display: flex;
+            gap: 0;
+            max-width: 480px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-cta-form:focus-within {
+            border-color: rgba(212,25,32,0.4);
+        }
+
+        .newsletter-cta-input {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: none;
+            color: #fff;
+            padding: 16px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .newsletter-cta-input::placeholder { color: #444; }
+
+        .newsletter-cta-btn {
+            background: #d41920;
+            color: #fff;
+            border: none;
+            padding: 16px 26px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-cta-btn:hover { background: #b31218; }
+        .newsletter-cta-btn.success { background: #1a7a1a; }
+
+        .newsletter-privacy {
+            font-size: 0.68rem;
+            color: #444;
+            margin-top: 14px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .culture-grid { grid-template-columns: 1fr; }
+            .culture-card:first-child { grid-row: span 1; aspect-ratio: 4/3; }
+            .culture-pillars { grid-template-columns: 1fr 1fr; }
+            .founder-grid { grid-template-columns: 1fr; gap: 50px; }
+            .founder-img-frame { aspect-ratio: 16/9; max-width: 100%; }
+            .founder-badge { bottom: 10px; right: 10px; }
+            .events-hero-card { grid-template-columns: 1fr; }
+            .events-hero-visual { height: 300px; }
+            .events-visual-overlay { background: linear-gradient(180deg, transparent 40%, #090909 100%); }
+        }
+
+        @media (max-width: 768px) {
+            .culture-section, .founder-section, .events-section, .newsletter-cta-section { padding: 80px 0; }
+            .culture-inner, .founder-inner, .events-inner, .newsletter-cta-inner { padding: 0 20px; }
+            .culture-pillars { grid-template-columns: 1fr 1fr; }
+            .founder-stats-row { grid-template-columns: 1fr 1fr 1fr; }
+            .events-hero-info { padding: 30px 24px; }
+            .event-name { font-size: 1.8rem; }
+            .newsletter-cta-form { flex-direction: column; border-radius: 10px; }
+            .newsletter-cta-btn { padding: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .culture-pillars { grid-template-columns: 1fr; }
+            .founder-stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                <span class="logo-text">ZAYLORE</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="creators.html" class="nav-link">Creators</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-right">
+                <a href="account.html" class="nav-action" id="nav-profile-btn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                <div class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- HERO SECTION                                    -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <img src="img/hero-bg.jpg" alt="" class="hero-bg" aria-hidden="true" loading="eager" decoding="async">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <!-- Left -->
+            <div class="hero-left fade-in fd1">
+                <p class="hero-headline">PREMIUM STREETWEAR BRAND —</p>
+                <h1 class="hero-headline-strong">BUILT DIFFERENT.</h1>
+                <p class="hero-sub">Not just clothing. A movement. Zaylore Studio delivers luxury oversized streetwear for those who lead culture, not follow it.</p>
+                <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+                    <a href="products.html" class="discover-btn" id="discover-btn">Shop Now →</a>
+                    <a href="about.html" style="display:inline-block;padding:14px 28px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#aaa;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.35)';this.style.color='#fff';" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='#aaa';">Our Story →</a>
+                </div>
+            </div>
+
+            <!-- Center -->
+            <div class="hero-center fade-in fd2">
+                <h2 class="center-brand">ZAYLORE</h2>
+                <p class="center-studio">STUDIO</p>
+                <div class="countdown-wrapper fade-in fd4">
+                    <p class="countdown-label">THE DROP ARRIVES IN</p>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="cd-box"><span id="cd-days">00</span><span class="cd-label">DAYS</span></div>
+                        <div class="cd-box"><span id="cd-hours">00</span><span class="cd-label">HRS</span></div>
+                        <div class="cd-box"><span id="cd-mins">00</span><span class="cd-label">MINS</span></div>
+                        <div class="cd-box"><span id="cd-secs">00</span><span class="cd-label">SECS</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="hero-right fade-in fd3">
+                <div class="info-block">
+                    <div class="info-icon">🎭</div>
+                    <p class="info-title">CULTURE.<br>CREATORS.<br>COMMUNITY.</p>
+                    <p class="info-sub">ALL IN ONE PLACE.</p>
+                </div>
+                <div class="info-block">
+                    <div class="info-icon">🤝</div>
+                    <p class="info-title">UNITING FASHION,<br>MUSIC &amp; CREATORS</p>
+                    <p class="info-sub">TO INSPIRE THE WORLD.</p>
+                </div>
+                <div class="info-block">
+                    <div class="info-icon">⚡</div>
+                    <p class="info-title">HIGH ENERGY.<br>BOLD MOVES.<br>REAL IMPACT.</p>
+                    <p class="info-sub">BE PART OF THE MOVEMENT.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Pillars Bar -->
+        <div class="bottom-bar fade-in fd5">
+            <div class="bar-item"><div class="bar-item-title">FASHION</div><div class="bar-item-sub">Forward</div></div>
+            <div class="bar-item"><div class="bar-item-title">MUSIC</div><div class="bar-item-sub">Immersive</div></div>
+            <div class="bar-item"><div class="bar-item-title">CREATORS</div><div class="bar-item-sub">Empowered</div></div>
+            <div class="bar-z"><div class="bar-z-icon">Z</div></div>
+            <div class="bar-item"><div class="bar-item-title">EXPERIENCES</div><div class="bar-item-sub">Unforgettable</div></div>
+            <div class="bar-item"><div class="bar-item-title">COMMUNITY</div><div class="bar-item-sub">Connected</div></div>
+            <div class="bar-item"><div class="bar-item-title">LEGACY</div><div class="bar-item-sub">In the Making</div></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- TAGLINE BAR                                     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="tagline-bar fade-in fd6">
+        <p>BUILT DIFFERENT. <span class="red">MADE TO LEAD.</span></p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- COLLECTION SECTION                             -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="collection-section" id="collection">
+        <div class="collection-header">
+            <span class="collection-eyebrow">THE COLLECTION</span>
+            <h2 class="collection-title">WEAR THE <span class="red">CULTURE</span></h2>
+            <p class="collection-subtitle">Premium streetwear crafted for those who move differently. Every piece tells a story.</p>
+        </div>
+
+        <!-- Featured Large Item -->
+        <div class="collection-featured">
+            <div class="featured-card">
+                <img src="img/gallery-1.jpg" alt="Zaylore Studio Oversized Hoodie — Premium heavyweight streetwear" class="featured-img" loading="lazy">
+                <div class="featured-overlay">
+                    <span class="product-tag">NEW DROP</span>
+                    <div class="featured-info">
+                        <h3 class="featured-name">OVERSIZED HOODIE</h3>
+                        <p class="featured-desc">Heavyweight premium cotton blend</p>
+                        <a href="products.html" class="featured-cta">View Collection →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-side">
+                <div class="featured-card featured-card-sm">
+                    <img src="img/gallery-2.jpg" alt="Zaylore Studio Bomber Jacket" class="featured-img" loading="lazy">
+                    <div class="featured-overlay">
+                        <span class="product-tag">EXCLUSIVE</span>
+                        <div class="featured-info">
+                            <h3 class="featured-name">BOMBER JACKET</h3>
+                            <p class="featured-desc">Street-ready outerwear</p>
+                            <a href="products.html" class="featured-cta">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-card featured-card-sm">
+                    <img src="img/hoodie-product.jpg" alt="Zaylore Studio Oversized T-Shirt" class="featured-img" loading="lazy">
+                    <div class="featured-overlay">
+                        <span class="product-tag">BESTSELLER</span>
+                        <div class="featured-info">
+                            <h3 class="featured-name">OVERSIZED TEE</h3>
+                            <p class="featured-desc">The signature silhouette</p>
+                            <a href="products.html" class="featured-cta">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <div class="gallery-card" data-category="Jacket">
+                <img src="img/gallery-3.jpg" alt="Zaylore Denim Jacket" class="gallery-img" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <span class="gallery-category">JACKET</span>
+                    <h4 class="gallery-name">DENIM JACKET</h4>
+                    <a href="products.html" class="gallery-shop-btn">Shop Now</a>
+                </div>
+            </div>
+            <div class="gallery-card gallery-card-tall" data-category="Hoodie">
+                <img src="img/gallery-4.jpg" alt="Zaylore Premium Hoodie" class="gallery-img" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <span class="gallery-category">HOODIE</span>
+                    <h4 class="gallery-name">PREMIUM HOODIE</h4>
+                    <a href="products.html" class="gallery-shop-btn">Shop Now</a>
+                </div>
+            </div>
+            <div class="gallery-card" data-category="Streetwear">
+                <img src="img/gallery-5.jpg" alt="Zaylore Streetwear Look" class="gallery-img" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <span class="gallery-category">STREETWEAR</span>
+                    <h4 class="gallery-name">STREET LOOK</h4>
+                    <a href="products.html" class="gallery-shop-btn">Shop Now</a>
+                </div>
+            </div>
+            <div class="gallery-card" data-category="T-Shirt">
+                <img src="img/model-tshirt.jpg" alt="Zaylore Oversized T-Shirt" class="gallery-img" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <span class="gallery-category">T-SHIRT</span>
+                    <h4 class="gallery-name">OVERSIZED TEE</h4>
+                    <a href="products.html" class="gallery-shop-btn">Shop Now</a>
+                </div>
+            </div>
+            <div class="gallery-card gallery-card-wide" data-category="Collection">
+                <img src="img/gallery-6.jpg" alt="Zaylore Studio Collection SS26" class="gallery-img" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <span class="gallery-category">COLLECTION</span>
+                    <h4 class="gallery-name">SS26 DROP</h4>
+                    <a href="products.html" class="gallery-shop-btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Strip -->
+        <div class="collection-cta-strip">
+            <div class="cta-strip-content">
+                <p class="cta-strip-label">READY TO WEAR DIFFERENT?</p>
+                <h3 class="cta-strip-title">Explore The Full <span class="red">Collection</span></h3>
+            </div>
+            <a href="products.html" class="cta-strip-btn">Shop All Pieces →</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- BRAND MARQUEE                                   -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="brand-statement">
+        <div class="brand-statement-inner">
+            <div class="marquee-track">
+                <span>OVERSIZED HOODIES &nbsp;—&nbsp; BOMBER JACKETS &nbsp;—&nbsp; BAGGY JEANS &nbsp;—&nbsp; CARGO PANTS &nbsp;—&nbsp; VINTAGE POLOS &nbsp;—&nbsp; PREMIUM TEES &nbsp;—&nbsp;</span>
+                <span>OVERSIZED HOODIES &nbsp;—&nbsp; BOMBER JACKETS &nbsp;—&nbsp; BAGGY JEANS &nbsp;—&nbsp; CARGO PANTS &nbsp;—&nbsp; VINTAGE POLOS &nbsp;—&nbsp; PREMIUM TEES &nbsp;—&nbsp;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- CULTURE SECTION                                 -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="culture-section" id="culture">
+        <div class="culture-inner">
+            <div class="section-eyebrow">The Culture</div>
+            <h2 class="section-title-lg">MORE THAN <span>CLOTHES.</span><br>A WAY OF LIFE.</h2>
+            <p class="section-lead">Zaylore Studio exists at the intersection of streetwear, music, bikes, creators, and raw youth energy. This isn't a brand — it's a movement with a heartbeat.</p>
+
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <img src="img/gallery-1.jpg" alt="Zaylore Studio Culture — streetwear and community" loading="lazy">
+                    <div class="culture-card-overlay">
+                        <div class="culture-card-tag">Streetwear</div>
+                        <h3 class="culture-card-title">WEAR THE IDENTITY</h3>
+                    </div>
+                </div>
+                <div class="culture-card">
+                    <img src="img/gallery-4.jpg" alt="Zaylore Studio Creators Community" loading="lazy">
+                    <div class="culture-card-overlay">
+                        <div class="culture-card-tag">Creators</div>
+                        <h3 class="culture-card-title">BUILD THE SCENE</h3>
+                    </div>
+                </div>
+                <div class="culture-card">
+                    <img src="img/gallery-6.jpg" alt="Zaylore Studio Events and Fashion" loading="lazy">
+                    <div class="culture-card-overlay">
+                        <div class="culture-card-tag">Events</div>
+                        <h3 class="culture-card-title">LIVE THE MOMENT</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Culture Pillars -->
+            <div class="culture-pillars">
+                <div class="culture-pillar">
+                    <div class="pillar-icon">👕</div>
+                    <div class="pillar-title">Streetwear</div>
+                    <p class="pillar-desc">Premium heavyweight garments engineered for bold silhouettes and extreme comfort.</p>
+                </div>
+                <div class="culture-pillar">
+                    <div class="pillar-icon">🎤</div>
+                    <div class="pillar-title">Creators</div>
+                    <p class="pillar-desc">Supporting artists, photographers, musicians, and content creators who define the culture.</p>
+                </div>
+                <div class="culture-pillar">
+                    <div class="pillar-icon">🏍️</div>
+                    <div class="pillar-title">Bikes & Motion</div>
+                    <p class="pillar-desc">Rooted in the energy of speed, freedom, and India's underground bike culture.</p>
+                </div>
+                <div class="culture-pillar">
+                    <div class="pillar-icon">⚡</div>
+                    <div class="pillar-title">Community</div>
+                    <p class="pillar-desc">A syndicate of like-minded individuals who choose to stand out, not blend in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- FOUNDER SECTION                                 -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="founder-section" id="founder">
+        <div class="founder-inner">
+            <div class="founder-grid">
+
+                <!-- Visual -->
+                <div class="founder-visual">
+                    <div class="founder-img-frame">
+                        <img src="img/gallery-5.jpg" alt="PM Mohammed Waaiz — Founder of Zaylore Studio, premium streetwear brand" loading="lazy">
+                    </div>
+                    <div class="founder-badge">
+                        SYNDICATE<br>FOUNDER
+                        <span class="founder-badge-sub">PM Mohammed Waaiz</span>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="founder-content">
+                    <div class="section-eyebrow">The Visionary Behind It All</div>
+                    <h2 class="founder-name">PM MOHAMMED <span>WAAIZ</span></h2>
+                    <p class="founder-role-tag">Founder &amp; Creative Director · MW Zawion</p>
+
+                    <p class="founder-bio">
+                        Born on <strong>9th June 2007</strong> in Tamil Nadu, India, <strong>PM Mohammed Waaiz</strong> founded Zaylore Studio with a singular mission — to build India's most authentic premium streetwear and culture brand. Raised by <strong>PM Abdul Wajid</strong> and <strong>Shairkhan Hajira Khanam</strong>, Waaiz channelled his passion for fashion, bikes, music, and creators into building a movement from scratch.
+                    </p>
+
+                    <blockquote class="founder-quote">
+                        "Most people wear clothes to fit in. I built Zaylore for people who wear clothes to stand out. This is for the bold. The fearless. The ones who create culture — not consume it."
+                        <br><br><strong style="font-size:0.78rem;color:#d41920;font-style:normal;letter-spacing:1px;">— PM Mohammed Waaiz</strong>
+                    </blockquote>
+
+                    <p class="founder-bio">
+                        As the founder of <strong>MW Zawion</strong> — a digital prestige studio crafting premium brand identities for next-generation businesses — Waaiz brings a dual force of fashion instinct and design intelligence to everything Zaylore represents.
+                    </p>
+
+                    <div class="founder-stats-row">
+                        <div class="founder-stat">
+                            <div class="founder-stat-num">2024</div>
+                            <div class="founder-stat-label">Founded</div>
+                        </div>
+                        <div class="founder-stat">
+                            <div class="founder-stat-num">18</div>
+                            <div class="founder-stat-label">Years Old</div>
+                        </div>
+                        <div class="founder-stat">
+                            <div class="founder-stat-num">∞</div>
+                            <div class="founder-stat-label">Vision</div>
+                        </div>
+                    </div>
+
+                    <div class="founder-cta-row">
+                        <a href="founder.html" class="founder-cta-primary">Read Full Story →</a>
+                        <a href="about.html" class="founder-cta-ghost">About the Brand</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- EVENTS SECTION (DB-Connected)                   -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="events-section" id="events">
+        <div class="events-inner">
+            <div class="events-header">
+                <div>
+                    <div class="section-eyebrow">Upcoming Events</div>
+                    <h2 class="section-title-lg">THE <span>SYNDICATE</span><br>SHOWS UP.</h2>
+                </div>
+                <a href="events.html" class="founder-cta-ghost">All Events →</a>
+            </div>
+
+            <!-- Main Event Card (DB-powered) -->
+            <div class="events-hero-card">
+                <div class="events-hero-visual">
+                    <img src="img/about-hero-bg.png" alt="Zaylore Studio Launch Event — Bangalore Showcase" loading="lazy">
+                    <div class="events-visual-overlay"></div>
+                </div>
+
+                <div class="events-hero-info">
+                    <div class="event-live-tag">
+                        <span class="event-live-dot"></span>
+                        Upcoming Event
+                    </div>
+
+                    <h3 class="event-name">ZAYLORE<br><span>SS26 DROP</span></h3>
+
+                    <ul class="event-meta-list">
+                        <li class="event-meta-item">
+                            <span class="event-meta-icon">📅</span>
+                            <span>Date: <span class="event-meta-value" id="home-event-date">Loading...</span></span>
+                        </li>
+                        <li class="event-meta-item">
+                            <span class="event-meta-icon">📍</span>
+                            <span>Venue: <span class="event-meta-value" id="home-event-location">Loading...</span></span>
+                        </li>
+                        <li class="event-meta-item">
+                            <span class="event-meta-icon">🎟️</span>
+                            <span>Access: <span class="event-meta-value">Syndicate Members + General Entry</span></span>
+                        </li>
+                        <li class="event-meta-item">
+                            <span class="event-meta-icon">🏍️</span>
+                            <span>Experience: <span class="event-meta-value">Fashion Showcase · Rampwalk · Creator Collab</span></span>
+                        </li>
+                    </ul>
+
+                    <div class="event-cta-row">
+                        <a href="#" id="home-event-ticket-btn" class="event-ticket-btn">Get Tickets →</a>
+                        <a href="events.html" class="event-details-btn">Event Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- NEWSLETTER CTA SECTION                          -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="newsletter-cta-section" id="newsletter-cta">
+        <div class="newsletter-cta-inner">
+            <p class="newsletter-cta-label">Join the Inner Circle</p>
+            <h2 class="newsletter-cta-title">GET ACCESS <span>FIRST.</span></h2>
+            <p class="newsletter-cta-sub">Exclusive early access to drops, events, and behind-the-scenes culture. No spam — just the movement, delivered straight to you.</p>
+
+            <form class="newsletter-cta-form" id="newsletter-cta-form" onsubmit="handleNewsletterCTA(event)">
+                <input
+                    type="email"
+                    class="newsletter-cta-input"
+                    id="newsletter-cta-email"
+                    placeholder="Your email address"
+                    required
+                    autocomplete="email">
+                <button type="submit" class="newsletter-cta-btn" id="newsletter-cta-btn">Join Now</button>
+            </form>
+            <p class="newsletter-privacy">By joining, you agree to our <a href="privacy.html" style="color:#555;text-decoration:underline;">Privacy Policy</a>. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- FOOTER                                         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <footer id="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col-brand">
+                <a href="index.html" class="footer-logo-wrap">
+                    <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
+                    <span class="footer-brand-name">ZAYLORE</span>
+                </a>
+                <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and authentic street culture to the bold and the fearless.</p>
+                <p class="footer-desc" style="font-size:0.7rem;color:#333;margin-top:8px;">Founded by PM Mohammed Waaiz · MW Zawion Digital Studio</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/zaylorestudio" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="Twitter">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mohd-waaiz/" class="social-btn" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Shop</h4>
+                <ul class="footer-menu">
+                    <li><a href="products.html" class="footer-menu-link">All Products</a></li>
+                    <li><a href="products.html#oversized" class="footer-menu-link">Oversized T-Shirts</a></li>
+                    <li><a href="products.html#hoodies" class="footer-menu-link">Hoodies</a></li>
+                    <li><a href="products.html#jackets" class="footer-menu-link">Jackets</a></li>
+                    <li><a href="products.html#accessories" class="footer-menu-link">Accessories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Company</h4>
+                <ul class="footer-menu">
+                    <li><a href="about.html" class="footer-menu-link">About Us</a></li>
+                    <li><a href="founder.html" class="footer-menu-link">Founder Story</a></li>
+                    <li><a href="creators.html" class="footer-menu-link">Creators</a></li>
+                    <li><a href="events.html" class="footer-menu-link">Events</a></li>
+                    <li><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-newsletter">
+                <h4 class="footer-col-title">Newsletter</h4>
+                <p class="footer-desc">Join the studio for exclusive drops and early access.</p>
+                <div class="newsletter-wrap">
+                    <form class="newsletter-form" id="footer-newsletter-form" onsubmit="handleFooterNewsletter(event)">
+                        <input type="email" placeholder="Email Address" class="newsletter-input" required autocomplete="email">
+                        <button type="submit" class="newsletter-btn" id="footer-nl-btn">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 ZAYLORE STUDIO. All rights reserved. Designed by <a href="https://mwzawion.com" target="_blank" rel="noopener" style="color:#d41920;text-decoration:none;">MW Zawion</a></p>
+            <div class="footer-legal">
+                <a href="privacy.html" class="legal-link">Privacy Policy</a>
+                <a href="terms.html" class="legal-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="grain"></div>
+
+    <!-- ── Scripts ── -->
+    <!-- DB Layer -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/db.js"></script>
+
+    <!-- Countdown + Event + Newsletter Logic -->
+    <script>
+    (function () {
+        // ── Countdown (DB-synced) ──
+        async function initCountdown() {
+            let launchDateStr = "August 23, 2026 11:00:00"; // default
+
+            if (window.ZayloreDB) {
+                try {
+                    const ev = await window.ZayloreDB.getEventDetails();
+                    if (ev && ev.launchDate) launchDateStr = ev.launchDate;
+                } catch (e) {}
+            }
+
+            const countdownDate = new Date(launchDateStr).getTime();
+            const elDays  = document.getElementById('cd-days');
+            const elHours = document.getElementById('cd-hours');
+            const elMins  = document.getElementById('cd-mins');
+            const elSecs  = document.getElementById('cd-secs');
+            const el      = document.getElementById('countdown');
+            if (!el) return;
+
+            const timer = setInterval(() => {
+                const dist = countdownDate - Date.now();
+                if (dist <= 0) {
+                    clearInterval(timer);
+                    el.innerHTML = `<div class="cd-box" style="min-width:auto;padding:15px 30px"><span style="font-size:1.2rem">THE DROP IS LIVE</span></div>`;
+                    return;
+                }
+                elDays.innerText  = Math.floor(dist / 86400000).toString().padStart(2,'0');
+                elHours.innerText = Math.floor((dist % 86400000) / 3600000).toString().padStart(2,'0');
+                elMins.innerText  = Math.floor((dist % 3600000) / 60000).toString().padStart(2,'0');
+                elSecs.innerText  = Math.floor((dist % 60000) / 1000).toString().padStart(2,'0');
+            }, 1000);
+        }
+
+        // ── Load Event Section Data (DB-synced) ──
+        async function loadHomepageEvent() {
+            if (!window.ZayloreDB) return;
+            try {
+                const ev = await window.ZayloreDB.getEventDetails();
+                const dateEl   = document.getElementById('home-event-date');
+                const locEl    = document.getElementById('home-event-location');
+                const ticketEl = document.getElementById('home-event-ticket-btn');
+
+                if (dateEl) dateEl.textContent = ev.date || 'TBA';
+                if (locEl)  locEl.textContent  = ev.location || 'TBA';
+                if (ticketEl && ev.ticketLink) {
+                    ticketEl.href = ev.ticketLink;
+                }
+            } catch (e) {
+                const dateEl = document.getElementById('home-event-date');
+                const locEl  = document.getElementById('home-event-location');
+                if (dateEl) dateEl.textContent = '23 August 2026';
+                if (locEl)  locEl.textContent  = 'Bangalore Showcase Event Arena';
+            }
+        }
+
+        // ── Newsletter CTA (DB-connected) ──
+        window.handleNewsletterCTA = async function (e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('newsletter-cta-email');
+            const btn = document.getElementById('newsletter-cta-btn');
+            const email = emailInput.value.trim();
+            if (!email) return;
+
+            btn.disabled = true;
+            btn.textContent = 'Joining...';
+
+            try {
+                if (window.ZayloreDB) {
+                    await window.ZayloreDB.addSubscriber(email, 'newsletter');
+                }
+                btn.textContent = 'Joined ✓';
+                btn.classList.add('success');
+                emailInput.value = '';
+                setTimeout(() => {
+                    btn.textContent = 'Join Now';
+                    btn.classList.remove('success');
+                    btn.disabled = false;
+                }, 4000);
+            } catch (err) {
+                btn.textContent = 'Try Again';
+                btn.disabled = false;
+                console.error('Newsletter error:', err);
+            }
+        };
+
+        // ── Footer Newsletter (DB-connected) ──
+        window.handleFooterNewsletter = async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const emailInput = form.querySelector('input[type="email"]');
+            const btn = document.getElementById('footer-nl-btn');
+            const email = emailInput ? emailInput.value.trim() : '';
+            if (!email) return;
+
+            btn.textContent = '...';
+            btn.disabled = true;
+
+            try {
+                if (window.ZayloreDB) {
+                    await window.ZayloreDB.addSubscriber(email, 'newsletter');
+                }
+                btn.textContent = '✓';
+                btn.style.background = '#1a7a1a';
+                emailInput.value = '';
+                setTimeout(() => {
+                    btn.textContent = 'Join';
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            } catch (err) {
+                btn.textContent = 'Join';
+                btn.disabled = false;
+            }
+        };
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            initCountdown();
+            loadHomepageEvent();
+        });
+
+        // If DB was already ready before DOMContentLoaded
+        if (document.readyState !== 'loading') {
+            initCountdown();
+            loadHomepageEvent();
+        }
+    })();
+    </script>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script>
+        window.botpress && window.botpress.init({
+            "botId": "0712ab3f-9d30-4ddb-88c9-62ba531226bb",
+            "clientId": "a3cb76b2-5c9e-48f0-852a-644c5bd0e3d0",
+            "configuration": { "botName": "Zaylore Assistant", "color": "#d41920", "themeMode": "dark", "website": {}, "email": {}, "phone": {}, "termsOfService": {}, "privacyPolicy": {} }
+        });
+    </script>
+</body>
+</html>
