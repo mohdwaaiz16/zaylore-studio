@@ -2618,3 +2618,125 @@ body {
         right: 10px;
     }
 }
+
+/* ==========================================================================
+   GLOBAL TABLET & MOBILE RESPONSIVE TUNING
+   ========================================================================== */
+
+/* Failsafe to prevent any horizontal scroll on viewports */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+/* Base text elements wrapping and adjustments */
+@media (max-width: 768px) {
+    /* Responsive Spacing and Grid Resets */
+    .founder-grid, 
+    .culture-grid, 
+    .story-grid, 
+    .split-grid, 
+    .pillars-row, 
+    .represents-grid, 
+    .contact-container, 
+    .dash-grid, 
+    .profile-row, 
+    .event-gallery, 
+    .details-split,
+    .img-url-grid,
+    .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .showcase-wrap {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+
+    .showcase-img {
+        width: min(300px, 80vw) !important;
+        margin: 0 auto !important;
+    }
+
+    #main-nav {
+        padding: 0 15px !important;
+    }
+
+    .nav-logo .logo-text {
+        font-size: 1.1rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* Legal Pages (privacy, terms) responsive layout */
+    .legal-container {
+        margin-top: 100px !important;
+        margin-bottom: 60px !important;
+        padding: 0 20px !important;
+    }
+
+    .legal-title {
+        font-size: 2.5rem !important;
+        margin-bottom: 30px !important;
+        text-align: center !important;
+        white-space: normal !important;
+    }
+
+    .legal-section h2 {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* Mobile specific styling tuning */
+@media (max-width: 600px) {
+    /* Prevent title sizing from overflowing viewports */
+    h1, 
+    .hero-headline-strong, 
+    .brand-zaylore, 
+    .gallery-title, 
+    .events-title, 
+    .shop-title, 
+    .view-title {
+        font-size: clamp(2rem, 8vw, 3.2rem) !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        line-height: 1.1 !important;
+    }
+
+    h2, 
+    .sec-heading, 
+    .section-title-lg, 
+    .card-heading, 
+    .cultural-title {
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+        white-space: normal !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Global countdown timer scaling to prevent overflowing */
+    .countdown-timer-container {
+        gap: 6px !important;
+    }
+
+    .cd-box {
+        min-width: 55px !important;
+        padding: 6px 4px !important;
+        border-radius: 8px !important;
+    }
+
+    .cd-box span {
+        font-size: 1.3rem !important;
+    }
+
+    .cd-label {
+        font-size: 0.55rem !important;
+        letter-spacing: 0.5px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-title {
+        font-size: 2rem !important;
+    }
+}
