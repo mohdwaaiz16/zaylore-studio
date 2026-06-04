@@ -159,6 +159,60 @@
             images: ["img/hoodie-product.jpg", "img/gallery-4.jpg", "img/gallery-2.jpg", "img/gallery-1.jpg"],
             inStock: true,
             createdAt: Date.now() - 432000000
+        },
+        {
+            id: "zs-jeans-07",
+            title: "Raw Denim Baggy Jeans",
+            description: "Super heavyweight raw indigo denim baggy jeans featuring custom hardware, white accent stitch, and utility painter loops. Designed for a full stack at the hem.",
+            price: 4299,
+            images: ["img/gallery-5.jpg", "img/gallery-6.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg"],
+            inStock: true,
+            createdAt: Date.now() - 518400000
+        },
+        {
+            id: "zs-cap-08",
+            title: "Distressed Syndicate Cap",
+            description: "Vintage washed cotton strapback cap with heavy distressing, raw edge panels, and Z-signature red logo embroidery on the back.",
+            price: 1499,
+            images: ["img/logo-icon-sm.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg", "img/gallery-3.jpg"],
+            inStock: true,
+            createdAt: Date.now() - 604800000
+        },
+        {
+            id: "zs-shirt-09",
+            title: "Heavy Flannel Oversized Shirt",
+            description: "Double-brushed heavyweight plaid cotton flannel. Engineered with extra-wide dropped shoulder seams, chest pockets, and silver zip closure.",
+            price: 3499,
+            images: ["img/gallery-3.jpg", "img/gallery-4.jpg", "img/gallery-5.jpg", "img/gallery-6.jpg"],
+            inStock: true,
+            createdAt: Date.now() - 691200000
+        },
+        {
+            id: "zs-short-10",
+            title: "Fleece Street Sweatshorts",
+            description: "Heavyweight loopback fleece shorts with an elastic drawstring waist, raw hem edge detail, and screen-printed manifesto text down the leg.",
+            price: 2199,
+            images: ["img/gallery-4.jpg", "img/gallery-5.jpg", "img/gallery-6.jpg", "img/gallery-1.jpg"],
+            inStock: true,
+            createdAt: Date.now() - 777600000
+        },
+        {
+            id: "zs-socks-11",
+            title: "Signature Ribbed Crew Socks",
+            description: "Premium combed cotton performance crew socks featuring ribbed arch bands, double-cushioned soles, and woven Zaylore brand mark.",
+            price: 799,
+            images: ["img/gallery-6.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg", "img/gallery-3.jpg"],
+            inStock: true,
+            createdAt: Date.now() - 864000000
+        },
+        {
+            id: "zs-beanie-12",
+            title: "Ribbed Heavy Knit Beanie",
+            description: "Heavy gauge ribbed knit beanie in solid black with double roll cuff. Features a stitched signature red streak Z patch.",
+            price: 1299,
+            images: ["img/gallery-2.jpg", "img/gallery-3.jpg", "img/gallery-4.jpg", "img/gallery-5.jpg"],
+            inStock: true,
+            createdAt: Date.now() - 950400000
         }
     ];
 
@@ -170,7 +224,8 @@
     };
 
     function initLocalStorageDB() {
-        if (!localStorage.getItem('zs_products_db')) {
+        const existing = localStorage.getItem('zs_products_db');
+        if (!existing || JSON.parse(existing).length < 10) {
             localStorage.setItem('zs_products_db', JSON.stringify(MOCK_PRODUCTS));
         }
         if (!localStorage.getItem('zs_event_db')) {

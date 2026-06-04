@@ -296,45 +296,6 @@
     
     highlightActiveLink();
 
-    // ---- Custom Cursor Logic ----
-    const cursor = document.createElement('div');
-    cursor.id = 'custom-cursor';
-    document.body.appendChild(cursor);
 
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
-    if (!isTouchDevice) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        const interactiveElements = document.querySelectorAll('a, button, .social-btn, .discover-btn');
-        
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor-hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor-hover');
-            });
-
-            // Magnetic effect
-            el.addEventListener('mousemove', (e) => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                
-                // Pull element slightly towards cursor (DISABLED: Causes layout jumping and navigation bugs)
-                // el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-                cursor.style.transform = `translate(-50%, -50%) scale(1.2)`;
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                // el.style.transform = `translate(0px, 0px)`;
-                cursor.style.transform = `translate(-50%, -50%) scale(1)`;
-            });
-        });
-    }
 
 })();

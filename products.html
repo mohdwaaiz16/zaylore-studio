@@ -8,7 +8,7 @@
     <meta name="description" content="Witness the upcoming premium streetwear drop from Zaylore Studio. Check the live countdown, save silhouettes to your wishlist, and get notified on drop day.">
     <meta name="keywords" content="oversized streetwear, premium streetwear, drop countdown, clothing drop, oversized hoodie, baggy jeans, Zaylore products">
     <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
-    <link rel="canonical" href="https://www.zaylorestudio.in/products.html">
+    <link rel="canonical" href="https://www.zaylorestudio.in/products">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -418,6 +418,7 @@
                 <a href="products" class="nav-link active">Products</a>
                 <a href="creators" class="nav-link">Creators</a>
                 <a href="events" class="nav-link">Events</a>
+                <a href="gallery" class="nav-link">Gallery</a>
                 <a href="about" class="nav-link">About</a>
                 <a href="contact" class="nav-link">Contact</a>
             </div>
@@ -467,25 +468,7 @@
         </div>
     </main>
 
-    <!-- ─────────────────────────────────────────────────────────────────────────────
-    NOTIFY ALERT MODAL POPUP
-    ───────────────────────────────────────────────────────────────────────────── -->
-    <div class="modal-backdrop" id="notify-modal">
-        <div class="modal-panel glass-card auth-modal-panel">
-            <div class="modal-header">
-                <h3 class="modal-title">EARLY DROP ALERT</h3>
-                <p class="modal-sub">Enter email to secure Early-Access notifications</p>
-            </div>
-            <form id="actual-notify-form" class="auth-form" style="margin-top:20px;">
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" id="notify-email" class="form-input" placeholder="name@example.com" required>
-                </div>
-                <button type="submit" class="auth-btn">CONFIRM NOTIFICATION</button>
-                <button type="button" class="auth-btn btn-reject" onclick="closeNotifyModal()" style="background:transparent;border:1px solid #444;color:#888;margin-top:10px;">CANCEL</button>
-            </form>
-        </div>
-    </div>
+
 
     <!-- Syndicate Footer -->
     <footer id="main-footer">
@@ -532,7 +515,7 @@
             <div class="footer-col-newsletter">
                 <h4 class="footer-col-title">Newsletter</h4>
                 <p class="footer-desc">Join the studio for exclusive drops and early access.</p>
-                <form class="newsletter-form">
+                <form class="newsletter-form" id="footer-newsletter-form">
                     <input type="email" placeholder="Email Address" class="newsletter-input" required>
                     <button type="submit" class="newsletter-btn">Join</button>
                 </form>

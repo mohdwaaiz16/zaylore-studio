@@ -774,6 +774,7 @@
                 <a href="products" class="nav-link">Products</a>
                 <a href="creators" class="nav-link">Creators</a>
                 <a href="events" class="nav-link">Events</a>
+                <a href="gallery" class="nav-link">Gallery</a>
                 <a href="about" class="nav-link">About</a>
                 <a href="contact" class="nav-link">Contact</a>
             </div>
@@ -810,8 +811,8 @@
                 </div>
             </div>
 
-            <!-- Center -->
-            <div class="hero-center fade-in fd2">
+            <!-- Right -->
+            <div class="hero-right fade-in fd2">
                 <h2 class="center-brand">ZAYLORE</h2>
                 <p class="center-studio">STUDIO</p>
                 <div class="countdown-wrapper fade-in fd4">
@@ -822,25 +823,6 @@
                         <div class="cd-box"><span id="cd-mins">00</span><span class="cd-label">MINS</span></div>
                         <div class="cd-box"><span id="cd-secs">00</span><span class="cd-label">SECS</span></div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Right -->
-            <div class="hero-right fade-in fd3">
-                <div class="info-block">
-                    <div class="info-icon">🎭</div>
-                    <p class="info-title">CULTURE.<br>CREATORS.<br>COMMUNITY.</p>
-                    <p class="info-sub">ALL IN ONE PLACE.</p>
-                </div>
-                <div class="info-block">
-                    <div class="info-icon">🤝</div>
-                    <p class="info-title">UNITING FASHION,<br>MUSIC &amp; CREATORS</p>
-                    <p class="info-sub">TO INSPIRE THE WORLD.</p>
-                </div>
-                <div class="info-block">
-                    <div class="info-icon">⚡</div>
-                    <p class="info-title">HIGH ENERGY.<br>BOLD MOVES.<br>REAL IMPACT.</p>
-                    <p class="info-sub">BE PART OF THE MOVEMENT.</p>
                 </div>
             </div>
         </div>
@@ -984,49 +966,7 @@
             </div>
         </div>
 
-        <!-- Gallery Grid -->
-        <div class="gallery-grid">
-            <div class="gallery-card" data-category="Jacket">
-                <img src="img/gallery-3.jpg" alt="Zaylore Denim Jacket" class="gallery-img" loading="lazy">
-                <div class="gallery-card-overlay">
-                    <span class="gallery-category">JACKET</span>
-                    <h4 class="gallery-name">DENIM JACKET</h4>
-                    <a href="products" class="gallery-shop-btn">Shop Now</a>
-                </div>
-            </div>
-            <div class="gallery-card gallery-card-tall" data-category="Hoodie">
-                <img src="img/gallery-4.jpg" alt="Zaylore Premium Hoodie" class="gallery-img" loading="lazy">
-                <div class="gallery-card-overlay">
-                    <span class="gallery-category">HOODIE</span>
-                    <h4 class="gallery-name">PREMIUM HOODIE</h4>
-                    <a href="products" class="gallery-shop-btn">Shop Now</a>
-                </div>
-            </div>
-            <div class="gallery-card" data-category="Streetwear">
-                <img src="img/gallery-5.jpg" alt="Zaylore Streetwear Look" class="gallery-img" loading="lazy">
-                <div class="gallery-card-overlay">
-                    <span class="gallery-category">STREETWEAR</span>
-                    <h4 class="gallery-name">STREET LOOK</h4>
-                    <a href="products" class="gallery-shop-btn">Shop Now</a>
-                </div>
-            </div>
-            <div class="gallery-card" data-category="T-Shirt">
-                <img src="img/model-tshirt.jpg" alt="Zaylore Oversized T-Shirt" class="gallery-img" loading="lazy">
-                <div class="gallery-card-overlay">
-                    <span class="gallery-category">T-SHIRT</span>
-                    <h4 class="gallery-name">OVERSIZED TEE</h4>
-                    <a href="products" class="gallery-shop-btn">Shop Now</a>
-                </div>
-            </div>
-            <div class="gallery-card gallery-card-wide" data-category="Collection">
-                <img src="img/gallery-6.jpg" alt="Zaylore Studio Collection SS26" class="gallery-img" loading="lazy">
-                <div class="gallery-card-overlay">
-                    <span class="gallery-category">COLLECTION</span>
-                    <h4 class="gallery-name">SS26 DROP</h4>
-                    <a href="products" class="gallery-shop-btn">Shop Now</a>
-                </div>
-            </div>
-        </div>
+
 
         <!-- CTA Strip -->
         <div class="collection-cta-strip">
@@ -1278,10 +1218,10 @@
                 <h4 class="footer-col-title">Shop</h4>
                 <ul class="footer-menu">
                     <li><a href="products" class="footer-menu-link">All Products</a></li>
-                    <li><a href="products.html#oversized" class="footer-menu-link">Oversized T-Shirts</a></li>
-                    <li><a href="products.html#hoodies" class="footer-menu-link">Hoodies</a></li>
-                    <li><a href="products.html#jackets" class="footer-menu-link">Jackets</a></li>
-                    <li><a href="products.html#accessories" class="footer-menu-link">Accessories</a></li>
+                    <li><a href="products#oversized" class="footer-menu-link">Oversized T-Shirts</a></li>
+                    <li><a href="products#hoodies" class="footer-menu-link">Hoodies</a></li>
+                    <li><a href="products#jackets" class="footer-menu-link">Jackets</a></li>
+                    <li><a href="products#accessories" class="footer-menu-link">Accessories</a></li>
                 </ul>
             </div>
 
@@ -1319,23 +1259,7 @@
 
     <div class="grain"></div>
 
-    <!-- Early Drop Alert Modal -->
-    <div class="modal-backdrop" id="notify-modal" style="display:none;">
-        <div class="modal-panel glass-card auth-modal-panel">
-            <div class="modal-header">
-                <h3 class="modal-title">EARLY DROP ALERT</h3>
-                <p class="modal-sub">Enter email to secure Early-Access notifications</p>
-            </div>
-            <form id="actual-notify-form" class="auth-form" style="margin-top:20px;">
-                <div class="form-group" style="margin-bottom:15px;text-align:left;">
-                    <label class="form-label" style="display:block;margin-bottom:5px;font-family:'Space Grotesk',sans-serif;font-size:0.75rem;color:#888;letter-spacing:1px;text-transform:uppercase;">Email Address</label>
-                    <input type="email" id="notify-email" class="form-input" placeholder="name@example.com" required style="width:100%;padding:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#fff;outline:none;font-family:'Inter',sans-serif;font-size:0.9rem;transition:border-color 0.3s;">
-                </div>
-                <button type="submit" class="auth-btn" style="width:100%;padding:14px;background:var(--accent);border:none;border-radius:8px;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(212,25,32,0.3);" onmouseover="this.style.background='#ff2a2a';this.style.boxShadow='0 6px 20px rgba(212,25,32,0.5)';" onmouseout="this.style.background='var(--accent)';this.style.boxShadow='0 4px 15px rgba(212,25,32,0.3)';">CONFIRM NOTIFICATION</button>
-                <button type="button" class="auth-btn btn-reject" onclick="closeNotifyModal()" style="width:100%;padding:14px;background:transparent;border:1px solid #444;border-radius:8px;color:#888;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:10px;transition:all 0.3s;" onmouseover="this.style.borderColor='#888';this.style.color='#fff';" onmouseout="this.style.borderColor='#444';this.style.color='#888';">CANCEL</button>
-            </form>
-        </div>
-    </div>
+
 
     <!-- ── Scripts ── -->
     <!-- DB Layer -->
@@ -1460,50 +1384,21 @@
             }
         };
 
-        // ── Early Drop Alert Modal ──
+        // ── Early Drop Alert Redirection ──
         window.openNotifyModal = function () {
-            const modal = document.getElementById('notify-modal');
-            if (modal) {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
+            const el = document.getElementById('newsletter-cta');
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                const emailInput = document.getElementById('newsletter-cta-email');
+                if (emailInput) {
+                    setTimeout(() => emailInput.focus(), 800);
+                }
             }
         };
 
         window.closeNotifyModal = function () {
-            const modal = document.getElementById('notify-modal');
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-                const form = document.getElementById('actual-notify-form');
-                if (form) form.reset();
-            }
+            // No-op
         };
-
-        const actForm = document.getElementById('actual-notify-form');
-        if (actForm) {
-            actForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('notify-email').value.trim();
-                const submitBtn = e.target.querySelector('button[type="submit"]');
-
-                try {
-                    submitBtn.disabled = true;
-                    submitBtn.innerText = "CAPTURING...";
-
-                    if (window.ZayloreDB) {
-                        await window.ZayloreDB.addSubscriber(email, 'notify_homepage_drop');
-                    }
-
-                    showToast("Subscriber Added. Early access details will be sent.", false);
-                    closeNotifyModal();
-                } catch (err) {
-                    showToast(err.message, true);
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "CONFIRM NOTIFICATION";
-                }
-            });
-        }
 
         function showToast(msg, isError = true) {
             let toast = document.getElementById('zs-prod-toast');

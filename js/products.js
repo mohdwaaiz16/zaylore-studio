@@ -125,17 +125,43 @@
                                         <stop offset="100%" stop-color="#222" />
                                     </linearGradient>
                                 </defs>
-                                <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad)" stroke-width="3.5" stroke-dasharray="10 3" stroke-linecap="round" />
-                                <line x1="100" y1="0" x2="0" y2="100" stroke="url(#chain-grad)" stroke-width="3.5" stroke-dasharray="10 3" stroke-linecap="round" />
+                                <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
+                                <line x1="100" y1="0" x2="0" y2="100" stroke="url(#chain-grad)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
                             </svg>
                             <div class="product-lock-overlay">
-                                <div class="lock-circle">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                <div class="padlock-container">
+                                    <svg class="silver-padlock" viewBox="0 0 100 100" width="64" height="64">
+                                        <defs>
+                                            <linearGradient id="shackle-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                <stop offset="0%" stop-color="#4a4a4a" />
+                                                <stop offset="25%" stop-color="#b8b8b8" />
+                                                <stop offset="50%" stop-color="#ffffff" />
+                                                <stop offset="75%" stop-color="#8a8a8a" />
+                                                <stop offset="100%" stop-color="#3a3a3a" />
+                                            </linearGradient>
+                                            <linearGradient id="lock-body-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#7a7a7a" />
+                                                <stop offset="20%" stop-color="#d1d1d1" />
+                                                <stop offset="40%" stop-color="#ffffff" />
+                                                <stop offset="60%" stop-color="#9a9a9a" />
+                                                <stop offset="80%" stop-color="#5a5a5a" />
+                                                <stop offset="100%" stop-color="#2a2a2a" />
+                                            </linearGradient>
+                                            <radialGradient id="keyhole-glow" cx="50%" cy="50%" r="50%">
+                                                <stop offset="0%" stop-color="#ff1a1a" stop-opacity="0.6" />
+                                                <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+                                            </radialGradient>
+                                        </defs>
+                                        <path d="M 30,50 V 32 A 20,20 0 0 1 70,32 V 50" fill="none" stroke="url(#shackle-grad)" stroke-width="10" stroke-linecap="round" />
+                                        <path d="M 30,50 V 32 A 20,20 0 0 1 70,32 V 50" fill="none" stroke="#222" stroke-width="10" stroke-linecap="round" stroke-opacity="0.3" filter="blur(2px)" />
+                                        <rect x="20" y="44" width="60" height="46" rx="10" ry="10" fill="url(#lock-body-grad)" stroke="#111" stroke-width="1.5" />
+                                        <rect x="23" y="47" width="54" height="40" rx="7" ry="7" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+                                        <circle cx="50" cy="62" r="7" fill="#111" />
+                                        <path d="M 47,62 H 53 L 55,75 H 45 Z" fill="#111" />
+                                        <circle cx="50" cy="64" r="8" fill="url(#keyhole-glow)" pointer-events="none" />
                                     </svg>
                                 </div>
-                                <span class="lock-label">LOCKED</span>
+                                <span class="lock-label-coming">COMING SOON</span>
                             </div>
                         ` : ''}
 
@@ -185,52 +211,25 @@
         }
 
         // ─────────────────────────────────────────────────────────────────────────────
-        // NOTIFY ALERT POPUP
+        // NOTIFY ALERT REDIRECTION TO FOOTER NEWSLETTER
         // ─────────────────────────────────────────────────────────────────────────────
 
         window.openNotifyModal = function (productId) {
             activeNotifyProdId = productId;
-            if (notifyModal) {
-                notifyModal.classList.add('show');
-                document.body.style.overflow = 'hidden';
+            const footerNewsletter = document.getElementById('footer-newsletter-form') || document.querySelector('.newsletter-form') || document.querySelector('.footer-col-newsletter');
+            if (footerNewsletter) {
+                footerNewsletter.scrollIntoView({ behavior: 'smooth' });
+                const emailInput = footerNewsletter.querySelector('input[type="email"]');
+                if (emailInput) {
+                    setTimeout(() => emailInput.focus(), 800);
+                }
+                showToast("Scrolling to early access notification form.", false);
             }
         };
 
         window.closeNotifyModal = function () {
-            if (notifyModal) {
-                notifyModal.classList.remove('show');
-                document.body.style.overflow = '';
-                notifyForm.reset();
-            }
+            // No-op placeholder
         };
-
-        if (notifyForm) {
-            notifyForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = document.getElementById('notify-email').value.trim();
-                const submitBtn = notifyForm.querySelector('button[type="submit"]');
-
-                try {
-                    submitBtn.disabled = true;
-                    submitBtn.innerText = "CAPTURING...";
-
-                    await window.ZayloreDB.addSubscriber(email, `notify_prod_${activeNotifyProdId}`);
-
-                    showToast("Subscriber Added. Early launch details will be transmitted.", false);
-                    closeNotifyModal();
-                } catch (err) {
-                    showToast(err.message, true);
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "CONFIRM NOTIFICATION";
-                }
-            });
-        }
-
-        // Close on esc
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeNotifyModal();
-        });
 
         // ─────────────────────────────────────────────────────────────────────────────
         // WISHLIST TOGGLE (WORKS BEFORE LAUNCH)
