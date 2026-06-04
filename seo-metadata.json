@@ -1,7 +1,7 @@
 {
     "site": {
         "name": "Zaylore Studio",
-        "title": "Zaylore Studio — Premium Clothing Brand, T-Shirts & Hoodies",
+        "title": "Zaylore Studio | Premium Clothing Brand, T-Shirts & Hoodies",
         "description": "Shop Zaylore Studio - premium clothing brand offering exclusive t-shirts, hoodies, streetwear, and fashion apparel. Trendy designer clothing for men and women.",
         "url": "https://zaylorestudio.com",
         "language": "en-US",
@@ -9,7 +9,7 @@
     },
     "pages": {
         "home": {
-            "title": "Zaylore Studio — Premium Clothing Brand, T-Shirts & Hoodies | Buy Designer Apparel",
+            "title": "Zaylore Studio | Premium Clothing Brand, T-Shirts & Hoodies | Buy Designer Apparel",
             "description": "Shop Zaylore Studio - premium clothing brand offering exclusive t-shirts, hoodies, streetwear, and fashion apparel. Trendy designer clothing for men and women. Built Different. Made to Lead.",
             "keywords": [
                 "Zaylore",
@@ -39,7 +39,7 @@
             "priority": 1.0
         },
         "about": {
-            "title": "About Zaylore Studio — Premium Clothing Brand, T-Shirts & Hoodies | Our Story",
+            "title": "About Zaylore Studio | Premium Clothing Brand, T-Shirts & Hoodies | Our Story",
             "description": "Learn about Zaylore Studio - a premium clothing brand specializing in t-shirts, hoodies, streetwear, and designer apparel. Discover our story, vision, and commitment to quality fashion for creators and culture enthusiasts.",
             "keywords": [
                 "Zaylore Studio about",
@@ -144,7 +144,7 @@
             "priority": 0.75
         },
         "contact": {
-            "title": "Contact Zaylore Studio — Premium T-Shirt & Hoodie Brand | Partnerships & Orders",
+            "title": "Contact Zaylore Studio | Premium T-Shirt & Hoodie Brand | Partnerships & Orders",
             "description": "Contact Zaylore Studio for bulk orders, collaborations, partnerships, and inquiries about our premium clothing brand. Order custom t-shirts, hoodies, and streetwear apparel.",
             "keywords": [
                 "contact",

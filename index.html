@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.zaylorestudio.in/">
     <meta property="og:title" content="Zaylore Studio | Premium Streetwear Brand">
-    <meta property="og:description" content="Discover Zaylore Studio's premium aesthetic streetwear. Featuring high-quality oversized t-shirts, hoodies, bomber jackets, and baggy jeans. Not just clothing — a movement.">
+    <meta property="og:description" content="Discover Zaylore Studio's premium aesthetic streetwear. Featuring high-quality oversized t-shirts, hoodies, bomber jackets, and baggy jeans. Not just clothing, a movement.">
     <meta property="og:image" content="https://www.zaylorestudio.in/img/hero-bg.jpg">
     <meta property="og:site_name" content="Zaylore Studio">
 
@@ -24,7 +24,7 @@
     <meta name="twitter:site" content="@zaylorestudio">
     <meta name="twitter:creator" content="@md_waaizz">
     <meta name="twitter:title" content="Zaylore Studio | Premium Streetwear Brand">
-    <meta name="twitter:description" content="Not just clothing. A movement. Join Zaylore Studio — India's next-generation premium streetwear brand.">
+    <meta name="twitter:description" content="Not just clothing. A movement. Join Zaylore Studio, India's next-generation premium streetwear brand.">
     <meta name="twitter:image" content="https://www.zaylorestudio.in/img/hero-bg.jpg">
 
     <meta name="theme-color" content="#0a0a0a">
@@ -257,195 +257,6 @@
             z-index: 0;
         }
 
-        .founder-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .founder-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .founder-visual {
-            position: relative;
-        }
-
-        .founder-img-frame {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 3/4;
-            background: #0d0d0d;
-            border: 1px solid rgba(212,25,32,0.15);
-        }
-
-        .founder-img-frame img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: grayscale(30%);
-            transition: filter 0.5s;
-        }
-
-        .founder-img-frame:hover img { filter: grayscale(0%); }
-
-        .founder-img-frame::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(5,5,5,0.8) 100%);
-        }
-
-        .founder-badge {
-            position: absolute;
-            bottom: -16px;
-            right: -16px;
-            background: #d41920;
-            color: #fff;
-            padding: 16px 20px;
-            border-radius: 12px;
-            font-family: 'Anton', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1.2;
-            box-shadow: 0 8px 30px rgba(212,25,32,0.4);
-            z-index: 2;
-        }
-
-        .founder-badge-sub {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.6rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            opacity: 0.85;
-            display: block;
-            margin-top: 3px;
-        }
-
-        .founder-content { }
-
-        .founder-name {
-            font-family: 'Anton', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            text-transform: uppercase;
-            color: #fff;
-            line-height: 0.95;
-            margin-bottom: 8px;
-        }
-
-        .founder-name span { color: #d41920; }
-
-        .founder-role-tag {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            color: #555;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        .founder-bio {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: #888;
-            margin-bottom: 20px;
-        }
-
-        .founder-bio strong { color: #d41920; font-weight: 600; }
-
-        .founder-quote {
-            border-left: 3px solid #d41920;
-            padding-left: 20px;
-            margin: 28px 0;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            color: #aaa;
-            line-height: 1.6;
-        }
-
-        .founder-stats-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 28px 0;
-        }
-
-        .founder-stat {
-            padding: 16px;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.02);
-            text-align: center;
-        }
-
-        .founder-stat-num {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
-            color: #d41920;
-        }
-
-        .founder-stat-label {
-            font-size: 0.65rem;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            margin-top: 3px;
-        }
-
-        .founder-cta-row {
-            display: flex;
-            gap: 14px;
-            margin-top: 32px;
-            flex-wrap: wrap;
-        }
-
-        .founder-cta-primary {
-            background: #d41920;
-            color: #fff;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .founder-cta-primary:hover {
-            background: #b31218;
-            transform: translateY(-2px);
-        }
-
-        .founder-cta-ghost {
-            border: 1px solid rgba(255,255,255,0.15);
-            color: #aaa;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .founder-cta-ghost:hover {
-            border-color: rgba(255,255,255,0.35);
-            color: #fff;
-        }
 
         /* ── Events Section ── */
         .events-section {
@@ -802,7 +613,7 @@
         <div class="hero-content">
             <!-- Left -->
             <div class="hero-left fade-in fd1">
-                <p class="hero-headline">PREMIUM STREETWEAR BRAND —</p>
+                <p class="hero-headline">PREMIUM STREETWEAR BRAND</p>
                 <h1 class="hero-headline-strong">BUILT DIFFERENT.</h1>
                 <p class="hero-sub">Not just clothing. A movement. Zaylore Studio delivers luxury oversized streetwear for those who lead culture, not follow it.</p>
                 <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
@@ -846,9 +657,9 @@
         <div class="manifesto-container">
             <span class="manifesto-label">SYNDICATE MANIFESTO</span>
             <p class="manifesto-quote">
-                "Most people wear clothes to fit in. We build Zaylore for people who wear clothes to stand out. This is for the bold. The fearless. The ones who create culture — not consume it."
+                "Most people wear clothes to fit in. We build Zaylore for people who wear clothes to stand out. This is for the bold. The fearless. The ones who create culture, not consume it."
             </p>
-            <div class="manifesto-author">— <span>PM Mohammed Waaiz</span>, Founder</div>
+            <div class="manifesto-author"><span>PM Mohammed Waaiz</span>, Founder</div>
         </div>
     </section>
 
@@ -872,7 +683,7 @@
         <!-- Featured Large Item -->
         <div class="collection-featured">
             <div class="featured-card locked">
-                <img src="img/gallery-1.jpg" alt="Zaylore Studio Oversized Hoodie — Premium heavyweight streetwear" class="featured-img blur-lock" loading="lazy">
+                <img src="img/gallery-1.jpg" alt="Zaylore Studio Oversized Hoodie, Premium heavyweight streetwear" class="featured-img blur-lock" loading="lazy">
                 <div class="drop-status-ribbon">DROP SOON</div>
                 
                 <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -984,8 +795,8 @@
     <section class="brand-statement">
         <div class="brand-statement-inner">
             <div class="marquee-track">
-                <span>OVERSIZED HOODIES &nbsp;—&nbsp; BOMBER JACKETS &nbsp;—&nbsp; BAGGY JEANS &nbsp;—&nbsp; CARGO PANTS &nbsp;—&nbsp; VINTAGE POLOS &nbsp;—&nbsp; PREMIUM TEES &nbsp;—&nbsp;</span>
-                <span>OVERSIZED HOODIES &nbsp;—&nbsp; BOMBER JACKETS &nbsp;—&nbsp; BAGGY JEANS &nbsp;—&nbsp; CARGO PANTS &nbsp;—&nbsp; VINTAGE POLOS &nbsp;—&nbsp; PREMIUM TEES &nbsp;—&nbsp;</span>
+                <span>OVERSIZED HOODIES &nbsp;&bull;&nbsp; BOMBER JACKETS &nbsp;&bull;&nbsp; BAGGY JEANS &nbsp;&bull;&nbsp; CARGO PANTS &nbsp;&bull;&nbsp; VINTAGE POLOS &nbsp;&bull;&nbsp; PREMIUM TEES &nbsp;&bull;&nbsp;</span>
+                <span>OVERSIZED HOODIES &nbsp;&bull;&nbsp; BOMBER JACKETS &nbsp;&bull;&nbsp; BAGGY JEANS &nbsp;&bull;&nbsp; CARGO PANTS &nbsp;&bull;&nbsp; VINTAGE POLOS &nbsp;&bull;&nbsp; PREMIUM TEES &nbsp;&bull;&nbsp;</span>
             </div>
         </div>
     </section>
@@ -997,11 +808,11 @@
         <div class="culture-inner">
             <div class="section-eyebrow">The Culture</div>
             <h2 class="section-title-lg">MORE THAN <span>CLOTHES.</span><br>A WAY OF LIFE.</h2>
-            <p class="section-lead">Zaylore Studio exists at the intersection of streetwear, music, bikes, creators, and raw youth energy. This isn't a brand — it's a movement with a heartbeat.</p>
+            <p class="section-lead">Zaylore Studio exists at the intersection of streetwear, music, bikes, creators, and raw youth energy. This isn't a brand; it's a movement with a heartbeat.</p>
 
             <div class="culture-grid">
                 <div class="culture-card">
-                    <img src="img/gallery-1.jpg" alt="Zaylore Studio Culture — streetwear and community" loading="lazy">
+                    <img src="img/gallery-1.jpg" alt="Zaylore Studio Culture, streetwear and community" loading="lazy">
                     <div class="culture-card-overlay">
                         <div class="culture-card-tag">Streetwear</div>
                         <h3 class="culture-card-title">WEAR THE IDENTITY</h3>
@@ -1059,7 +870,7 @@
                 <!-- Visual -->
                 <div class="founder-visual">
                     <div class="founder-img-frame">
-                        <img src="img/gallery-5.jpg" alt="PM Mohammed Waaiz — Founder of Zaylore Studio, premium streetwear brand" loading="lazy">
+                        <img src="img/founder.jpg" alt="PM Mohammed Waaiz, Founder of Zaylore Studio, premium streetwear brand" loading="lazy">
                     </div>
                     <div class="founder-badge">
                         SYNDICATE<br>FOUNDER
@@ -1078,12 +889,12 @@
                     </p>
 
                     <blockquote class="founder-quote">
-                        "Most people wear clothes to fit in. I built Zaylore for people who wear clothes to stand out. This is for the bold. The fearless. The ones who create culture — not consume it."
-                        <br><br><strong style="font-size:0.78rem;color:#d41920;font-style:normal;letter-spacing:1px;">— PM Mohammed Waaiz</strong>
+                        "Most people wear clothes to fit in. I built Zaylore for people who wear clothes to stand out. This is for the bold. The fearless. The ones who create culture, not consume it."
+                        <br><br><strong style="font-size:0.78rem;color:#d41920;font-style:normal;letter-spacing:1px;">PM Mohammed Waaiz</strong>
                     </blockquote>
 
                     <p class="founder-bio">
-                        As the founder of <strong>MW Zawion</strong> — a digital prestige studio crafting premium brand identities for next-generation businesses — Waaiz brings a dual force of fashion instinct and design intelligence to everything Zaylore represents.
+                        As the founder of <strong>MW Zawion</strong>, a digital prestige studio crafting premium brand identities for next-generation businesses, Waaiz brings a dual force of fashion instinct and design intelligence to everything Zaylore represents.
                     </p>
 
                     <div class="founder-stats-row">
@@ -1126,7 +937,7 @@
             <!-- Main Event Card (DB-powered) -->
             <div class="events-hero-card">
                 <div class="events-hero-visual">
-                    <img src="img/about-hero-bg.png" alt="Zaylore Studio Launch Event — Bangalore Showcase" loading="lazy">
+                    <img src="img/about-hero-bg.png" alt="Zaylore Studio Launch Event, Bangalore Showcase" loading="lazy">
                     <div class="events-visual-overlay"></div>
                 </div>
 
@@ -1173,7 +984,7 @@
         <div class="newsletter-cta-inner">
             <p class="newsletter-cta-label">Join the Inner Circle</p>
             <h2 class="newsletter-cta-title">GET ACCESS <span>FIRST.</span></h2>
-            <p class="newsletter-cta-sub">Exclusive early access to drops, events, and behind-the-scenes culture. No spam — just the movement, delivered straight to you.</p>
+            <p class="newsletter-cta-sub">Exclusive early access to drops, events, and behind-the-scenes culture. No spam, just the movement, delivered straight to you.</p>
 
             <form class="newsletter-cta-form" id="newsletter-cta-form" onsubmit="handleNewsletterCTA(event)">
                 <input
