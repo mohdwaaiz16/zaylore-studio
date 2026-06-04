@@ -377,7 +377,7 @@
                 if (!user) throw new Error("Email address not found in our database.");
 
                 // Simulate reset email link console capture
-                console.log(`%c[SIMULATED PASSWORD RESET LINK FOR ${email}]%c https://www.zaylorestudio.in/account.html?reset=1&uid=${user.uid}`, "background: #d41920; color: #fff; font-weight: bold;", "");
+                console.log(`%c[SIMULATED PASSWORD RESET LINK FOR ${email}]%c https://www.zaylorestudio.in/account?reset=1&uid=${user.uid}`, "background: #d41920; color: #fff; font-weight: bold;", "");
                 return true;
             }
         },

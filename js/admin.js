@@ -9,7 +9,7 @@
         const name = localStorage.getItem('adminName');
 
         if (!role) {
-            window.location.href = 'account.html';
+            window.location.href = 'account';
             return;
         }
 
@@ -52,7 +52,7 @@
         window.terminateSession = function () {
             localStorage.removeItem('adminRole');
             localStorage.removeItem('adminName');
-            window.location.href = 'account.html';
+            window.location.href = 'account';
         };
 
         // Fetch Initial Data

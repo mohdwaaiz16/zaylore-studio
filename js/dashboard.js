@@ -7,7 +7,7 @@
         // Authenticate session
         const rawUser = localStorage.getItem('zs_user');
         if (!rawUser) {
-            window.location.href = 'account.html';
+            window.location.href = 'account';
             return;
         }
 
@@ -508,7 +508,7 @@
                     container.innerHTML = `
                         <div class="empty-state">
                             <p>Your wishlist is empty. Unlocked items and locked drop alerts appear here.</p>
-                            <button class="dash-action-btn" onclick="location.href='products.html'" style="margin-top:15px;">Discover Drop Items</button>
+                            <button class="dash-action-btn" onclick="location.href='products'" style="margin-top:15px;">Discover Drop Items</button>
                         </div>
                     `;
                     return;
@@ -595,7 +595,7 @@
         window.syndicateLogout = function () {
             if (confirm("REVOKE ACCESS AND LOGOUT OF SYNDICATE?")) {
                 localStorage.removeItem('zs_user');
-                window.location.href = 'account.html';
+                window.location.href = 'account';
             }
         };
 

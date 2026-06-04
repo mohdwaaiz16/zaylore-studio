@@ -226,7 +226,7 @@
         window.toggleProductWishlist = async function (prodId) {
             if (!currentUser) {
                 showToast("Syndicate authentication required. Please log in.", true);
-                setTimeout(() => window.location.href = 'account.html', 1500);
+                setTimeout(() => window.location.href = 'account', 1500);
                 return;
             }
 

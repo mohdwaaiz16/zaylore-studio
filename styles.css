@@ -418,7 +418,8 @@ body {
     line-height: 0.95;
     color: var(--accent);
     margin-bottom: 20px;
-    text-shadow: 0 1px 0 #900, 0 2px 0 #700, 0 3px 0 #500, 0 4px 10px rgba(212, 25, 32, 0.4);
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(212, 25, 32, 0.3);
 }
 
 .hero-sub {
@@ -461,40 +462,25 @@ body {
 
 .center-brand {
     font-family: var(--ff-display);
-    font-size: clamp(5rem, 12vw, 9rem);
+    font-size: clamp(4.8rem, 12vw, 9rem);
     line-height: 0.85;
     color: #ffffff;
     position: relative;
     animation: brandPulse 4s ease-in-out infinite;
     will-change: opacity;
-    text-shadow:
-        0 1px 0 #cccccc,
-        0 2px 0 #c9c9c9,
-        0 3px 0 #bbbbbb,
-        0 4px 0 #b9b9b9,
-        0 5px 0 #aaaaaa,
-        0 6px 1px rgba(0, 0, 0, .1),
-        0 0 5px rgba(212, 25, 32, .2),
-        0 1px 3px rgba(212, 25, 32, .4),
-        0 3px 5px rgba(212, 25, 32, .3),
-        0 5px 10px rgba(212, 25, 32, .3),
-        0 10px 10px rgba(212, 25, 32, .2),
-        0 20px 20px rgba(212, 25, 32, .15);
+    letter-spacing: 2px;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.08), 0 0 50px rgba(212, 25, 32, 0.18);
 }
 
 .center-studio {
-    font-family: var(--ff-display);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: 20px;
-    color: #bbbbbb;
-    margin-top: -5px;
-    text-shadow:
-        0 1px 0 #999999,
-        0 2px 0 #888888,
-        0 3px 0 #777777,
-        0 4px 1px rgba(0, 0, 0, .2),
-        0 0 5px rgba(0, 0, 0, .1),
-        0 5px 10px rgba(0, 0, 0, .3);
+    font-family: var(--ff-ui);
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    letter-spacing: 16px;
+    font-weight: 700;
+    color: #888;
+    margin-top: 10px;
+    text-shadow: none;
+    text-transform: uppercase;
 }
 
 .hero-right {

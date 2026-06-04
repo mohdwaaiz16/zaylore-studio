@@ -40,43 +40,71 @@
         /* ===== EVENTS PAGE STYLES ===== */
         .events-page {
             overflow-x: hidden;
+            position: relative;
         }
 
-
+        /* --- Ambient Glow Backdrops --- */
+        .glow {
+            position: absolute;
+            width: clamp(250px, 45vw, 600px);
+            height: clamp(250px, 45vw, 600px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.85;
+            mix-blend-mode: screen;
+        }
+        .glow-1 {
+            top: 5%;
+            left: -15%;
+            background: radial-gradient(circle, rgba(212, 25, 32, 0.15) 0%, rgba(212, 25, 32, 0) 70%);
+            filter: blur(100px);
+        }
+        .glow-2 {
+            top: 40%;
+            right: -20%;
+            background: radial-gradient(circle, rgba(212, 25, 32, 0.12) 0%, rgba(212, 25, 32, 0) 70%);
+            filter: blur(120px);
+        }
+        .glow-3 {
+            bottom: 10%;
+            left: 10%;
+            background: radial-gradient(circle, rgba(212, 25, 32, 0.08) 0%, rgba(212, 25, 32, 0) 70%);
+            filter: blur(90px);
+        }
 
         /* --- Header --- */
         .events-header {
             position: relative;
-            padding: 160px 40px 60px;
+            padding: 50px 40px 40px;
             text-align: center;
             z-index: 2;
         }
 
         .events-title {
             font-family: 'Anton', sans-serif;
-            font-size: clamp(4rem, 8vw, 6rem);
-            line-height: 1;
+            font-size: clamp(3.8rem, 9vw, 7.5rem);
+            line-height: 0.95;
             color: #ffffff;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUp 1s ease forwards;
-            text-shadow:
-                0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa,
-                0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(212, 25, 32, .2), 0 1px 3px rgba(212, 25, 32, .4),
-                0 3px 5px rgba(212, 25, 32, .3), 0 5px 10px rgba(212, 25, 32, .3), 0 10px 10px rgba(212, 25, 32, .2),
-                0 20px 20px rgba(212, 25, 32, .15);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            letter-spacing: 2px;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.08), 0 0 50px rgba(212, 25, 32, 0.15);
         }
 
         .events-subtitle {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 6px;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            font-weight: 700;
+            letter-spacing: 8px;
             color: #d41920;
+            text-transform: uppercase;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUp 1s ease 0.3s forwards;
-            text-shadow: 0 1px 0 #900, 0 2px 0 #700, 0 3px 0 #500, 0 4px 10px rgba(212, 25, 32, 0.4);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+            text-shadow: 0 0 10px rgba(212, 25, 32, 0.3);
         }
 
         /* --- Events Text Content --- */
@@ -91,28 +119,36 @@
             gap: 60px;
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeUp 1s ease 0.5s forwards;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
         }
 
         .event-section {
-            background: rgba(15, 15, 15, 0.7);
-            border: 1px solid rgba(212, 25, 32, 0.2);
-            border-radius: 12px;
-            padding: 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 15, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 45px 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .event-section:hover {
+            border-color: rgba(212, 25, 32, 0.15);
+            box-shadow: 0 30px 60px rgba(212, 25, 32, 0.05);
         }
 
         .section-heading {
             font-family: 'Anton', sans-serif;
-            font-size: 4rem;
+            font-size: clamp(2rem, 5vw, 3.2rem);
             color: #fff;
-            margin-bottom: 40px;
-            text-shadow: 0 1px 0 #999, 0 2px 0 #777, 0 3px 5px rgba(212, 25, 32, 0.6);
+            margin-bottom: 35px;
             letter-spacing: 2px;
+            text-transform: uppercase;
             border-bottom: 2px solid #d41920;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             display: inline-block;
+            text-shadow: 0 0 15px rgba(212, 25, 32, 0.15);
         }
 
         .info-grid {
@@ -132,35 +168,59 @@
         }
 
         .info-icon {
-            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(212, 25, 32, 0.05);
+            border: 1.5px solid rgba(212, 25, 32, 0.15);
+            box-shadow: 0 0 15px rgba(212, 25, 32, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.05);
+            border-color: #d41920;
+            background: rgba(212, 25, 32, 0.1);
+        }
+
+        .info-svg {
+            width: 22px;
+            height: 22px;
+            stroke: #d41920;
         }
 
         .info-label {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            color: #d41920;
+            font-size: 0.85rem;
+            color: #888;
             font-weight: 700;
+            letter-spacing: 1.5px;
             min-width: 150px;
         }
 
         .info-value {
             font-family: 'Inter', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             color: #eee;
             font-weight: 600;
         }
 
         .text-red {
             color: #d41920;
+            font-weight: 700;
         }
 
         .bold-motto {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: center;
             margin-top: 40px;
             letter-spacing: 8px;
-            color: #fff;
+            color: #777;
+            text-transform: uppercase;
         }
 
         .details-split {
@@ -176,11 +236,13 @@
 
         .highlights-box,
         .matters-box {
-            background: rgba(15, 15, 15, 0.7);
-            border: 1px solid rgba(212, 25, 32, 0.2);
-            border-radius: 12px;
+            background: rgba(15, 15, 15, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         .highlights-list {
@@ -194,20 +256,30 @@
 
         .highlights-list li {
             font-family: 'Anton', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #ddd;
-            padding-left: 30px;
+            padding-left: 28px;
             position: relative;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .highlights-list li::before {
-            content: '►';
+            content: '';
             position: absolute;
             left: 0;
-            color: #d41920;
-            font-size: 1.2rem;
-            top: 5px;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            background: #d41920;
+            border-radius: 1.5px;
+            box-shadow: 0 0 8px #d41920;
+        }
+
+        .matter-svg {
+            width: 28px;
+            height: 28px;
+            stroke: #d41920;
         }
 
         .matters-list {
@@ -353,29 +425,34 @@
         }
 
         .exp-item {
-            background: rgba(212, 25, 32, 0.05);
-            border: 1px solid rgba(212, 25, 32, 0.1);
-            padding: 20px;
-            border-radius: 8px;
+            background: rgba(15, 15, 15, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px 24px;
+            border-radius: 12px;
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.8rem;
             font-weight: 700;
             color: #fff;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
+            gap: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .exp-item:hover {
-            border-color: #d41920;
-            background: rgba(212, 25, 32, 0.1);
+            border-color: rgba(212, 25, 32, 0.3);
+            background: rgba(212, 25, 32, 0.04);
+            box-shadow: 0 15px 35px rgba(212, 25, 32, 0.06);
             transform: translateY(-5px);
         }
 
-        .exp-item span {
-            font-size: 1.5rem;
+        .exp-svg {
+            width: 24px;
+            height: 24px;
+            stroke: #d41920;
+            flex-shrink: 0;
         }
 
         .vision-statement {
@@ -415,14 +492,14 @@
         .events-marquee {
             width: 100%;
             background: #d41920;
-            padding: 12px 0;
+            padding: 14px 0;
             overflow: hidden;
-            position: absolute;
-            top: 100px;
+            position: relative;
+            margin-top: 120px;
             left: 0;
             z-index: 10;
-            box-shadow: 0 5px 20px rgba(212, 25, 32, 0.4);
-            transform: rotate(-2deg) scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 25, 32, 0.35);
+            transform: rotate(-1.5deg) scale(1.02);
         }
 
         .marquee-track {
@@ -576,22 +653,22 @@
     <!-- Navigation -->
     <nav id="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
                 <span class="logo-text">ZAYLORE</span>
             </a>
 
             <div class="nav-links" id="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="products.html" class="nav-link">Products</a>
-                <a href="creators.html" class="nav-link">Creators</a>
-                <a href="events.html" class="nav-link">Events</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="products" class="nav-link">Products</a>
+                <a href="creators" class="nav-link">Creators</a>
+                <a href="events" class="nav-link">Events</a>
+                <a href="about" class="nav-link">About</a>
+                <a href="contact" class="nav-link">Contact</a>
             </div>
 
             <div class="nav-right">
-                <a href="account.html" class="nav-action mobile-visible" aria-label="Account">
+                <a href="account" class="nav-action mobile-visible" aria-label="Account">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -647,22 +724,22 @@
 
             <div class="info-grid">
                 <div class="info-card">
-                    <span class="info-icon">📋</span>
+                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
                     <span class="info-label">EVENT NAME:</span>
                     <span class="info-value text-red">ZAYLORE STUDIO: THE INAUGURAL SHOWCASE</span>
                 </div>
                 <div class="info-card">
-                    <span class="info-icon">👕</span>
+                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 6.42V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2.42L3.62 3.46A2 2 0 0 0 1 5.16v4.6a2 2 0 0 0 1.28 1.87l4.72 1.83V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6.54l4.72-1.83A2 2 0 0 0 23 9.76V5.16a2 2 0 0 0-2.62-1.7z"></path></svg></span>
                     <span class="info-label">TYPE:</span>
                     <span class="info-value">FASHION + LIFESTYLE + EXPERIENCE</span>
                 </div>
                 <div class="info-card">
-                    <span class="info-icon">👥</span>
+                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
                     <span class="info-label">EXPECTED CROWD:</span>
                     <span class="info-value">1500+</span>
                 </div>
                 <div class="info-card">
-                    <span class="info-icon">🎯</span>
+                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
                     <span class="info-label">AUDIENCE:</span>
                     <span class="info-value">CREATORS • STUDENTS • INFLUENCERS • GEN Z</span>
                 </div>
@@ -692,15 +769,15 @@
                 <h2 class="section-heading">WHY THIS EVENT MATTERS</h2>
                 <div class="matters-list">
                     <div class="matter-item">
-                        <span class="matter-icon">📈</span>
+                        <span class="matter-icon"><svg class="matter-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
                         <p>STREETWEAR IS <span class="text-red">BOOMING</span> IN INDIA</p>
                     </div>
                     <div class="matter-item">
-                        <span class="matter-icon">👥</span>
+                        <span class="matter-icon"><svg class="matter-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
                         <p>GEN Z DRIVES FASHION <span class="text-red">TRENDS</span></p>
                     </div>
                     <div class="matter-item">
-                        <span class="matter-icon">📍</span>
+                        <span class="matter-icon"><svg class="matter-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
                         <p>BANGALORE = YOUTH + CULTURE + CREATORS</p>
                     </div>
                 </div>
@@ -737,13 +814,13 @@
         <section class="event-section experience-section">
             <h2 class="section-heading">THE EVENT EXPERIENCE</h2>
             <div class="experience-grid">
-                <div class="exp-item"><span>✨</span> CREATOR RECOGNITION & HONORS</div>
-                <div class="exp-item"><span>🎬</span> RED CARPET EXPERIENCES</div>
-                <div class="exp-item"><span>📸</span> MEDIA & PRESS COVERAGE</div>
-                <div class="exp-item"><span>🎙️</span> LIVE STAGE MOMENTS</div>
-                <div class="exp-item"><span>🤝</span> NETWORKING & COLLABORATIONS</div>
-                <div class="exp-item"><span>🌐</span> DIGITAL CULTURE CELEBRATION</div>
-                <div class="exp-item"><span>💎</span> EXCLUSIVE SHOWCASE EXPERIENCES</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> CREATOR RECOGNITION & HONORS</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> RED CARPET EXPERIENCES</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> MEDIA & PRESS COVERAGE</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg> LIVE STAGE MOMENTS</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M20.4 12.3a4.2 4.2 0 0 0-.4-1.8H14M16.5 16.5H22v-3.5a4.2 4.2 0 0 0-3.5-3.5H16"></path></svg> NETWORKING & COLLABORATIONS</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> DIGITAL CULTURE CELEBRATION</div>
+                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"></path><path d="M11 3 8 9l4 12 4-12-3-6"></path><path d="M2 9h20"></path></svg> EXCLUSIVE SHOWCASE EXPERIENCES</div>
             </div>
             <div class="vision-statement">
                 <p>The Zaylore Creator Honors is envisioned as more than an awards presentation — it is the beginning of
@@ -798,7 +875,7 @@
     <footer id="main-footer">
         <div class="footer-grid">
             <div class="footer-col-brand">
-                <a href="index.html" class="footer-logo-wrap">
+                <a href="/" class="footer-logo-wrap">
                     <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
@@ -821,7 +898,7 @@
             <div class="footer-col">
                 <h4 class="footer-col-title">Shop</h4>
                 <ul class="footer-menu">
-                    <li><a href="products.html" class="footer-menu-link">All Products</a></li>
+                    <li><a href="products" class="footer-menu-link">All Products</a></li>
                     <li><a href="products#oversized" class="footer-menu-link">Oversized T-Shirts</a></li>
                     <li><a href="products#hoodies" class="footer-menu-link">Hoodies</a></li>
                     <li><a href="products#accessories" class="footer-menu-link">Accessories</a></li>
@@ -831,10 +908,10 @@
             <div class="footer-col">
                 <h4 class="footer-col-title">Company</h4>
                 <ul class="footer-menu">
-                    <li><a href="about.html" class="footer-menu-link">About Us</a></li>
-                    <li><a href="creators.html" class="footer-menu-link">Creators</a></li>
-                    <li><a href="events.html" class="footer-menu-link">Events</a></li>
-                    <li><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                    <li><a href="about" class="footer-menu-link">About Us</a></li>
+                    <li><a href="creators" class="footer-menu-link">Creators</a></li>
+                    <li><a href="events" class="footer-menu-link">Events</a></li>
+                    <li><a href="contact" class="footer-menu-link">Contact</a></li>
                 </ul>
             </div>
 
@@ -851,8 +928,8 @@
         <div class="footer-bottom">
             <p class="copyright">&copy; 2026 ZAYLORE STUDIO. All rights reserved.</p>
             <div class="footer-legal">
-                <a href="privacy.html" class="legal-link">Privacy Policy</a>
-                <a href="terms.html" class="legal-link">Terms of Service</a>
+                <a href="privacy" class="legal-link">Privacy Policy</a>
+                <a href="terms" class="legal-link">Terms of Service</a>
             </div>
         </div>
     </footer>

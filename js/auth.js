@@ -13,7 +13,7 @@
         const isResetFlow = urlParams.has('reset') && urlParams.has('uid');
 
         if (currentUser && !isResetFlow) {
-            window.location.href = 'dashboard.html';
+            window.location.href = 'dashboard';
             return;
         }
 
@@ -105,12 +105,12 @@
                             localStorage.setItem('adminRole', 'founder');
                             localStorage.setItem('adminName', 'PM Mohammed Waaiz');
                             showToast("Access Granted. Launching Founder Command Center...", false);
-                            setTimeout(() => window.location.href = 'admin.html', 1200);
+                            setTimeout(() => window.location.href = 'admin', 1200);
                         } else if (email.toLowerCase() === 'staff' && password === 'zaylore_staff') {
                             localStorage.setItem('adminRole', 'staff');
                             localStorage.setItem('adminName', 'Zaylore Staff');
                             showToast("Access Granted. Launching Operations Console...", false);
-                            setTimeout(() => window.location.href = 'admin.html', 1200);
+                            setTimeout(() => window.location.href = 'admin', 1200);
                         } else {
                             // Check if it's dynamic approved staff
                             const requests = JSON.parse(localStorage.getItem('staffRequestsApproved') || '[]');
@@ -119,7 +119,7 @@
                                 localStorage.setItem('adminRole', 'staff');
                                 localStorage.setItem('adminName', matchedStaff.name);
                                 showToast(`Welcome back ${matchedStaff.name}. Access Authorized.`, false);
-                                setTimeout(() => window.location.href = 'admin.html', 1200);
+                                setTimeout(() => window.location.href = 'admin', 1200);
                             } else {
                                 throw new Error("Invalid Staff credentials. Override rejected.");
                             }
@@ -140,7 +140,7 @@
                         }));
 
                         showToast("Authentication Successful. Entering Syndicate...", false);
-                        setTimeout(() => window.location.href = 'dashboard.html', 1000);
+                        setTimeout(() => window.location.href = 'dashboard', 1000);
                     }
                 } catch (error) {
                     showToast(error.message, true);
@@ -186,7 +186,7 @@
                     }));
 
                     showToast("Account Created. Welcome to the Zaylore Syndicate!", false);
-                    setTimeout(() => window.location.href = 'dashboard.html', 1200);
+                    setTimeout(() => window.location.href = 'dashboard', 1200);
 
                 } catch (error) {
                     showToast(error.message, true);
@@ -302,7 +302,7 @@
                     </div>
                     <button type="submit" class="auth-btn">UPDATE SECURITY</button>
                     <div class="admin-toggle">
-                        <a class="admin-link" onclick="location.href='account.html'">Cancel Reset</a>
+                        <a class="admin-link" onclick="location.href='account'">Cancel Reset</a>
                     </div>
                 </form>
             `;
@@ -425,7 +425,7 @@
             toast.className = 'auth-toast show success';
             setTimeout(() => { toast.classList.remove('show'); }, 4000);
 
-            setTimeout(() => window.location.href = 'dashboard.html', 1000);
+            setTimeout(() => window.location.href = 'dashboard', 1000);
         } catch (e) {
             alert("Google authentication failed.");
         }
