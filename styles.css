@@ -441,6 +441,13 @@ body {
     transform: translateY(-2px);
 }
 
+.hero-btn-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
 .hero-right {
     text-align: center;
     padding: 12px;
@@ -747,15 +754,26 @@ body {
         padding: 36px 4%;
     }
 
+    .hero-left {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-sub {
+        margin: 0 auto 20px auto !important;
+    }
+
+    .hero-btn-group {
+        justify-content: center;
+    }
+
     .center-brand {
         font-size: 4.2rem;
     }
 }
 @media (max-width: 600px) {
-    .nav-links {
-        display: none;
-    }
-
     .nav-right {
         gap: 10px;
     }
@@ -804,7 +822,7 @@ body {
         background: #0a0a0a;
         flex-direction: column;
         justify-content: center;
-        gap: 30px;
+        gap: 30px !important;
         transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 2050;
     }
@@ -814,8 +832,8 @@ body {
     }
 
     .nav-link {
-        font-size: 1.5rem;
-        letter-spacing: 5px;
+        font-size: 1.5rem !important;
+        letter-spacing: 5px !important;
     }
 
     .hamburger {
@@ -2610,7 +2628,7 @@ body {
         gap: 50px;
     }
     .founder-img-frame {
-        aspect-ratio: 16/9;
+        aspect-ratio: 3/4 !important;
         max-width: 100%;
     }
     .founder-badge {

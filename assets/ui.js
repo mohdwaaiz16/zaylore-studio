@@ -71,14 +71,6 @@
         }, { passive: true });
     }
 
-    // Menu toggle already added in index but keep safe
-    function setupHamburger() {
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        if (!hamburger || !navLinks) return;
-        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
-    }
-
     // Simple login modal + simulated OAuth
     function showLoginModal() {
         if ($('#login-modal')) return;
@@ -178,7 +170,7 @@
 
     // progressive enhancement init
     function init() {
-        createLoader(); createCursor(); setupScrollProgress(); setupHamburger();
+        createLoader(); createCursor(); setupScrollProgress();
         // remove loader after DOM ready + images loaded
         window.addEventListener('load', () => { setTimeout(() => hideLoader(), 700); restoreSession(); if (location.search.indexOf('login') > -1) showLoginModal(); });
         // create launch control only in dev/local

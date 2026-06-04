@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="img/hero-bg-md.webp" as="image" type="image/webp" imagesrcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" imagesizes="100vw" fetchpriority="high">
+
     <link rel="preload" href="img/hero-bg-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
     <link rel="preload" href="img/hero-bg-md.webp" as="image" type="image/webp" media="(min-width: 769px)" imagesrcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" imagesizes="100vw" fetchpriority="high">
 
@@ -623,7 +625,7 @@
                 <p class="hero-headline">PREMIUM STREETWEAR BRAND</p>
                 <h1 class="hero-headline-strong">BUILT DIFFERENT.</h1>
                 <p class="hero-sub">Not just clothing. A movement. Zaylore Studio delivers luxury oversized streetwear for those who lead culture, not follow it.</p>
-                <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;">
+                <div class="hero-btn-group">
                     <a href="products" class="discover-btn" id="discover-btn">Shop Now →</a>
                     <a href="about" style="display:inline-block;padding:14px 28px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:#aaa;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.35)';this.style.color='#fff';" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='#aaa';">Our Story →</a>
                 </div>
