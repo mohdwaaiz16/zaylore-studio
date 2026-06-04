@@ -7,13 +7,14 @@
     <title>Products | Zaylore Studio</title>
     <meta name="description" content="Witness the upcoming premium streetwear drop from Zaylore Studio. Check the live countdown, save silhouettes to your wishlist, and get notified on drop day.">
     <meta name="keywords" content="oversized streetwear, premium streetwear, drop countdown, clothing drop, oversized hoodie, baggy jeans, Zaylore products">
-    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+    <link rel="icon" href="img/logo-icon-sm.webp" type="image/jpeg">
     <link rel="canonical" href="https://www.zaylorestudio.in/products">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="/styles.min.css?v=1.1.0">
 
     <style>
         /* ===== PRODUCTS SHOP STYLES ===== */
@@ -439,7 +440,7 @@
     <nav id="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                <img src="img/logo-icon-sm.webp" alt="Zaylore Logo">
                 <span class="logo-text">ZAYLORE</span>
             </a>
 
@@ -505,7 +506,7 @@
         <div class="footer-grid">
             <div class="footer-col-brand">
                 <a href="/" class="footer-logo-wrap">
-                    <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
+                    <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
                 <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and aesthetic culture to the bold and the fearless.</p>
@@ -562,10 +563,10 @@
     </footer>
 
     <!-- Database & Page Controllers -->
-    <script src="js/firebase-config.js"></script>
-    <script src="js/db.js"></script>
+    <script defer src="js/firebase-config.js"></script>
+    <script defer src="js/db.js"></script>
     <script src="js/products.js"></script>
-    <script src="script.js"></script>
+    <script src="/script.min.js?v=1.1.0"></script>
 </body>
 
 </html>

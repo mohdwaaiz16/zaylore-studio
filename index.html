@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="img/hero-bg-md.webp" as="image" type="image/webp" imagesrcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" imagesizes="100vw" fetchpriority="high">
+
     <title>Zaylore Studio | Premium Streetwear Brand | Oversized T-Shirts & Hoodies</title>
     <meta name="description" content="Zaylore Studio is a premium streetwear brand by PM Mohammed Waaiz offering luxury oversized t-shirts, hoodies, baggy jeans, cargo pants, and aesthetic fashion apparel. Join the movement.">
     <meta name="keywords" content="Zaylore Studio, oversized t-shirts, streetwear hoodies, premium streetwear brand, luxury streetwear, PM Mohammed Waaiz, waaiz, pm waaiz, MW Zawion, Bangalore streetwear, India streetwear brand">
     <meta name="author" content="PM Mohammed Waaiz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.zaylorestudio.in/">
-    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+    <link rel="icon" href="img/logo-icon-sm.webp" type="image/jpeg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.zaylorestudio.in/">
     <meta property="og:title" content="Zaylore Studio | Premium Streetwear Brand">
     <meta property="og:description" content="Discover Zaylore Studio's premium aesthetic streetwear. Featuring high-quality oversized t-shirts, hoodies, bomber jackets, and baggy jeans. Not just clothing, a movement.">
-    <meta property="og:image" content="https://www.zaylorestudio.in/img/hero-bg.jpg">
+    <meta property="og:image" content="https://www.zaylorestudio.in/img/hero-bg.webp">
     <meta property="og:site_name" content="Zaylore Studio">
 
     <!-- Twitter -->
@@ -25,14 +27,15 @@
     <meta name="twitter:creator" content="@md_waaizz">
     <meta name="twitter:title" content="Zaylore Studio | Premium Streetwear Brand">
     <meta name="twitter:description" content="Not just clothing. A movement. Join Zaylore Studio, India's next-generation premium streetwear brand.">
-    <meta name="twitter:image" content="https://www.zaylorestudio.in/img/hero-bg.jpg">
+    <meta name="twitter:image" content="https://www.zaylorestudio.in/img/hero-bg.webp">
 
     <meta name="theme-color" content="#0a0a0a">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="/styles.min.css?v=1.1.0">
 
     <script type="application/ld+json">
     {
@@ -41,7 +44,7 @@
       "@id": "https://www.zaylorestudio.in/#organization",
       "name": "Zaylore Studio",
       "url": "https://www.zaylorestudio.in",
-      "logo": { "@type": "ImageObject", "url": "https://www.zaylorestudio.in/img/logo-full.jpg" },
+      "logo": { "@type": "ImageObject", "url": "https://www.zaylorestudio.in/img/logo-full.webp" },
       "founder": {
         "@type": "Person",
         "name": "PM Mohammed Waaiz",
@@ -577,7 +580,7 @@
     <nav id="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                <img src="img/logo-icon-sm.webp" alt="Zaylore Logo">
                 <span class="logo-text">ZAYLORE</span>
             </a>
             <div class="nav-links" id="nav-links">
@@ -607,7 +610,7 @@
     <!-- HERO SECTION                                    -->
     <!-- ═══════════════════════════════════════════════ -->
     <section class="hero" id="hero">
-        <img src="img/hero-bg.jpg" alt="" class="hero-bg" aria-hidden="true" loading="eager" decoding="async">
+        <img src="img/hero-bg.webp" alt="" class="hero-bg" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" srcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" sizes="100vw">
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
@@ -683,7 +686,7 @@
         <!-- Featured Large Item -->
         <div class="collection-featured">
             <div class="featured-card locked">
-                <img src="img/gallery-1.jpg" alt="Zaylore Studio Oversized Hoodie, Premium heavyweight streetwear" class="featured-img blur-lock" loading="lazy">
+                <img src="img/gallery-1.webp" alt="Zaylore Studio Oversized Hoodie, Premium heavyweight streetwear" class="featured-img blur-lock" loading="lazy" srcset="img/gallery-1-sm.webp 480w, img/gallery-1-md.webp 800w, img/gallery-1.webp 1000w" sizes="(max-width: 768px) 100vw, 50vw">
                 <div class="drop-status-ribbon">DROP SOON</div>
                 
                 <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -721,7 +724,7 @@
             </div>
             <div class="featured-side">
                 <div class="featured-card featured-card-sm locked">
-                    <img src="img/gallery-2.jpg" alt="Zaylore Studio Bomber Jacket" class="featured-img blur-lock" loading="lazy">
+                    <img src="img/gallery-2.webp" alt="Zaylore Studio Bomber Jacket" class="featured-img blur-lock" loading="lazy">
                     
                     <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad-1)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
@@ -748,7 +751,7 @@
                     </div>
                 </div>
                 <div class="featured-card featured-card-sm locked">
-                    <img src="img/hoodie-product.jpg" alt="Zaylore Studio Oversized T-Shirt" class="featured-img blur-lock" loading="lazy">
+                    <img src="img/hoodie-product.webp" alt="Zaylore Studio Oversized T-Shirt" class="featured-img blur-lock" loading="lazy">
                     
                     <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad-1)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
@@ -812,21 +815,21 @@
 
             <div class="culture-grid">
                 <div class="culture-card">
-                    <img src="img/gallery-1.jpg" alt="Zaylore Studio Culture, streetwear and community" loading="lazy">
+                    <img src="img/gallery-1.webp" alt="Zaylore Studio Culture, streetwear and community" loading="lazy" srcset="img/gallery-1-sm.webp 480w, img/gallery-1-md.webp 800w, img/gallery-1.webp 1000w" sizes="(max-width: 768px) 100vw, 33vw">
                     <div class="culture-card-overlay">
                         <div class="culture-card-tag">Streetwear</div>
                         <h3 class="culture-card-title">WEAR THE IDENTITY</h3>
                     </div>
                 </div>
                 <div class="culture-card">
-                    <img src="img/gallery-4.jpg" alt="Zaylore Studio Creators Community" loading="lazy">
+                    <img src="img/gallery-4.webp" alt="Zaylore Studio Creators Community" loading="lazy">
                     <div class="culture-card-overlay">
                         <div class="culture-card-tag">Creators</div>
                         <h3 class="culture-card-title">BUILD THE SCENE</h3>
                     </div>
                 </div>
                 <div class="culture-card">
-                    <img src="img/gallery-6.jpg" alt="Zaylore Studio Events and Fashion" loading="lazy">
+                    <img src="img/gallery-6.webp" alt="Zaylore Studio Events and Fashion" loading="lazy">
                     <div class="culture-card-overlay">
                         <div class="culture-card-tag">Events</div>
                         <h3 class="culture-card-title">LIVE THE MOMENT</h3>
@@ -870,7 +873,7 @@
                 <!-- Visual -->
                 <div class="founder-visual">
                     <div class="founder-img-frame">
-                        <img src="img/founder.jpg" alt="PM Mohammed Waaiz, Founder of Zaylore Studio, premium streetwear brand" loading="lazy">
+                        <img src="img/founder.webp" alt="PM Mohammed Waaiz, Founder of Zaylore Studio, premium streetwear brand" loading="lazy" srcset="img/founder-sm.webp 480w, img/founder.webp 800w" sizes="(max-width: 768px) 100vw, 50vw">
                     </div>
                     <div class="founder-badge">
                         SYNDICATE<br>FOUNDER
@@ -937,7 +940,7 @@
             <!-- Main Event Card (DB-powered) -->
             <div class="events-hero-card">
                 <div class="events-hero-visual">
-                    <img src="img/about-hero-bg.png" alt="Zaylore Studio Launch Event, Bangalore Showcase" loading="lazy">
+                    <img src="img/about-hero-bg.webp" alt="Zaylore Studio Launch Event, Bangalore Showcase" loading="lazy">
                     <div class="events-visual-overlay"></div>
                 </div>
 
@@ -1007,7 +1010,7 @@
         <div class="footer-grid">
             <div class="footer-col-brand">
                 <a href="/" class="footer-logo-wrap">
-                    <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
+                    <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
                 <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and authentic street culture to the bold and the fearless.</p>
@@ -1074,8 +1077,8 @@
 
     <!-- ── Scripts ── -->
     <!-- DB Layer -->
-    <script src="js/firebase-config.js"></script>
-    <script src="js/db.js"></script>
+    <script defer src="js/firebase-config.js"></script>
+    <script defer src="js/db.js"></script>
 
     <!-- Countdown + Event + Newsletter Logic -->
     <script>
@@ -1239,14 +1242,7 @@
     })();
     </script>
 
-    <script src="script.js"></script>
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-    <script>
-        window.botpress && window.botpress.init({
-            "botId": "0712ab3f-9d30-4ddb-88c9-62ba531226bb",
-            "clientId": "a3cb76b2-5c9e-48f0-852a-644c5bd0e3d0",
-            "configuration": { "botName": "Zaylore Assistant", "color": "#d41920", "themeMode": "dark", "website": {}, "email": {}, "phone": {}, "termsOfService": {}, "privacyPolicy": {} }
-        });
-    </script>
+    <script src="/script.min.js?v=1.1.0"></script>
+    
 </body>
 </html>

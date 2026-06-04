@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Command Center | Zaylore Studio</title>
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+    <link rel="icon" href="img/logo-icon-sm.webp" type="image/jpeg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -641,7 +642,7 @@
     <!-- ── Admin Navigation ── -->
     <nav class="admin-nav">
         <a href="/" class="admin-brand">
-            <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="admin-logo">
+            <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="admin-logo">
             <div>
                 <div class="admin-brand-text">ZAYLORE</div>
                 <div class="admin-brand-sub">Command Center</div>
@@ -1151,8 +1152,8 @@
     </script>
 
     <!-- ── DB + Admin Controller ── -->
-    <script src="js/firebase-config.js"></script>
-    <script src="js/db.js"></script>
+    <script defer src="js/firebase-config.js"></script>
+    <script defer src="js/db.js"></script>
     <script src="js/admin.js"></script>
 
     <!-- ── Extra tab logic for events & staff tabs ── -->

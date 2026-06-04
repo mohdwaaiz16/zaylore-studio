@@ -12,7 +12,7 @@
     <meta name="author" content="PM Mohammed Waaiz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.zaylorestudio.in/about">
-    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+    <link rel="icon" href="img/logo-icon-sm.webp" type="image/jpeg">
 
     <script type="application/ld+json">
     {
@@ -20,7 +20,7 @@
       "@type": "Organization",
       "name": "Zaylore Studio",
       "url": "https://www.zaylorestudio.in",
-      "logo": "https://www.zaylorestudio.in/img/logo-full.jpg",
+      "logo": "https://www.zaylorestudio.in/img/logo-full.webp",
       "founder": {
         "@type": "Person",
         "name": "PM Mohammed Waaiz",
@@ -37,7 +37,7 @@
     <meta property="og:title" content="About Zaylore Studio | Premium Streetwear Brand">
     <meta property="og:description"
         content="Discover the vision behind Zaylore Studio, the premium oversized streetwear brand founded by PM Mohammed Waaiz.">
-    <meta property="og:image" content="https://www.zaylorestudio.in/img/about-hero-bg.jpg">
+    <meta property="og:image" content="https://www.zaylorestudio.in/img/about-hero-bg.webp">
     <meta property="og:site_name" content="Zaylore Studio">
 
     <!-- Twitter -->
@@ -47,14 +47,14 @@
     <meta name="twitter:title" content="About Zaylore Studio | Premium Streetwear Brand">
     <meta name="twitter:description"
         content="Discover the vision behind Zaylore Studio, the premium oversized streetwear brand founded by PM Mohammed Waaiz.">
-    <meta name="twitter:image" content="https://www.zaylorestudio.in/img/about-hero-bg.jpg">
+    <meta name="twitter:image" content="https://www.zaylorestudio.in/img/about-hero-bg.webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.min.css?v=1.1.0">
     <style>
         /* ===== ABOUT PAGE STYLES ===== */
         .about-page {
@@ -893,7 +893,7 @@
           "url": "https://www.zaylorestudio.in",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://www.zaylorestudio.in/img/logo-full.jpg"
+            "url": "https://www.zaylorestudio.in/img/logo-full.webp"
           },
           "description": "Premium streetwear brand offering high-quality oversized t-shirts, oversized hoodies, sweatshirts, vintage polos, bomber jackets, and baggy jeans.",
           "founder": {
@@ -960,7 +960,7 @@
     <nav id="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                <img src="img/logo-icon-sm.webp" alt="Zaylore Logo">
                 <span class="logo-text">ZAYLORE</span>
             </a>
 
@@ -998,7 +998,7 @@
     <!-- ===== HERO ===== -->
     <section class="about-hero" id="about-hero">
         <div class="hero-bg-overlay"></div>
-        <img src="img/about-hero-bg.jpg" alt="" class="hero-bg-img" aria-hidden="true" decoding="async">
+        <img src="img/about-hero-bg.webp" alt="" class="hero-bg-img" aria-hidden="true" decoding="async" srcset="img/about-hero-bg-sm.webp 480w, img/about-hero-bg-md.webp 800w, img/about-hero-bg.webp 1200w" sizes="100vw">
         <div class="hero-inner">
             <div class="hero-text-block">
                 <span class="hero-label hero-fade hd1">A B O U T</span>
@@ -1017,7 +1017,7 @@
                 </p>
             </div>
             <div class="hero-model-block hero-fade hd4">
-                <img src="img/model-tshirt.jpg" alt="Model wearing Zaylore Studio tee" class="hero-model-img"
+                <img src="img/model-tshirt.webp" alt="Model wearing Zaylore Studio tee" class="hero-model-img"
                     loading="lazy" decoding="async">
             </div>
         </div>
@@ -1040,7 +1040,7 @@
                     blend in.</p>
             </div>
             <div class="z-visual reveal d2">
-                <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio Z Logo" class="z-logo-img" loading="lazy">
+                <img src="img/logo-icon-sm.webp" alt="Zaylore Studio Z Logo" class="z-logo-img" loading="lazy">
             </div>
         </div>
     </section>
@@ -1102,7 +1102,7 @@
     <!-- ===== SHOWCASE ===== -->
     <section class="ab-section" id="showcase">
         <div class="showcase-wrap reveal">
-            <img src="img/hoodie-product.jpg" alt="Zaylore Studio hoodie" class="showcase-img" loading="lazy"
+            <img src="img/hoodie-product.webp" alt="Zaylore Studio hoodie" class="showcase-img" loading="lazy"
                 decoding="async">
             <div class="showcase-text">
                 <h2>EVERY PIECE.<br><span class="text-red">A STATEMENT.</span></h2>
@@ -1155,7 +1155,7 @@
 
 
 
-    <script src="script.js"></script>
+    
     <script>
         // Scroll-triggered reveal animations
         const revealEls = document.querySelectorAll('.reveal');
@@ -1175,29 +1175,14 @@
 
 
     </script>
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-    <script>
-        window.botpress.init({
-            "botId": "0712ab3f-9d30-4ddb-88c9-62ba531226bb",
-            "clientId": "a3cb76b2-5c9e-48f0-852a-644c5bd0e3d0",
-            "configuration": {
-                "botName": "Zaylore Assistant",
-                "color": "#d41920", "themeMode": "dark",
-                "website": {},
-                "email": {},
-                "phone": {},
-                "termsOfService": {},
-                "privacyPolicy": {}
-            }
-        });
-    </script>
+    
     <!-- Footer -->
     
     <footer id="main-footer">
         <div class="footer-grid">
             <div class="footer-col-brand">
                 <a href="/" class="footer-logo-wrap">
-                    <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
+                    <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
                 <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and aesthetic
@@ -1257,9 +1242,9 @@
 
 
     <div class="grain"></div>
-    <script defer src="/assets/ui.js"></script>
+    <script defer src="/assets/ui.min.js?v=1.1.0"></script>
 
-<script defer src="/script.js"></script>
+<script defer src="/script.min.js?v=1.1.0"></script>
 </body>
 
 </html>

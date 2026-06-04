@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syndicate Dashboard | Zaylore Studio</title>
     <meta name="description" content="Access your exclusive Zaylore Studio Syndicate Member Dashboard. View early drops, RSVP to cultural events, manage addresses, and update member details.">
-    <link rel="icon" href="img/logo-icon-sm.jpg" type="image/jpeg">
+    <link rel="icon" href="img/logo-icon-sm.webp" type="image/jpeg">
     <meta name="robots" content="noindex, nofollow">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="stylesheet" href="/styles.min.css?v=1.1.0">
 
     <style>
         /* ===== DASHBOARD SPECIFIC LAYOUT & THEME ===== */
@@ -789,7 +790,7 @@
     <nav id="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                <img src="img/logo-icon-sm.webp" alt="Zaylore Logo">
                 <span class="logo-text">ZAYLORE</span>
             </a>
 
@@ -827,7 +828,7 @@
             <div class="glass-card">
                 <div class="dash-member-preview">
                     <div class="avatar-preview-wrap" style="width: 100px; height: 100px; margin-bottom: 10px;">
-                        <img id="sidebar-avatar" src="img/logo-icon-sm.jpg" alt="Member Avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                        <img id="sidebar-avatar" src="img/logo-icon-sm.webp" alt="Member Avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
                     </div>
                     <h2 id="member-name-title">MEMBER</h2>
                     <p>Syndicate Chapter</p>
@@ -865,7 +866,7 @@
                     <div class="syndicate-pass">
                         <div class="pass-header">
                             <div class="pass-logo">
-                                <img src="img/logo-icon-sm.jpg" alt="Zaylore Logo">
+                                <img src="img/logo-icon-sm.webp" alt="Zaylore Logo">
                                 <span class="pass-logo-text">ZAYLORE SYNDICATE</span>
                             </div>
                             <span class="pass-badge">MEMBER</span>
@@ -923,7 +924,7 @@
                         <!-- Avatar Editing Block -->
                         <div class="avatar-edit-box">
                             <div class="avatar-preview-wrap">
-                                <img id="profile-avatar-img" src="img/logo-icon-sm.jpg" alt="Profile Picture">
+                                <img id="profile-avatar-img" src="img/logo-icon-sm.webp" alt="Profile Picture">
                             </div>
                             <div class="avatar-action-btns">
                                 <label for="avatar-input" class="av-upload-label">UPLOAD NEW</label>
@@ -1077,7 +1078,7 @@
         <div class="footer-grid">
             <div class="footer-col-brand">
                 <a href="/" class="footer-logo-wrap">
-                    <img src="img/logo-icon-sm.jpg" alt="Zaylore Studio" class="footer-logo-img">
+                    <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
                 <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and aesthetic culture to the bold and the fearless.</p>
@@ -1134,10 +1135,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/firebase-config.js"></script>
-    <script src="js/db.js"></script>
+    <script defer src="js/firebase-config.js"></script>
+    <script defer src="js/db.js"></script>
     <script src="js/dashboard.js"></script>
-    <script src="script.js"></script>
+    <script src="/script.min.js?v=1.1.0"></script>
 </body>
 
 </html>

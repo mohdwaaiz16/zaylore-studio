@@ -111,7 +111,7 @@
             title: "Z-Signature Oversized Tee",
             description: "Heavyweight 240GSM luxury streetwear cotton t-shirt with dropped shoulders and thick ribbed neck. Features a matte-black aesthetic texture with a vivid signature red tag accent.",
             price: 2299,
-            images: ["img/model-tshirt.jpg", "img/hoodie-product.jpg", "img/gallery-5.jpg", "img/gallery-6.jpg"],
+            images: ["img/model-tshirt.webp", "img/hoodie-product.webp", "img/gallery-5.webp", "img/gallery-6.webp"],
             inStock: true,
             createdAt: Date.now()
         },
@@ -120,7 +120,7 @@
             title: "Classic Oversized Washed Hoodie",
             description: "Thick 450GSM loopback terry fleece hoodie with a kangaroo pocket, clean seamless cuffs, and custom metal aglets. Features classic Zaylore Studio brand embroidery.",
             price: 4599,
-            images: ["img/gallery-1.jpg", "img/gallery-4.jpg", "img/gallery-2.jpg", "img/gallery-3.jpg"],
+            images: ["img/gallery-1.webp", "img/gallery-4.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
             inStock: true,
             createdAt: Date.now() - 86400000
         },
@@ -129,7 +129,7 @@
             title: "Quilted Culture Bomber Jacket",
             description: "Premium nylon shell bomber jacket featuring an inner orange quilted liner, heavy utility zippers, and modular side pockets. Emblazoned with brand icons.",
             price: 6299,
-            images: ["img/gallery-2.jpg", "img/gallery-1.jpg", "img/gallery-3.jpg", "img/gallery-4.jpg"],
+            images: ["img/gallery-2.webp", "img/gallery-1.webp", "img/gallery-3.webp", "img/gallery-4.webp"],
             inStock: true,
             createdAt: Date.now() - 172800000
         },
@@ -138,7 +138,7 @@
             title: "Syndicate Canvas Cargo Pants",
             description: "Heavyweight duck canvas utility cargo pants featuring a wide-leg baggy fit, double-knee panels, and raw copper metal adjustments.",
             price: 3999,
-            images: ["img/gallery-5.jpg", "img/gallery-6.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg"],
+            images: ["img/gallery-5.webp", "img/gallery-6.webp", "img/gallery-1.webp", "img/gallery-2.webp"],
             inStock: true,
             createdAt: Date.now() - 259200000
         },
@@ -147,7 +147,7 @@
             title: "Vintage Heavyweight Zip Polo",
             description: "Oversized knitted polo shirt with a custom brushed chrome zip collar. Engineered box-cut fit inspired by vintage sportswear culture.",
             price: 2799,
-            images: ["img/gallery-6.jpg", "img/gallery-5.jpg", "img/gallery-2.jpg", "img/gallery-3.jpg"],
+            images: ["img/gallery-6.webp", "img/gallery-5.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
             inStock: false,
             createdAt: Date.now() - 345600000
         },
@@ -156,7 +156,7 @@
             title: "Distressed Fleece Crimson Hoodie",
             description: "Vintage sun-washed crimson red fleece hoodie. Hand-distressed details at cuffs and hem with bold culture graphic print.",
             price: 4899,
-            images: ["img/hoodie-product.jpg", "img/gallery-4.jpg", "img/gallery-2.jpg", "img/gallery-1.jpg"],
+            images: ["img/hoodie-product.webp", "img/gallery-4.webp", "img/gallery-2.webp", "img/gallery-1.webp"],
             inStock: true,
             createdAt: Date.now() - 432000000
         },
@@ -165,7 +165,7 @@
             title: "Raw Denim Baggy Jeans",
             description: "Super heavyweight raw indigo denim baggy jeans featuring custom hardware, white accent stitch, and utility painter loops. Designed for a full stack at the hem.",
             price: 4299,
-            images: ["img/gallery-5.jpg", "img/gallery-6.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg"],
+            images: ["img/gallery-5.webp", "img/gallery-6.webp", "img/gallery-1.webp", "img/gallery-2.webp"],
             inStock: true,
             createdAt: Date.now() - 518400000
         },
@@ -174,7 +174,7 @@
             title: "Distressed Syndicate Cap",
             description: "Vintage washed cotton strapback cap with heavy distressing, raw edge panels, and Z-signature red logo embroidery on the back.",
             price: 1499,
-            images: ["img/logo-icon-sm.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg", "img/gallery-3.jpg"],
+            images: ["img/logo-icon-sm.webp", "img/gallery-1.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
             inStock: true,
             createdAt: Date.now() - 604800000
         },
@@ -183,7 +183,7 @@
             title: "Heavy Flannel Oversized Shirt",
             description: "Double-brushed heavyweight plaid cotton flannel. Engineered with extra-wide dropped shoulder seams, chest pockets, and silver zip closure.",
             price: 3499,
-            images: ["img/gallery-3.jpg", "img/gallery-4.jpg", "img/gallery-5.jpg", "img/gallery-6.jpg"],
+            images: ["img/gallery-3.webp", "img/gallery-4.webp", "img/gallery-5.webp", "img/gallery-6.webp"],
             inStock: true,
             createdAt: Date.now() - 691200000
         },
@@ -192,7 +192,7 @@
             title: "Fleece Street Sweatshorts",
             description: "Heavyweight loopback fleece shorts with an elastic drawstring waist, raw hem edge detail, and screen-printed manifesto text down the leg.",
             price: 2199,
-            images: ["img/gallery-4.jpg", "img/gallery-5.jpg", "img/gallery-6.jpg", "img/gallery-1.jpg"],
+            images: ["img/gallery-4.webp", "img/gallery-5.webp", "img/gallery-6.webp", "img/gallery-1.webp"],
             inStock: true,
             createdAt: Date.now() - 777600000
         },
@@ -201,7 +201,7 @@
             title: "Signature Ribbed Crew Socks",
             description: "Premium combed cotton performance crew socks featuring ribbed arch bands, double-cushioned soles, and woven Zaylore brand mark.",
             price: 799,
-            images: ["img/gallery-6.jpg", "img/gallery-1.jpg", "img/gallery-2.jpg", "img/gallery-3.jpg"],
+            images: ["img/gallery-6.webp", "img/gallery-1.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
             inStock: true,
             createdAt: Date.now() - 864000000
         },
@@ -210,7 +210,7 @@
             title: "Ribbed Heavy Knit Beanie",
             description: "Heavy gauge ribbed knit beanie in solid black with double roll cuff. Features a stitched signature red streak Z patch.",
             price: 1299,
-            images: ["img/gallery-2.jpg", "img/gallery-3.jpg", "img/gallery-4.jpg", "img/gallery-5.jpg"],
+            images: ["img/gallery-2.webp", "img/gallery-3.webp", "img/gallery-4.webp", "img/gallery-5.webp"],
             inStock: true,
             createdAt: Date.now() - 950400000
         }

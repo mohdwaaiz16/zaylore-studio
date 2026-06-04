@@ -21,7 +21,7 @@
         loader.innerHTML = `
       <div class="loader-wrap">
         <div class="loader-ring"></div>
-        <div class="loader-logo"><img src="img/logo-icon-sm.jpg" alt="Z" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="loader-logo"><img src="img/logo-icon-sm.webp" alt="Z" style="width:100%;height:100%;object-fit:cover"></div>
         <div class="loader-title">ZAYLORE</div>
         <div class="loader-sub">Premium Studio</div>
       </div>
@@ -86,7 +86,7 @@
         md.innerHTML = `
       <div class="modal-panel glass-card">
         <div class="modal-header">
-          <img src="img/logo-icon-sm.jpg" style="width:54px;height:54px;border-radius:10px;" alt="Z">
+          <img src="img/logo-icon-sm.webp" style="width:54px;height:54px;border-radius:10px;" alt="Z">
           <div>
             <div class="modal-title">ZAYLORE LOGIN</div>
             <div class="modal-sub">Sign in to access your membership and drops</div>
@@ -136,7 +136,7 @@
         const acct = navRight.querySelector('.nav-action'); if (acct) acct.remove();
 
         const wrapper = document.createElement('div'); wrapper.className = 'nav-account'; wrapper.style.display = 'flex'; wrapper.style.gap = '12px';
-        const avatar = document.createElement('div'); avatar.className = 'nav-action'; avatar.innerHTML = `<img src='img/logo-icon-sm.jpg' style='width:28px;height:28px;border-radius:50%'>`;
+        const avatar = document.createElement('div'); avatar.className = 'nav-action'; avatar.innerHTML = `<img src='img/logo-icon-sm.webp' style='width:28px;height:28px;border-radius:50%'>`;
         avatar.title = profile.name || 'Account';
         const menu = document.createElement('div'); menu.className = 'account-menu u-hidden glass-card'; menu.style.position = 'absolute'; menu.style.right = '20px'; menu.style.top = '70px'; menu.style.zIndex = '99999';
         menu.innerHTML = `<div style='padding:10px;min-width:200px'><strong>${profile.name}</strong><div style='height:8px'></div>
