@@ -115,6 +115,19 @@
                         
                         <!-- Premium Lock Overlay before launch -->
                         ${isLocked ? `
+                            <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="chain-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#333" />
+                                        <stop offset="25%" stop-color="#bbb" />
+                                        <stop offset="50%" stop-color="#fff" />
+                                        <stop offset="75%" stop-color="#555" />
+                                        <stop offset="100%" stop-color="#222" />
+                                    </linearGradient>
+                                </defs>
+                                <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad)" stroke-width="3.5" stroke-dasharray="10 3" stroke-linecap="round" />
+                                <line x1="100" y1="0" x2="0" y2="100" stroke="url(#chain-grad)" stroke-width="3.5" stroke-dasharray="10 3" stroke-linecap="round" />
+                            </svg>
                             <div class="product-lock-overlay">
                                 <div class="lock-circle">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">

@@ -47,6 +47,20 @@
         "name": "PM Mohammed Waaiz",
         "alternateName": ["Waaiz", "PM Waaiz", "Mohammed Waaiz"],
         "birthDate": "2007-06-09",
+        "birthPlace": {
+          "@type": "Place",
+          "name": "Tamil Nadu, India"
+        },
+        "parent": [
+          {
+            "@type": "Person",
+            "name": "PM Abdul Wajid"
+          },
+          {
+            "@type": "Person",
+            "name": "Shairkhan Hajira Khanam"
+          }
+        ],
         "nationality": "Indian",
         "jobTitle": "Founder & Creative Director",
         "url": "https://www.zaylorestudio.in/founder"
@@ -67,7 +81,10 @@
         /* ── Culture Section ── */
         .culture-section {
             padding: 120px 0;
-            background: #050505;
+            background: rgba(10, 10, 10, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             overflow: hidden;
         }
 
@@ -217,7 +234,10 @@
         /* ── Founder Section ── */
         .founder-section {
             padding: 120px 0;
-            background: linear-gradient(180deg, #050505 0%, #080808 50%, #050505 100%);
+            background: linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(8,8,8,0.3) 50%, rgba(5,5,5,0.4) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             position: relative;
             overflow: hidden;
         }
@@ -430,7 +450,10 @@
         /* ── Events Section ── */
         .events-section {
             padding: 120px 0;
-            background: #050505;
+            background: rgba(10, 10, 10, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             overflow: hidden;
         }
 
@@ -599,7 +622,10 @@
         /* ── Newsletter CTA Section ── */
         .newsletter-cta-section {
             padding: 100px 0;
-            background: linear-gradient(180deg, #050505, #080808 50%, #050505);
+            background: linear-gradient(180deg, rgba(5,5,5,0.45), rgba(8,8,8,0.35) 50%, rgba(5,5,5,0.45));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             position: relative;
             overflow: hidden;
         }
@@ -832,6 +858,19 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════ -->
+    <!-- SYNDICATE MANIFESTO                             -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="syndicate-manifesto fade-in fd6">
+        <div class="manifesto-container">
+            <span class="manifesto-label">SYNDICATE MANIFESTO</span>
+            <p class="manifesto-quote">
+                "Most people wear clothes to fit in. We build Zaylore for people who wear clothes to stand out. This is for the bold. The fearless. The ones who create culture — not consume it."
+            </p>
+            <div class="manifesto-author">— <span>PM Mohammed Waaiz</span>, Founder</div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
     <!-- TAGLINE BAR                                     -->
     <!-- ═══════════════════════════════════════════════ -->
     <div class="tagline-bar fade-in fd6">
@@ -850,37 +889,95 @@
 
         <!-- Featured Large Item -->
         <div class="collection-featured">
-            <div class="featured-card">
-                <img src="img/gallery-1.jpg" alt="Zaylore Studio Oversized Hoodie — Premium heavyweight streetwear" class="featured-img" loading="lazy">
-                <div class="featured-overlay">
-                    <span class="product-tag">NEW DROP</span>
+            <div class="featured-card locked">
+                <img src="img/gallery-1.jpg" alt="Zaylore Studio Oversized Hoodie — Premium heavyweight streetwear" class="featured-img blur-lock" loading="lazy">
+                <div class="drop-status-ribbon">DROP SOON</div>
+                
+                <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="chain-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#333" />
+                            <stop offset="25%" stop-color="#bbb" />
+                            <stop offset="50%" stop-color="#fff" />
+                            <stop offset="75%" stop-color="#555" />
+                            <stop offset="100%" stop-color="#222" />
+                        </linearGradient>
+                    </defs>
+                    <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad-1)" stroke-width="3.5" stroke-dasharray="10 3" stroke-linecap="round" />
+                    <line x1="100" y1="0" x2="0" y2="100" stroke="url(#chain-grad-1)" stroke-width="3.5" stroke-dasharray="10 3" stroke-linecap="round" />
+                </svg>
+                
+                <div class="product-lock-overlay">
+                    <div class="lock-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <span class="lock-label">LOCKED</span>
+                </div>
+
+                <div class="featured-overlay" style="z-index: 6;">
+                    <span class="product-tag" style="background:#222;border:1px solid #444;">DROP ARRIVING SOON</span>
                     <div class="featured-info">
                         <h3 class="featured-name">OVERSIZED HOODIE</h3>
                         <p class="featured-desc">Heavyweight premium cotton blend</p>
-                        <a href="products" class="featured-cta">View Collection →</a>
+                        <button onclick="openNotifyModal()" class="featured-cta" style="background:transparent;border:none;cursor:pointer;padding:0;display:flex;align-items:center;">NOTIFY ME ON DROP →</button>
                     </div>
                 </div>
             </div>
             <div class="featured-side">
-                <div class="featured-card featured-card-sm">
-                    <img src="img/gallery-2.jpg" alt="Zaylore Studio Bomber Jacket" class="featured-img" loading="lazy">
-                    <div class="featured-overlay">
-                        <span class="product-tag">EXCLUSIVE</span>
+                <div class="featured-card featured-card-sm locked">
+                    <img src="img/gallery-2.jpg" alt="Zaylore Studio Bomber Jacket" class="featured-img blur-lock" loading="lazy">
+                    
+                    <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad-1)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
+                        <line x1="100" y1="0" x2="0" y2="100" stroke="url(#chain-grad-1)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
+                    </svg>
+                    
+                    <div class="product-lock-overlay">
+                        <div class="lock-circle" style="width:45px;height:45px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <span class="lock-label" style="font-size:0.6rem;letter-spacing:2px;">LOCKED</span>
+                    </div>
+
+                    <div class="featured-overlay" style="z-index: 6;">
+                        <span class="product-tag" style="background:#222;border:1px solid #444;">WILL BE DROP SOON</span>
                         <div class="featured-info">
                             <h3 class="featured-name">BOMBER JACKET</h3>
                             <p class="featured-desc">Street-ready outerwear</p>
-                            <a href="products" class="featured-cta">View →</a>
+                            <button onclick="openNotifyModal()" class="featured-cta" style="background:transparent;border:none;cursor:pointer;padding:0;display:flex;align-items:center;">NOTIFY ME →</button>
                         </div>
                     </div>
                 </div>
-                <div class="featured-card featured-card-sm">
-                    <img src="img/hoodie-product.jpg" alt="Zaylore Studio Oversized T-Shirt" class="featured-img" loading="lazy">
-                    <div class="featured-overlay">
-                        <span class="product-tag">BESTSELLER</span>
+                <div class="featured-card featured-card-sm locked">
+                    <img src="img/hoodie-product.jpg" alt="Zaylore Studio Oversized T-Shirt" class="featured-img blur-lock" loading="lazy">
+                    
+                    <svg class="chain-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="100" y2="100" stroke="url(#chain-grad-1)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
+                        <line x1="100" y1="0" x2="0" y2="100" stroke="url(#chain-grad-1)" stroke-width="4.5" stroke-dasharray="8 3" stroke-linecap="round" />
+                    </svg>
+                    
+                    <div class="product-lock-overlay">
+                        <div class="lock-circle" style="width:45px;height:45px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <span class="lock-label" style="font-size:0.6rem;letter-spacing:2px;">LOCKED</span>
+                    </div>
+
+                    <div class="featured-overlay" style="z-index: 6;">
+                        <span class="product-tag" style="background:#222;border:1px solid #444;">WILL BE DROP SOON</span>
                         <div class="featured-info">
                             <h3 class="featured-name">OVERSIZED TEE</h3>
                             <p class="featured-desc">The signature silhouette</p>
-                            <a href="products" class="featured-cta">View →</a>
+                            <button onclick="openNotifyModal()" class="featured-cta" style="background:transparent;border:none;cursor:pointer;padding:0;display:flex;align-items:center;">NOTIFY ME →</button>
                         </div>
                     </div>
                 </div>
@@ -1037,7 +1134,7 @@
                     <p class="founder-role-tag">Founder &amp; Creative Director · MW Zawion</p>
 
                     <p class="founder-bio">
-                        Born on <strong>9th June 2007</strong> in Tamil Nadu, India, <strong>PM Mohammed Waaiz</strong> founded Zaylore Studio with a singular mission — to build India's most authentic premium streetwear and culture brand. Raised by <strong>PM Abdul Wajid</strong> and <strong>Shairkhan Hajira Khanam</strong>, Waaiz channelled his passion for fashion, bikes, music, and creators into building a movement from scratch.
+                        With a singular mission to build India's most authentic premium streetwear and culture brand, <strong>PM Mohammed Waaiz</strong> channelled his passion for fashion, design, bikes, and music into building a movement from scratch. Zaylore Studio stands as the physical manifestation of this vision.
                     </p>
 
                     <blockquote class="founder-quote">
@@ -1055,8 +1152,8 @@
                             <div class="founder-stat-label">Founded</div>
                         </div>
                         <div class="founder-stat">
-                            <div class="founder-stat-num">18</div>
-                            <div class="founder-stat-label">Years Old</div>
+                            <div class="founder-stat-num">100%</div>
+                            <div class="founder-stat-label">Authentic</div>
                         </div>
                         <div class="founder-stat">
                             <div class="founder-stat-num">∞</div>
@@ -1222,6 +1319,24 @@
 
     <div class="grain"></div>
 
+    <!-- Early Drop Alert Modal -->
+    <div class="modal-backdrop" id="notify-modal" style="display:none;">
+        <div class="modal-panel glass-card auth-modal-panel">
+            <div class="modal-header">
+                <h3 class="modal-title">EARLY DROP ALERT</h3>
+                <p class="modal-sub">Enter email to secure Early-Access notifications</p>
+            </div>
+            <form id="actual-notify-form" class="auth-form" style="margin-top:20px;">
+                <div class="form-group" style="margin-bottom:15px;text-align:left;">
+                    <label class="form-label" style="display:block;margin-bottom:5px;font-family:'Space Grotesk',sans-serif;font-size:0.75rem;color:#888;letter-spacing:1px;text-transform:uppercase;">Email Address</label>
+                    <input type="email" id="notify-email" class="form-input" placeholder="name@example.com" required style="width:100%;padding:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#fff;outline:none;font-family:'Inter',sans-serif;font-size:0.9rem;transition:border-color 0.3s;">
+                </div>
+                <button type="submit" class="auth-btn" style="width:100%;padding:14px;background:var(--accent);border:none;border-radius:8px;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(212,25,32,0.3);" onmouseover="this.style.background='#ff2a2a';this.style.boxShadow='0 6px 20px rgba(212,25,32,0.5)';" onmouseout="this.style.background='var(--accent)';this.style.boxShadow='0 4px 15px rgba(212,25,32,0.3)';">CONFIRM NOTIFICATION</button>
+                <button type="button" class="auth-btn btn-reject" onclick="closeNotifyModal()" style="width:100%;padding:14px;background:transparent;border:1px solid #444;border-radius:8px;color:#888;font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:10px;transition:all 0.3s;" onmouseover="this.style.borderColor='#888';this.style.color='#fff';" onmouseout="this.style.borderColor='#444';this.style.color='#888';">CANCEL</button>
+            </form>
+        </div>
+    </div>
+
     <!-- ── Scripts ── -->
     <!-- DB Layer -->
     <script src="js/firebase-config.js"></script>
@@ -1344,6 +1459,65 @@
                 btn.disabled = false;
             }
         };
+
+        // ── Early Drop Alert Modal ──
+        window.openNotifyModal = function () {
+            const modal = document.getElementById('notify-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeNotifyModal = function () {
+            const modal = document.getElementById('notify-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                const form = document.getElementById('actual-notify-form');
+                if (form) form.reset();
+            }
+        };
+
+        const actForm = document.getElementById('actual-notify-form');
+        if (actForm) {
+            actForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('notify-email').value.trim();
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+
+                try {
+                    submitBtn.disabled = true;
+                    submitBtn.innerText = "CAPTURING...";
+
+                    if (window.ZayloreDB) {
+                        await window.ZayloreDB.addSubscriber(email, 'notify_homepage_drop');
+                    }
+
+                    showToast("Subscriber Added. Early access details will be sent.", false);
+                    closeNotifyModal();
+                } catch (err) {
+                    showToast(err.message, true);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "CONFIRM NOTIFICATION";
+                }
+            });
+        }
+
+        function showToast(msg, isError = true) {
+            let toast = document.getElementById('zs-prod-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'zs-prod-toast';
+                document.body.appendChild(toast);
+            }
+            toast.innerText = msg;
+            toast.className = `auth-toast show ${isError ? 'error' : 'success'}`;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
 
         // Init
         document.addEventListener('DOMContentLoaded', () => {
