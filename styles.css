@@ -2686,6 +2686,34 @@ html, body {
     .legal-section h2 {
         font-size: 1.2rem !important;
     }
+
+    /* Bottom bar grid styling for mobile viewports */
+    .bottom-bar {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        padding: 24px 20px !important;
+        background: rgba(10, 10, 10, 0.95) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .bar-z {
+        grid-column: span 2 !important;
+        text-align: center !important;
+        margin: 10px 0 !important;
+    }
+
+    .bar-z-icon {
+        font-family: var(--ff-display) !important;
+        font-size: 2.2rem !important;
+        color: var(--accent) !important;
+        text-shadow: 0 0 10px var(--accent-glow) !important;
+    }
+
+    .bar-item {
+        padding: 5px !important;
+        text-align: center !important;
+    }
 }
 
 /* Mobile specific styling tuning */
@@ -2715,7 +2743,8 @@ html, body {
     }
 
     /* Global countdown timer scaling to prevent overflowing */
-    .countdown-timer-container {
+    .countdown-timer-container,
+    .countdown-timer {
         gap: 6px !important;
     }
 

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" href="img/hero-bg-md.webp" as="image" type="image/webp" imagesrcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" imagesizes="100vw" fetchpriority="high">
+    <link rel="preload" href="img/hero-bg-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" href="img/hero-bg-md.webp" as="image" type="image/webp" media="(min-width: 769px)" imagesrcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" imagesizes="100vw" fetchpriority="high">
 
     <title>Zaylore Studio | Premium Streetwear Brand | Oversized T-Shirts & Hoodies</title>
     <meta name="description" content="Zaylore Studio is a premium streetwear brand by PM Mohammed Waaiz offering luxury oversized t-shirts, hoodies, baggy jeans, cargo pants, and aesthetic fashion apparel. Join the movement.">
@@ -610,7 +611,10 @@
     <!-- HERO SECTION                                    -->
     <!-- ═══════════════════════════════════════════════ -->
     <section class="hero" id="hero">
-        <img src="img/hero-bg.webp" alt="" class="hero-bg" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" srcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" sizes="100vw">
+        <picture>
+            <source srcset="img/hero-bg-mobile.webp" media="(max-width: 768px)">
+            <img src="img/hero-bg.webp" alt="" class="hero-bg" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async" srcset="img/hero-bg-sm.webp 480w, img/hero-bg-md.webp 800w, img/hero-bg.webp 1920w" sizes="100vw">
+        </picture>
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
@@ -1077,8 +1081,8 @@
 
     <!-- ── Scripts ── -->
     <!-- DB Layer -->
-    <script defer src="js/firebase-config.js"></script>
-    <script defer src="js/db.js"></script>
+    <script defer src="/js/firebase-config.js"></script>
+    <script defer src="/js/db.js"></script>
 
     <!-- Countdown + Event + Newsletter Logic -->
     <script>
