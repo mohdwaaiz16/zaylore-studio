@@ -2782,26 +2782,44 @@ html, body {
 }
 
 /* ==========================================================================
-   HOMEPAGE HERO — MOBILE RESPONSIVE FIX
+   HOMEPAGE HERO — COMPLETE MOBILE RESPONSIVE FIX
    ========================================================================== */
 
+/* ── 768px and below: Stack hero, fix countdown, redesign bottom-bar ── */
 @media (max-width: 768px) {
-    /* Hero: stack to single column, full-width */
+
+    /* --- Hero section --- */
     .hero {
-        min-height: 100svh;
-        padding-top: 72px;
+        min-height: auto !important;
+        padding-top: 80px;
+        padding-bottom: 0;
     }
 
     .hero-content {
         display: flex !important;
         flex-direction: column !important;
         grid-template-columns: unset !important;
-        gap: 24px !important;
-        padding: 24px 20px 32px !important;
+        gap: 0 !important;
+        padding: 20px 16px 0 !important;
         align-items: center !important;
         text-align: center !important;
+        width: 100%;
+        box-sizing: border-box;
     }
 
+    /* --- Hero Right (ZAYLORE brand + countdown) – show FIRST on mobile --- */
+    .hero-right {
+        order: -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding: 0;
+        gap: 0;
+    }
+
+    /* --- Hero Left (text + buttons) – show SECOND on mobile --- */
     .hero-left {
         display: flex;
         flex-direction: column;
@@ -2809,134 +2827,229 @@ html, body {
         text-align: center;
         padding: 0;
         width: 100%;
+        margin-top: 20px;
     }
 
     .hero-headline {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         letter-spacing: 3px;
+        margin-bottom: 6px;
     }
 
     .hero-headline-strong {
-        font-size: clamp(2rem, 9vw, 3rem) !important;
-        margin-bottom: 14px;
+        font-size: clamp(1.9rem, 8.5vw, 2.8rem) !important;
+        margin-bottom: 12px;
+        line-height: 1 !important;
     }
 
     .hero-sub {
-        font-size: 0.88rem;
-        max-width: 90vw;
-        margin: 0 auto 18px auto !important;
+        font-size: 0.85rem;
+        max-width: 88vw;
+        margin: 0 auto 16px auto !important;
+        line-height: 1.6;
     }
 
     .hero-btn-group {
-        flex-direction: column;
+        flex-direction: column !important;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         width: 100%;
+        max-width: 300px;
+        margin-top: 16px;
     }
 
     .discover-btn,
     .hero-btn-group a {
-        width: 100%;
-        max-width: 280px;
+        width: 100% !important;
         text-align: center;
         box-sizing: border-box;
-    }
-
-    /* Hero right: ZAYLORE STUDIO + countdown */
-    .hero-right {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        gap: 10px;
-    }
-
-    .center-brand {
-        font-size: clamp(2.8rem, 14vw, 4.5rem) !important;
-        letter-spacing: 4px;
-    }
-
-    .center-studio {
-        letter-spacing: 6px !important;
-        font-size: 0.85rem !important;
-    }
-
-    /* Countdown: shrink boxes so they fit 4 in a row */
-    .countdown-wrapper {
-        margin-top: 16px;
-        width: 100%;
-    }
-
-    .countdown-label {
-        font-size: 0.65rem;
-        letter-spacing: 3px;
-        margin-bottom: 10px;
-    }
-
-    .countdown-timer {
-        gap: 8px !important;
         justify-content: center;
+        display: flex !important;
+        align-items: center;
     }
 
-    .cd-box {
-        min-width: 62px !important;
-        max-width: 80px;
-        padding: 10px 6px !important;
-        border-radius: 10px !important;
-        flex: 1;
-    }
-
-    .cd-box span {
-        font-size: 1.6rem !important;
-    }
-
-    .cd-label {
-        font-size: 0.6rem !important;
-        letter-spacing: 0.5px !important;
-    }
-
-    /* Bottom bar: 2-column grid on mobile */
-    .bottom-bar {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        justify-content: flex-start !important;
-        gap: 0 !important;
-        padding: 0 !important;
-    }
-
-    .bar-item,
-    .bar-z {
-        min-width: 90px;
-        flex-shrink: 0;
-    }
-}
-
-@media (max-width: 400px) {
-    .hero-content {
-        padding: 16px 14px 24px !important;
-        gap: 18px !important;
-    }
-
+    /* --- ZAYLORE STUDIO brand text --- */
     .center-brand {
-        font-size: clamp(2.2rem, 14vw, 3.2rem) !important;
+        font-size: clamp(3rem, 15vw, 5rem) !important;
+        letter-spacing: 2px !important;
+        line-height: 0.9;
     }
 
     .center-studio {
         letter-spacing: 4px !important;
-        font-size: 0.75rem !important;
+        font-size: clamp(0.7rem, 2.5vw, 1rem) !important;
+        margin-top: 6px;
+        margin-bottom: 0;
+    }
+
+    /* --- Countdown --- */
+    .countdown-wrapper {
+        margin-top: 14px;
+        width: 100%;
+    }
+
+    .countdown-label {
+        font-size: 0.6rem;
+        letter-spacing: 2.5px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .countdown-timer {
+        display: flex !important;
+        gap: 6px !important;
+        justify-content: center;
+        width: 100%;
     }
 
     .cd-box {
-        min-width: 52px !important;
-        padding: 8px 4px !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        max-width: 80px;
+        padding: 10px 4px !important;
+        border-radius: 8px !important;
     }
 
     .cd-box span {
-        font-size: 1.3rem !important;
+        font-size: clamp(1.1rem, 5vw, 1.6rem) !important;
+        margin-bottom: 3px;
+    }
+
+    .cd-label {
+        font-size: 0.55rem !important;
+        letter-spacing: 0 !important;
+    }
+
+    /* --- Bottom bar: 3-column wrap grid (clean layout, no horizontal scroll) --- */
+    .bottom-bar {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0 !important;
+        padding: 0 !important;
+        margin-top: 20px;
+        overflow-x: unset !important;
+        -webkit-overflow-scrolling: unset !important;
+        justify-content: unset !important;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        background: rgba(8,8,8,0.95);
+    }
+
+    .bar-item {
+        flex: unset !important;
+        flex-shrink: unset !important;
+        min-width: unset !important;
+        padding: 14px 8px !important;
+        text-align: center !important;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        border-right: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .bar-item:nth-child(3n) {
+        border-right: none;
+    }
+
+    .bar-item-title {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+    }
+
+    .bar-item-sub {
+        font-size: 0.65rem;
+        color: #555;
+        margin-top: 2px;
+    }
+
+    /* Z icon in center of grid */
+    .bar-z {
+        flex-shrink: unset !important;
+        min-width: unset !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 8px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        border-right: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .bar-z-icon {
+        font-family: var(--ff-display) !important;
+        font-size: 1.6rem !important;
+        color: var(--accent) !important;
+    }
+}
+
+/* ── 480px: tighter adjustments ── */
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 72px;
+    }
+
+    .center-brand {
+        font-size: clamp(2.5rem, 14vw, 3.8rem) !important;
+    }
+
+    .center-studio {
+        letter-spacing: 3px !important;
+        font-size: 0.7rem !important;
     }
 
     .hero-headline-strong {
-        font-size: clamp(1.8rem, 10vw, 2.5rem) !important;
+        font-size: clamp(1.7rem, 9vw, 2.5rem) !important;
+    }
+
+    .hero-sub {
+        font-size: 0.82rem;
+    }
+
+    .hero-btn-group {
+        max-width: 260px;
+    }
+
+    .cd-box span {
+        font-size: clamp(1rem, 5vw, 1.4rem) !important;
+    }
+
+    .bottom-bar {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .bar-item-title {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* ── 360px (very small phones like Galaxy A series) ── */
+@media (max-width: 360px) {
+    .hero-content {
+        padding: 14px 12px 0 !important;
+    }
+
+    .center-brand {
+        font-size: clamp(2.2rem, 13vw, 3rem) !important;
+    }
+
+    .center-studio {
+        letter-spacing: 2px !important;
+    }
+
+    .countdown-timer {
+        gap: 4px !important;
+    }
+
+    .cd-box {
+        padding: 8px 2px !important;
+    }
+
+    .cd-box span {
+        font-size: 1rem !important;
+    }
+
+    .cd-label {
+        font-size: 0.5rem !important;
+    }
+
+    .bar-item-title {
+        font-size: 0.5rem;
     }
 }
