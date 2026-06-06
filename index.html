@@ -573,6 +573,15 @@
         @media (max-width: 480px) {
             .culture-pillars { grid-template-columns: 1fr; }
             .founder-stats-row { grid-template-columns: 1fr; }
+            .founder-img-frame { aspect-ratio: 3/4 !important; }
+            .events-hero-card { min-height: auto; }
+            .event-name { font-size: 1.4rem; }
+            .events-inner { padding: 0 14px; }
+        }
+
+        /* Ensure hero section inside index.html is always mobile safe */
+        @media (max-width: 768px) {
+            .hero-right { order: -1; }
         }
     </style>
 </head>
