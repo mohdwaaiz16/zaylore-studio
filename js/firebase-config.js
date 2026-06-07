@@ -1,9 +1,21 @@
-// Zaylore Studio - Firebase Configuration
-// To connect to a live Firebase instance:
-// 1. Create a project at console.firebase.google.com
-// 2. Enable Authentication (Email/Password), Firestore Database, and Storage
-// 3. Replace the configuration placeholders below with your project credentials
-// 4. Toggle the 'useFirebase' flag to true
+// ═══════════════════════════════════════════════════════════════════
+// ZAYLORE STUDIO — Firebase Configuration
+// ═══════════════════════════════════════════════════════════════════
+//
+// HOW TO ACTIVATE (one-time setup, takes 5 minutes):
+//
+// 1. Go to https://console.firebase.google.com/
+// 2. Click "Add project" → name it "zaylore-studio" → Create
+// 3. In the project, click "Web" icon (</>) → Register app → name it "Zaylore Web"
+// 4. Copy the firebaseConfig object below and paste your real values
+// 5. In Firebase Console → Authentication → Get Started → Enable:
+//       - Email/Password provider
+//       - Google provider
+// 6. In Firebase Console → Firestore Database → Create database → Start in production mode
+// 7. Set useFirebase = true below
+// 8. Deploy Firestore security rules (see firestore.rules in this project)
+//
+// ═══════════════════════════════════════════════════════════════════
 
 const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
@@ -15,11 +27,15 @@ const firebaseConfig = {
     measurementId: "YOUR_MEASUREMENT_ID"
 };
 
-const useFirebase = false; // Set to true to activate live Firebase SDK connection
+// ⬇ Set this to true once you've filled in real credentials above
+const useFirebase = false;
 
+// ─────────────────────────────────────────────────────────────────
+// Internal: expose config globally
+// ─────────────────────────────────────────────────────────────────
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { firebaseConfig, useFirebase };
 } else {
-    window.firebaseConfig = firebaseConfig;
-    window.useFirebase = useFirebase;
+    window.zsFirebaseConfig  = firebaseConfig;
+    window.zsUseFirebase     = useFirebase;
 }

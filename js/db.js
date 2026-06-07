@@ -1,24 +1,23 @@
-// Zaylore Studio - Database & Security Layer (Unified db.js)
-// Actively coordinates real Firebase services or a high-fidelity local emulation database.
+// ═══════════════════════════════════════════════════════════════════
+// ZAYLORE STUDIO — Database & Security Layer (db.js)
+// Supports: Firebase Firestore (live) OR localStorage (offline demo)
+// ═══════════════════════════════════════════════════════════════════
 
 (function () {
     'use strict';
 
-    // Helper functions
     const log = (msg, isError = false) => {
-        const prefix = "[ZAYLORE-DB]";
         if (isError) {
-            console.error(`${prefix} ❌ ${msg}`);
+            console.error(`[ZAYLORE-DB] ❌ ${msg}`);
         } else {
-            console.log(`%c${prefix} %c${msg}`, "color: #d41920; font-weight: bold;", "color: #eee;");
+            console.log(`%c[ZAYLORE-DB] %c${msg}`, 'color:#d41920;font-weight:bold;', 'color:#eee;');
         }
     };
 
-    // ─────────────────────────────────────────────────────────────────────────────
-    // SECURE UTILS (SHA-256, CSRF, RATE-LIMITING)
-    // ─────────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────
+    // SECURITY UTILS
+    // ─────────────────────────────────────────────────────────────
 
-    // Async SHA-256 Hashing using Web Crypto API (Client-Side Protection)
     async function hashPassword(password) {
         const msgUint8 = new TextEncoder().encode(password);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
@@ -26,7 +25,6 @@
         return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // CSRF Protection Token Generator & Validator
     function generateCSRFToken() {
         const token = Array.from(crypto.getRandomValues(new Uint8Array(24)))
             .map(b => b.toString(16).padStart(2, '0')).join('');
@@ -39,680 +37,456 @@
         return stored && stored === token;
     }
 
-    // Client-side Login Rate Limiting (Brute-Force Prevention)
+    // Rate limiting
     const MAX_LOGIN_ATTEMPTS = 5;
-    const LOCKOUT_TIME_MS = 15 * 60 * 1000; // 15 Minutes
-    const ATTEMPT_WINDOW_MS = 5 * 60 * 1000; // 5 Minutes
+    const LOCKOUT_TIME_MS = 15 * 60 * 1000;
+    const ATTEMPT_WINDOW_MS = 5 * 60 * 1000;
 
     function checkRateLimit(email) {
         try {
-            const limitData = JSON.parse(localStorage.getItem(`zs_rate_${email}`)) || { attempts: [], lockoutUntil: 0 };
+            const key = `zs_rate_${email}`;
+            const limitData = JSON.parse(localStorage.getItem(key)) || { attempts: [], lockoutUntil: 0 };
             const now = Date.now();
-
             if (limitData.lockoutUntil > now) {
                 const waitMin = Math.ceil((limitData.lockoutUntil - now) / 60000);
                 return { allowed: false, message: `Access suspended. Try again in ${waitMin} minute(s).` };
             }
-
-            // Filter attempts within active window
             limitData.attempts = limitData.attempts.filter(t => (now - t) < ATTEMPT_WINDOW_MS);
-
             if (limitData.attempts.length >= MAX_LOGIN_ATTEMPTS) {
                 limitData.lockoutUntil = now + LOCKOUT_TIME_MS;
-                localStorage.setItem(`zs_rate_${email}`, JSON.stringify(limitData));
+                localStorage.setItem(key, JSON.stringify(limitData));
                 return { allowed: false, message: `Too many failed attempts. Login locked for 15 minutes.` };
             }
-
             return { allowed: true };
-        } catch (e) {
-            return { allowed: true };
-        }
+        } catch (e) { return { allowed: true }; }
     }
 
     function recordFailedAttempt(email) {
         try {
-            const limitData = JSON.parse(localStorage.getItem(`zs_rate_${email}`)) || { attempts: [], lockoutUntil: 0 };
+            const key = `zs_rate_${email}`;
+            const limitData = JSON.parse(localStorage.getItem(key)) || { attempts: [], lockoutUntil: 0 };
             limitData.attempts.push(Date.now());
-            localStorage.setItem(`zs_rate_${email}`, JSON.stringify(limitData));
+            localStorage.setItem(key, JSON.stringify(limitData));
         } catch (e) {}
     }
 
     function clearRateLimits(email) {
-        try {
-            localStorage.removeItem(`zs_rate_${email}`);
-        } catch (e) {}
+        try { localStorage.removeItem(`zs_rate_${email}`); } catch (e) {}
     }
 
-    // Input Validation
-    function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return re.test(String(email).toLowerCase());
+    // ─────────────────────────────────────────────────────────────
+    // UNIQUE ID GENERATOR (for localStorage mode)
+    // ─────────────────────────────────────────────────────────────
+    function generateUID() {
+        return 'zs_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 9);
     }
 
-    // Mock JWT Web Token Generator
-    function generateMockJWT(payload) {
-        const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" }));
-        const body = btoa(JSON.stringify({
-            ...payload,
-            iat: Math.floor(Date.now() / 1000),
-            exp: Math.floor((Date.now() + 24 * 60 * 60 * 1000) / 1000) // 1 Day expiry
-        }));
-        const signature = btoa(header + "." + body + "zs_syndicate_secret_signature");
-        return `${header}.${body}.${signature}`;
+    // ─────────────────────────────────────────────────────────────
+    // FIREBASE MODE (when useFirebase = true)
+    // ─────────────────────────────────────────────────────────────
+
+    async function initFirebase() {
+        // Firebase v9 compat (loaded via CDN script tags)
+        const { initializeApp, getApps } = window.firebase_app || {};
+        const { getAuth } = window.firebase_auth || {};
+        const { getFirestore } = window.firebase_firestore || {};
+
+        if (!window.firebase || !window.zsFirebaseConfig) {
+            throw new Error('Firebase SDK not loaded. Check CDN scripts.');
+        }
+
+        // Avoid double initialization
+        let app;
+        if (!firebase.apps.length) {
+            app = firebase.initializeApp(window.zsFirebaseConfig);
+        } else {
+            app = firebase.apps[0];
+        }
+
+        window._zsAuth = firebase.auth();
+        window._zsDB   = firebase.firestore();
+
+        log('Firebase initialized ✓');
+        return { auth: window._zsAuth, db: window._zsDB };
     }
 
-    // ─────────────────────────────────────────────────────────────────────────────
-    // LOCAL STORAGE DATABASE SETUP (MOCK DATA)
-    // ─────────────────────────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────
+    // FIREBASE DATABASE OPERATIONS
+    // ─────────────────────────────────────────────────────────────
 
-    const MOCK_PRODUCTS = [
-        {
-            id: "zs-tee-01",
-            title: "Z-Signature Oversized Tee",
-            description: "Heavyweight 240GSM luxury streetwear cotton t-shirt with dropped shoulders and thick ribbed neck. Features a matte-black aesthetic texture with a vivid signature red tag accent.",
-            price: 2299,
-            images: ["img/model-tshirt.webp", "img/hoodie-product.webp", "img/gallery-5.webp", "img/gallery-6.webp"],
-            inStock: true,
-            createdAt: Date.now()
-        },
-        {
-            id: "zs-hoodie-02",
-            title: "Classic Oversized Washed Hoodie",
-            description: "Thick 450GSM loopback terry fleece hoodie with a kangaroo pocket, clean seamless cuffs, and custom metal aglets. Features classic Zaylore Studio brand embroidery.",
-            price: 4599,
-            images: ["img/gallery-1.webp", "img/gallery-4.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
-            inStock: true,
-            createdAt: Date.now() - 86400000
-        },
-        {
-            id: "zs-jacket-03",
-            title: "Quilted Culture Bomber Jacket",
-            description: "Premium nylon shell bomber jacket featuring an inner orange quilted liner, heavy utility zippers, and modular side pockets. Emblazoned with brand icons.",
-            price: 6299,
-            images: ["img/gallery-2.webp", "img/gallery-1.webp", "img/gallery-3.webp", "img/gallery-4.webp"],
-            inStock: true,
-            createdAt: Date.now() - 172800000
-        },
-        {
-            id: "zs-cargo-04",
-            title: "Syndicate Canvas Cargo Pants",
-            description: "Heavyweight duck canvas utility cargo pants featuring a wide-leg baggy fit, double-knee panels, and raw copper metal adjustments.",
-            price: 3999,
-            images: ["img/gallery-5.webp", "img/gallery-6.webp", "img/gallery-1.webp", "img/gallery-2.webp"],
-            inStock: true,
-            createdAt: Date.now() - 259200000
-        },
-        {
-            id: "zs-polo-05",
-            title: "Vintage Heavyweight Zip Polo",
-            description: "Oversized knitted polo shirt with a custom brushed chrome zip collar. Engineered box-cut fit inspired by vintage sportswear culture.",
-            price: 2799,
-            images: ["img/gallery-6.webp", "img/gallery-5.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
-            inStock: false,
-            createdAt: Date.now() - 345600000
-        },
-        {
-            id: "zs-hoodie-06",
-            title: "Distressed Fleece Crimson Hoodie",
-            description: "Vintage sun-washed crimson red fleece hoodie. Hand-distressed details at cuffs and hem with bold culture graphic print.",
-            price: 4899,
-            images: ["img/hoodie-product.webp", "img/gallery-4.webp", "img/gallery-2.webp", "img/gallery-1.webp"],
-            inStock: true,
-            createdAt: Date.now() - 432000000
-        },
-        {
-            id: "zs-jeans-07",
-            title: "Raw Denim Baggy Jeans",
-            description: "Super heavyweight raw indigo denim baggy jeans featuring custom hardware, white accent stitch, and utility painter loops. Designed for a full stack at the hem.",
-            price: 4299,
-            images: ["img/gallery-5.webp", "img/gallery-6.webp", "img/gallery-1.webp", "img/gallery-2.webp"],
-            inStock: true,
-            createdAt: Date.now() - 518400000
-        },
-        {
-            id: "zs-cap-08",
-            title: "Distressed Syndicate Cap",
-            description: "Vintage washed cotton strapback cap with heavy distressing, raw edge panels, and Z-signature red logo embroidery on the back.",
-            price: 1499,
-            images: ["img/logo-icon-sm.webp", "img/gallery-1.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
-            inStock: true,
-            createdAt: Date.now() - 604800000
-        },
-        {
-            id: "zs-shirt-09",
-            title: "Heavy Flannel Oversized Shirt",
-            description: "Double-brushed heavyweight plaid cotton flannel. Engineered with extra-wide dropped shoulder seams, chest pockets, and silver zip closure.",
-            price: 3499,
-            images: ["img/gallery-3.webp", "img/gallery-4.webp", "img/gallery-5.webp", "img/gallery-6.webp"],
-            inStock: true,
-            createdAt: Date.now() - 691200000
-        },
-        {
-            id: "zs-short-10",
-            title: "Fleece Street Sweatshorts",
-            description: "Heavyweight loopback fleece shorts with an elastic drawstring waist, raw hem edge detail, and screen-printed manifesto text down the leg.",
-            price: 2199,
-            images: ["img/gallery-4.webp", "img/gallery-5.webp", "img/gallery-6.webp", "img/gallery-1.webp"],
-            inStock: true,
-            createdAt: Date.now() - 777600000
-        },
-        {
-            id: "zs-socks-11",
-            title: "Signature Ribbed Crew Socks",
-            description: "Premium combed cotton performance crew socks featuring ribbed arch bands, double-cushioned soles, and woven Zaylore brand mark.",
-            price: 799,
-            images: ["img/gallery-6.webp", "img/gallery-1.webp", "img/gallery-2.webp", "img/gallery-3.webp"],
-            inStock: true,
-            createdAt: Date.now() - 864000000
-        },
-        {
-            id: "zs-beanie-12",
-            title: "Ribbed Heavy Knit Beanie",
-            description: "Heavy gauge ribbed knit beanie in solid black with double roll cuff. Features a stitched signature red streak Z patch.",
-            price: 1299,
-            images: ["img/gallery-2.webp", "img/gallery-3.webp", "img/gallery-4.webp", "img/gallery-5.webp"],
-            inStock: true,
-            createdAt: Date.now() - 950400000
-        }
-    ];
+    const FirebaseDB = {
+        async signup(name, email, password) {
+            const { auth, db } = await initFirebase();
+            const rateCheck = checkRateLimit(email);
+            if (!rateCheck.allowed) throw new Error(rateCheck.message);
 
-    const DEFAULT_EVENT = {
-        launchDate: "August 23, 2026 11:00:00",
-        location: "Bangalore Showcase Event Arena",
-        date: "23 August 2026",
-        ticketLink: "https://www.ticketlink-zaylore.in"
-    };
+            // Create Firebase Auth user
+            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+            const user = userCredential.user;
 
-    function initLocalStorageDB() {
-        const existing = localStorage.getItem('zs_products_db');
-        if (!existing || JSON.parse(existing).length < 10) {
-            localStorage.setItem('zs_products_db', JSON.stringify(MOCK_PRODUCTS));
-        }
-        if (!localStorage.getItem('zs_event_db')) {
-            localStorage.setItem('zs_event_db', JSON.stringify(DEFAULT_EVENT));
-        }
-        if (!localStorage.getItem('zs_users_db')) {
-            localStorage.setItem('zs_users_db', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('zs_subscribers_db')) {
-            localStorage.setItem('zs_subscribers_db', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('zs_addresses_db')) {
-            localStorage.setItem('zs_addresses_db', JSON.stringify([]));
-        }
-        if (!localStorage.getItem('zs_wishlist_db')) {
-            localStorage.setItem('zs_wishlist_db', JSON.stringify([]));
-        }
-    }
+            // Update display name
+            await user.updateProfile({ displayName: name });
 
-    // ─────────────────────────────────────────────────────────────────────────────
-    // THE DB DRIVER INTERFACE
-    // ─────────────────────────────────────────────────────────────────────────────
+            // Send email verification
+            await user.sendEmailVerification();
 
-    const ZayloreDB = {
-        isFirebaseReady: false,
-        useFirebase: false,
+            // Create Firestore profile document
+            const profile = {
+                uid: user.uid,
+                name,
+                email,
+                tier: 'CORE MEMBER',
+                phone: '',
+                gender: '',
+                dob: '',
+                profilePic: '',
+                referralCode: 'ZS-' + Math.random().toString(36).substr(2, 6).toUpperCase(),
+                wishlist: [],
+                notifications: [],
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+            };
 
-        // Initialize Engine
-        async init() {
-            initLocalStorageDB();
+            await db.collection('users').doc(user.uid).set(profile);
 
-            const useFB = window.useFirebase || false;
-            this.useFirebase = useFB;
-
-            if (useFB) {
-                log("Attaching to Firebase services...");
-                try {
-                    await this.loadFirebaseSDKs();
-                    // Initialize Firebase App
-                    if (!firebase.apps.length) {
-                        firebase.initializeApp(window.firebaseConfig);
-                    }
-                    this.isFirebaseReady = true;
-                    log("Firebase initialized successfully.");
-                } catch (e) {
-                    log("Firebase initialization failed! Falling back to local storage engine. Details: " + e.message, true);
-                    this.useFirebase = false;
-                }
-            } else {
-                log("Local Emulation Engine Active.");
-            }
-        },
-
-        // Helper to load Firebase dynamically in client environment
-        loadFirebaseSDKs() {
-            const compatVersion = "10.8.0";
-            const files = [
-                `https://www.gstatic.com/firebasejs/${compatVersion}/firebase-app-compat.js`,
-                `https://www.gstatic.com/firebasejs/${compatVersion}/firebase-auth-compat.js`,
-                `https://www.gstatic.com/firebasejs/${compatVersion}/firebase-firestore-compat.js`,
-                `https://www.gstatic.com/firebasejs/${compatVersion}/firebase-storage-compat.js`
-            ];
-
-            const loadScript = src => new Promise((res, rej) => {
-                const s = document.createElement('script');
-                s.src = src;
-                s.onload = res;
-                s.onerror = rej;
-                document.head.appendChild(s);
-            });
-
-            return files.reduce((promise, url) => promise.then(() => loadScript(url)), Promise.resolve());
-        },
-
-        // ─────────────────────────────────────────────────────────────────────────────
-        // AUTHENTICATION APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async signup(fullName, email, password) {
-            // Validation
-            if (!fullName || fullName.trim().length < 2) throw new Error("Full name must be at least 2 characters.");
-            if (!validateEmail(email)) throw new Error("Please enter a valid email address.");
-            if (!password || password.length < 6) throw new Error("Password must be at least 6 characters.");
-
-            if (this.useFirebase && this.isFirebaseReady) {
-                // Firebase Auth signup
-                const credential = await firebase.auth().createUserWithEmailAndPassword(email, password);
-                const fbUser = credential.user;
-                await fbUser.updateProfile({ displayName: fullName });
-
-                // Create profile doc in Firestore
-                await firebase.firestore().collection('users').doc(fbUser.uid).set({
-                    name: fullName,
-                    email: email,
-                    tier: 'CORE MEMBER',
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-                return { uid: fbUser.uid, name: fullName, email: email, tier: 'CORE MEMBER' };
-            } else {
-                // Local DB signup
-                const users = JSON.parse(localStorage.getItem('zs_users_db')) || [];
-                if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-                    throw new Error("Email address is already registered.");
-                }
-
-                const hashedPassword = await hashPassword(password);
-                const newUser = {
-                    uid: "zs-usr-" + Math.floor(Math.random() * 900000 + 100000),
-                    name: fullName.trim(),
-                    email: email.trim().toLowerCase(),
-                    password: hashedPassword,
-                    phone: "",
-                    gender: "",
-                    dob: "",
-                    profilePic: "",
-                    tier: "CORE MEMBER",
-                    createdAt: Date.now()
-                };
-
-                users.push(newUser);
-                localStorage.setItem('zs_users_db', JSON.stringify(users));
-
-                return { uid: newUser.uid, name: newUser.name, email: newUser.email, tier: newUser.tier };
-            }
+            clearRateLimits(email);
+            log(`New user created: ${email}`);
+            return profile;
         },
 
         async login(email, password) {
-            if (!validateEmail(email)) throw new Error("Please enter a valid email address.");
-            if (!password) throw new Error("Password is required.");
+            const { auth, db } = await initFirebase();
+            const rateCheck = checkRateLimit(email);
+            if (!rateCheck.allowed) throw new Error(rateCheck.message);
 
-            // Check rate limiting
-            const rate = checkRateLimit(email);
-            if (!rate.allowed) throw new Error(rate.message);
+            try {
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                const user = userCredential.user;
 
-            if (this.useFirebase && this.isFirebaseReady) {
-                try {
-                    const credential = await firebase.auth().signInWithEmailAndPassword(email, password);
-                    const fbUser = credential.user;
+                // Update last login
+                await db.collection('users').doc(user.uid).update({
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                });
 
-                    // Retrieve doc
-                    const doc = await firebase.firestore().collection('users').doc(fbUser.uid).get();
-                    const data = doc.exists ? doc.data() : { tier: 'CORE MEMBER' };
-
-                    clearRateLimits(email);
-                    return {
-                        uid: fbUser.uid,
-                        name: fbUser.displayName || fbUser.email.split('@')[0],
-                        email: fbUser.email,
-                        tier: data.tier || 'CORE MEMBER',
-                        phone: data.phone || '',
-                        gender: data.gender || '',
-                        dob: data.dob || '',
-                        profilePic: data.profilePic || '',
-                        token: await fbUser.getIdToken()
-                    };
-                } catch (e) {
-                    recordFailedAttempt(email);
-                    throw new Error("Invalid email or password. Access Denied.");
-                }
-            } else {
-                // Local DB login
-                const users = JSON.parse(localStorage.getItem('zs_users_db')) || [];
-                const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-
-                if (!user) {
-                    recordFailedAttempt(email);
-                    throw new Error("Invalid email or password. Access Denied.");
-                }
-
-                const hashedPass = await hashPassword(password);
-                if (user.password !== hashedPass) {
-                    recordFailedAttempt(email);
-                    throw new Error("Invalid email or password. Access Denied.");
-                }
+                // Get full profile
+                const doc = await db.collection('users').doc(user.uid).get();
+                const profile = doc.exists ? doc.data() : {
+                    uid: user.uid,
+                    name: user.displayName || email.split('@')[0],
+                    email: user.email,
+                    tier: 'CORE MEMBER',
+                    referralCode: 'ZS-' + Math.random().toString(36).substr(2, 6).toUpperCase()
+                };
 
                 clearRateLimits(email);
-                const token = generateMockJWT({ uid: user.uid, name: user.name, email: user.email });
+                log(`Login successful: ${email}`);
+                return profile;
+            } catch (err) {
+                recordFailedAttempt(email);
+                const friendlyErrors = {
+                    'auth/user-not-found': 'No account found with this email.',
+                    'auth/wrong-password': 'Incorrect password. Please try again.',
+                    'auth/invalid-email': 'Invalid email address.',
+                    'auth/user-disabled': 'This account has been suspended.',
+                    'auth/too-many-requests': 'Too many attempts. Try again later.',
+                    'auth/invalid-credential': 'Invalid credentials. Check email and password.'
+                };
+                throw new Error(friendlyErrors[err.code] || err.message);
+            }
+        },
 
-                return {
+        async loginWithGoogle() {
+            const { auth, db } = await initFirebase();
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('profile');
+            provider.addScope('email');
+
+            const result = await auth.signInWithPopup(provider);
+            const user = result.user;
+
+            // Check if profile exists, create if not
+            const docRef = db.collection('users').doc(user.uid);
+            const doc = await docRef.get();
+
+            if (!doc.exists) {
+                const profile = {
                     uid: user.uid,
-                    name: user.name,
+                    name: user.displayName,
                     email: user.email,
-                    tier: user.tier || 'CORE MEMBER',
-                    phone: user.phone || '',
-                    gender: user.gender || '',
-                    dob: user.dob || '',
-                    profilePic: user.profilePic || '',
-                    token: token
+                    profilePic: user.photoURL || '',
+                    tier: 'CORE MEMBER',
+                    phone: '',
+                    gender: '',
+                    dob: '',
+                    referralCode: 'ZS-' + Math.random().toString(36).substr(2, 6).toUpperCase(),
+                    wishlist: [],
+                    notifications: [],
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
                 };
+                await docRef.set(profile);
+                return profile;
+            } else {
+                await docRef.update({ lastLogin: firebase.firestore.FieldValue.serverTimestamp() });
+                return doc.data();
             }
         },
 
-        // Password Reset Request
+        async getProfile(uid) {
+            const { db } = await initFirebase();
+            const doc = await db.collection('users').doc(uid).get();
+            if (!doc.exists) throw new Error('Profile not found.');
+            return doc.data();
+        },
+
+        async updateProfile(uid, data) {
+            const { auth, db } = await initFirebase();
+            const allowedFields = ['name', 'phone', 'gender', 'dob', 'profilePic'];
+            const cleanData = {};
+            allowedFields.forEach(f => { if (data[f] !== undefined) cleanData[f] = data[f]; });
+            cleanData.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+
+            await db.collection('users').doc(uid).update(cleanData);
+
+            // Update Firebase Auth display name if name changed
+            if (data.name && auth.currentUser) {
+                await auth.currentUser.updateProfile({ displayName: data.name });
+            }
+            log(`Profile updated: ${uid}`);
+        },
+
         async resetPasswordRequest(email) {
-            if (!validateEmail(email)) throw new Error("Invalid email format.");
-
-            if (this.useFirebase && this.isFirebaseReady) {
-                await firebase.auth().sendPasswordResetEmail(email);
-                return true;
-            } else {
-                const users = JSON.parse(localStorage.getItem('zs_users_db')) || [];
-                const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-                if (!user) throw new Error("Email address not found in our database.");
-
-                // Simulate reset email link console capture
-                console.log(`%c[SIMULATED PASSWORD RESET LINK FOR ${email}]%c https://www.zaylorestudio.in/account?reset=1&uid=${user.uid}`, "background: #d41920; color: #fff; font-weight: bold;", "");
-                return true;
-            }
+            const { auth } = await initFirebase();
+            await auth.sendPasswordResetEmail(email);
+            log(`Password reset sent to: ${email}`);
         },
 
-        // Complete Reset Password
-        async completeResetPassword(uid, newPassword) {
-            if (newPassword.length < 6) throw new Error("Password must be at least 6 characters.");
-            if (this.useFirebase) {
-                throw new Error("Real resets must go through Firebase reset link flow.");
-            } else {
-                const users = JSON.parse(localStorage.getItem('zs_users_db')) || [];
-                const userIndex = users.findIndex(u => u.uid === uid);
-                if (userIndex === -1) throw new Error("Invalid user ID session.");
-
-                const hashed = await hashPassword(newPassword);
-                users[userIndex].password = hashed;
-                localStorage.setItem('zs_users_db', JSON.stringify(users));
-                return true;
-            }
+        async logout() {
+            const { auth } = await initFirebase();
+            await auth.signOut();
+            log('User signed out');
         },
 
-        // ─────────────────────────────────────────────────────────────────────────────
-        // PROFILE APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async updateProfile(uid, profileData) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                await firebase.firestore().collection('users').doc(uid).update(profileData);
-                // Also update displayName if changed
-                if (profileData.name) {
-                    const fbUser = firebase.auth().currentUser;
-                    if (fbUser) await fbUser.updateProfile({ displayName: profileData.name });
-                }
-                return true;
-            } else {
-                const users = JSON.parse(localStorage.getItem('zs_users_db')) || [];
-                const index = users.findIndex(u => u.uid === uid);
-                if (index === -1) throw new Error("Profile session not found.");
-
-                users[index] = { ...users[index], ...profileData };
-                localStorage.setItem('zs_users_db', JSON.stringify(users));
-                return true;
-            }
+        async getAllUsers() {
+            // Admin only — reads all user documents
+            const { db } = await initFirebase();
+            const snapshot = await db.collection('users').orderBy('createdAt', 'desc').get();
+            return snapshot.docs.map(doc => doc.data());
         },
 
-        // ─────────────────────────────────────────────────────────────────────────────
-        // ADDRESSES APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async getAddresses(userId) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                const snapshot = await firebase.firestore().collection('addresses').where('userId', '==', userId).get();
-                return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } else {
-                const addresses = JSON.parse(localStorage.getItem('zs_addresses_db')) || [];
-                return addresses.filter(addr => addr.userId === userId);
-            }
+        async subscribeNewsletter(email, name = '') {
+            const { db } = await initFirebase();
+            await db.collection('newsletterSignups').doc(email.toLowerCase()).set({
+                email: email.toLowerCase(),
+                name,
+                subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+            log(`Newsletter: ${email}`);
         },
 
-        async addAddress(userId, address) {
-            const fields = ["fullName", "mobileNumber", "addressLine1", "city", "state", "country", "postalCode"];
-            for (const f of fields) {
-                if (!address[f] || address[f].trim() === "") throw new Error(`Field ${f} is required.`);
-            }
-
-            if (this.useFirebase && this.isFirebaseReady) {
-                const ref = await firebase.firestore().collection('addresses').add({ userId, ...address });
-                return { id: ref.id, userId, ...address };
-            } else {
-                const addresses = JSON.parse(localStorage.getItem('zs_addresses_db')) || [];
-                const newAddress = {
-                    id: "zs-addr-" + Math.floor(Math.random() * 900000 + 100000),
-                    userId,
-                    ...address
-                };
-                addresses.push(newAddress);
-                localStorage.setItem('zs_addresses_db', JSON.stringify(addresses));
-                return newAddress;
-            }
+        async submitStaffApplication(data) {
+            const { db } = await initFirebase();
+            const id = 'REQ-' + Date.now();
+            await db.collection('staffApplications').doc(id).set({
+                ...data,
+                id,
+                status: 'pending',
+                submittedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            log(`Staff application: ${data.email}`);
         },
 
-        async updateAddress(id, address) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                await firebase.firestore().collection('addresses').doc(id).update(address);
-                return true;
-            } else {
-                const addresses = JSON.parse(localStorage.getItem('zs_addresses_db')) || [];
-                const idx = addresses.findIndex(a => a.id === id);
-                if (idx === -1) throw new Error("Address entry not found.");
+        onAuthStateChanged(callback) {
+            if (!window.firebase) return;
+            initFirebase().then(({ auth }) => {
+                auth.onAuthStateChanged(callback);
+            });
+        }
+    };
 
-                addresses[idx] = { ...addresses[idx], ...address };
-                localStorage.setItem('zs_addresses_db', JSON.stringify(addresses));
-                return true;
+    // ─────────────────────────────────────────────────────────────
+    // LOCAL STORAGE FALLBACK (when useFirebase = false)
+    // ─────────────────────────────────────────────────────────────
+
+    const LocalDB = {
+        async signup(name, email, password) {
+            const rateCheck = checkRateLimit(email);
+            if (!rateCheck.allowed) throw new Error(rateCheck.message);
+
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+                throw new Error('An account with this email already exists.');
             }
-        },
 
-        async deleteAddress(id) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                await firebase.firestore().collection('addresses').doc(id).delete();
-                return true;
-            } else {
-                let addresses = JSON.parse(localStorage.getItem('zs_addresses_db')) || [];
-                addresses = addresses.filter(a => a.id !== id);
-                localStorage.setItem('zs_addresses_db', JSON.stringify(addresses));
-                return true;
-            }
-        },
+            if (password.length < 6) throw new Error('Password must be at least 6 characters.');
+            const hashedPass = await hashPassword(password);
 
-        // ─────────────────────────────────────────────────────────────────────────────
-        // PRODUCT APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async getProducts() {
-            if (this.useFirebase && this.isFirebaseReady) {
-                const snap = await firebase.firestore().collection('products').orderBy('createdAt', 'desc').get();
-                return snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } else {
-                return JSON.parse(localStorage.getItem('zs_products_db')) || [];
-            }
-        },
-
-        async addProduct(product) {
-            const req = ["title", "description", "price", "images"];
-            for (const r of req) {
-                if (!product[r]) throw new Error(`Product ${r} is required.`);
-            }
-            if (product.images.length !== 4) throw new Error("Products must supply exactly 4 images.");
-
-            const fullProduct = {
-                ...product,
-                price: parseFloat(product.price),
-                inStock: product.hasOwnProperty('inStock') ? product.inStock : true,
-                createdAt: Date.now()
+            const user = {
+                uid: generateUID(),
+                name,
+                email: email.toLowerCase(),
+                password: hashedPass,
+                tier: 'CORE MEMBER',
+                phone: '',
+                gender: '',
+                dob: '',
+                profilePic: '',
+                referralCode: 'ZS-' + Math.random().toString(36).substr(2, 6).toUpperCase(),
+                wishlist: [],
+                notifications: [],
+                createdAt: new Date().toISOString(),
+                lastLogin: new Date().toISOString()
             };
 
-            if (this.useFirebase && this.isFirebaseReady) {
-                const ref = await firebase.firestore().collection('products').add(fullProduct);
-                return { id: ref.id, ...fullProduct };
-            } else {
-                const products = JSON.parse(localStorage.getItem('zs_products_db')) || [];
-                const newProduct = {
-                    id: "zs-prod-" + Math.floor(Math.random() * 90000 + 10000),
-                    ...fullProduct
-                };
-                products.unshift(newProduct);
-                localStorage.setItem('zs_products_db', JSON.stringify(products));
-                return newProduct;
-            }
+            users.push(user);
+            localStorage.setItem('zs_users_db', JSON.stringify(users));
+            clearRateLimits(email);
+            log(`[LOCAL] New user: ${email}`);
+
+            const { password: _, ...publicProfile } = user;
+            return publicProfile;
         },
 
-        async removeProduct(id) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                await firebase.firestore().collection('products').doc(id).delete();
-                return true;
-            } else {
-                let products = JSON.parse(localStorage.getItem('zs_products_db')) || [];
-                products = products.filter(p => p.id !== id);
-                localStorage.setItem('zs_products_db', JSON.stringify(products));
-                return true;
+        async login(email, password) {
+            const rateCheck = checkRateLimit(email);
+            if (!rateCheck.allowed) throw new Error(rateCheck.message);
+
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+            if (!user) {
+                recordFailedAttempt(email);
+                throw new Error('No account found with this email.');
             }
+
+            const hashedPass = await hashPassword(password);
+            if (user.password !== hashedPass) {
+                recordFailedAttempt(email);
+                throw new Error('Incorrect password. Please try again.');
+            }
+
+            // Update last login
+            user.lastLogin = new Date().toISOString();
+            localStorage.setItem('zs_users_db', JSON.stringify(users));
+            clearRateLimits(email);
+            log(`[LOCAL] Login: ${email}`);
+
+            const { password: _, ...publicProfile } = user;
+            return publicProfile;
         },
 
-        // ─────────────────────────────────────────────────────────────────────────────
-        // SUBSCRIBERS APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async addSubscriber(email, source = 'newsletter') {
-            if (!validateEmail(email)) throw new Error("Invalid email address.");
-
-            if (this.useFirebase && this.isFirebaseReady) {
-                // Check if already subscribed to prevent duplication
-                const snap = await firebase.firestore().collection('subscribers')
-                    .where('email', '==', email.toLowerCase())
-                    .where('source', '==', source)
-                    .get();
-
-                if (snap.empty) {
-                    await firebase.firestore().collection('subscribers').add({
-                        email: email.toLowerCase(),
-                        source,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                }
-                return true;
-            } else {
-                const subs = JSON.parse(localStorage.getItem('zs_subscribers_db')) || [];
-                const exists = subs.find(s => s.email.toLowerCase() === email.toLowerCase() && s.source === source);
-                if (!exists) {
-                    subs.push({ email: email.toLowerCase(), source, createdAt: Date.now() });
-                    localStorage.setItem('zs_subscribers_db', JSON.stringify(subs));
-                }
-                return true;
-            }
+        async loginWithGoogle() {
+            throw new Error('Google Sign-In requires Firebase. Please enable Firebase in firebase-config.js.');
         },
 
-        async getSubscribers() {
-            if (this.useFirebase && this.isFirebaseReady) {
-                const snap = await firebase.firestore().collection('subscribers').orderBy('createdAt', 'desc').get();
-                return snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } else {
-                return JSON.parse(localStorage.getItem('zs_subscribers_db')) || [];
-            }
+        async getProfile(uid) {
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            const user = users.find(u => u.uid === uid);
+            if (!user) throw new Error('Profile not found.');
+            const { password: _, ...publicProfile } = user;
+            return publicProfile;
         },
 
-        // ─────────────────────────────────────────────────────────────────────────────
-        // EVENT CONFIG APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async getEventDetails() {
-            if (this.useFirebase && this.isFirebaseReady) {
-                const doc = await firebase.firestore().collection('settings').doc('event_config').get();
-                return doc.exists ? doc.data() : DEFAULT_EVENT;
-            } else {
-                return JSON.parse(localStorage.getItem('zs_event_db')) || DEFAULT_EVENT;
-            }
+        async updateProfile(uid, data) {
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            const idx = users.findIndex(u => u.uid === uid);
+            if (idx === -1) throw new Error('User not found.');
+            const allowedFields = ['name', 'phone', 'gender', 'dob', 'profilePic'];
+            allowedFields.forEach(f => { if (data[f] !== undefined) users[idx][f] = data[f]; });
+            users[idx].updatedAt = new Date().toISOString();
+            localStorage.setItem('zs_users_db', JSON.stringify(users));
+            log(`[LOCAL] Profile updated: ${uid}`);
         },
 
-        async updateEventDetails(eventData) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                await firebase.firestore().collection('settings').doc('event_config').set(eventData, { merge: true });
-                return true;
-            } else {
-                const current = JSON.parse(localStorage.getItem('zs_event_db')) || DEFAULT_EVENT;
-                const updated = { ...current, ...eventData };
-                localStorage.setItem('zs_event_db', JSON.stringify(updated));
-                return true;
-            }
+        async resetPasswordRequest(email) {
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+            if (!user) throw new Error('No account found with this email.');
+            const resetToken = generateUID();
+            const resets = JSON.parse(localStorage.getItem('zs_resets') || '{}');
+            resets[resetToken] = { uid: user.uid, expires: Date.now() + 3600000 };
+            localStorage.setItem('zs_resets', JSON.stringify(resets));
+            alert(`[Demo Mode] Reset link:\n${window.location.origin}/account?reset=1&uid=${user.uid}\n\n(In production with Firebase, this is sent via email automatically.)`);
         },
 
-        // ─────────────────────────────────────────────────────────────────────────────
-        // WISHLIST APIs
-        // ─────────────────────────────────────────────────────────────────────────────
-
-        async getWishlist(userId) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                const snap = await firebase.firestore().collection('wishlists').where('userId', '==', userId).get();
-                return snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            } else {
-                const wish = JSON.parse(localStorage.getItem('zs_wishlist_db')) || [];
-                return wish.filter(w => w.userId === userId);
-            }
+        async completeResetPassword(uid, newPassword) {
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            const idx = users.findIndex(u => u.uid === uid);
+            if (idx === -1) throw new Error('Invalid reset token.');
+            users[idx].password = await hashPassword(newPassword);
+            localStorage.setItem('zs_users_db', JSON.stringify(users));
+            log(`[LOCAL] Password reset: ${uid}`);
         },
 
-        async toggleWishlist(userId, productId) {
-            if (this.useFirebase && this.isFirebaseReady) {
-                const ref = firebase.firestore().collection('wishlists');
-                const snap = await ref.where('userId', '==', userId).where('productId', '==', productId).get();
+        async logout() {
+            // Handled by clearing localStorage in auth.js
+            log('[LOCAL] User signed out');
+        },
 
-                if (snap.empty) {
-                    await ref.add({ userId, productId, addedAt: Date.now() });
-                    return { added: true };
-                } else {
-                    await ref.doc(snap.docs[0].id).delete();
-                    return { added: false };
-                }
+        async getAllUsers() {
+            const users = JSON.parse(localStorage.getItem('zs_users_db') || '[]');
+            return users.map(({ password: _, ...u }) => u);
+        },
+
+        async subscribeNewsletter(email, name = '') {
+            const subs = JSON.parse(localStorage.getItem('zs_newsletter') || '[]');
+            if (!subs.find(s => s.email === email.toLowerCase())) {
+                subs.push({ email: email.toLowerCase(), name, subscribedAt: new Date().toISOString() });
+                localStorage.setItem('zs_newsletter', JSON.stringify(subs));
+            }
+            log(`[LOCAL] Newsletter: ${email}`);
+        },
+
+        async submitStaffApplication(data) {
+            const apps = JSON.parse(localStorage.getItem('staffApplications') || '[]');
+            const id = 'REQ-' + Math.floor(Math.random() * 9000 + 1000);
+            apps.push({ ...data, id, status: 'pending', submittedAt: new Date().toISOString() });
+            localStorage.setItem('staffApplications', JSON.stringify(apps));
+            localStorage.setItem('staffRequests', JSON.stringify(apps));
+            log(`[LOCAL] Staff application: ${data.email}`);
+        },
+
+        onAuthStateChanged(callback) {
+            // Check localStorage session
+            const session = localStorage.getItem('zs_user');
+            if (session) {
+                try { callback(JSON.parse(session)); } catch (e) { callback(null); }
             } else {
-                let wish = JSON.parse(localStorage.getItem('zs_wishlist_db')) || [];
-                const idx = wish.findIndex(w => w.userId === userId && w.productId === productId);
-
-                if (idx === -1) {
-                    wish.push({ id: "zs-wish-" + Math.floor(Math.random() * 900000 + 100000), userId, productId, addedAt: Date.now() });
-                    localStorage.setItem('zs_wishlist_db', JSON.stringify(wish));
-                    return { added: true };
-                } else {
-                    wish = wish.filter(w => !(w.userId === userId && w.productId === productId));
-                    localStorage.setItem('zs_wishlist_db', JSON.stringify(wish));
-                    return { added: false };
-                }
+                callback(null);
             }
         }
     };
 
-    // Attach token logic to global window
-    window.ZayloreDB = ZayloreDB;
-    ZayloreDB.init();
+    // ─────────────────────────────────────────────────────────────
+    // UNIFIED API — uses Firebase or LocalDB based on config
+    // ─────────────────────────────────────────────────────────────
 
-    // Attach CSRF utils to window
-    window.zsSecurity = {
-        generateCSRFToken,
-        validateCSRFToken
+    const useFirebase = window.zsUseFirebase || false;
+    const DB = useFirebase ? FirebaseDB : LocalDB;
+
+    // Public API
+    window.ZayloreDB = {
+        signup:                 (...args) => DB.signup(...args),
+        login:                  (...args) => DB.login(...args),
+        loginWithGoogle:        (...args) => DB.loginWithGoogle(...args),
+        getProfile:             (...args) => DB.getProfile(...args),
+        updateProfile:          (...args) => DB.updateProfile(...args),
+        resetPasswordRequest:   (...args) => DB.resetPasswordRequest(...args),
+        completeResetPassword:  (...args) => DB.completeResetPassword ? DB.completeResetPassword(...args) : Promise.resolve(),
+        logout:                 (...args) => DB.logout(...args),
+        getAllUsers:             (...args) => DB.getAllUsers(...args),
+        subscribeNewsletter:    (...args) => DB.subscribeNewsletter(...args),
+        submitStaffApplication: (...args) => DB.submitStaffApplication(...args),
+        onAuthStateChanged:     (...args) => DB.onAuthStateChanged(...args),
+        isFirebaseMode:         () => useFirebase
     };
 
+    // Security utils — used by auth.js
+    window.zsSecurity = {
+        generateCSRFToken,
+        validateCSRFToken,
+        hashPassword
+    };
+
+    log(`DB initialized (mode: ${useFirebase ? 'Firebase' : 'LocalStorage Demo'})`);
 })();

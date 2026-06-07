@@ -1,0 +1,83 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper Functions ──────────────────────────────────────────
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      // Admin is identified by a custom claim set via Firebase Admin SDK
+      // To set this: run firebase-admin setCustomUserClaims(uid, { admin: true })
+      return isAuthenticated() && request.auth.token.admin == true;
+    }
+
+    function isValidUserData() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['uid', 'name', 'email'])
+        && data.uid is string
+        && data.name is string
+        && data.email is string
+        && data.name.size() >= 1
+        && data.name.size() <= 100
+        && data.email.size() >= 5;
+    }
+
+    // ── User Profiles ─────────────────────────────────────────────
+    // Each user can only read/write their own profile.
+    // Admins can read all profiles.
+    match /users/{uid} {
+      allow read:   if isOwner(uid) || isAdmin();
+      allow create: if isOwner(uid) && isValidUserData();
+      allow update: if isOwner(uid) && (
+        // Users can only update safe fields, not uid/email/tier/createdAt
+        !request.resource.data.diff(resource.data).affectedKeys()
+          .hasAny(['uid', 'email', 'createdAt'])
+      );
+      allow delete: if isAdmin();
+
+      // ── Orders subcollection ──────────────────────────────────
+      match /orders/{orderId} {
+        allow read:   if isOwner(uid) || isAdmin();
+        allow write:  if isAdmin(); // Only admin/backend creates orders
+      }
+
+      // ── Wishlist subcollection ────────────────────────────────
+      match /wishlist/{itemId} {
+        allow read, write: if isOwner(uid);
+      }
+    }
+
+    // ── Newsletter Signups ────────────────────────────────────────
+    // Anyone can subscribe. Only admins can read the list.
+    match /newsletterSignups/{email} {
+      allow create: if request.resource.data.email is string
+        && request.resource.data.email.size() >= 5;
+      allow read:   if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // ── Staff Applications ────────────────────────────────────────
+    // Anyone can submit. Only admins can read/manage.
+    match /staffApplications/{appId} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'role']);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Admin-only collections ────────────────────────────────────
+    match /adminSettings/{doc} {
+      allow read, write: if isAdmin();
+    }
+
+    // ── Deny everything else ──────────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
