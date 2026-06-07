@@ -14,8 +14,11 @@ service cloud.firestore {
 
     function isAdmin() {
       // Admin is identified by a custom claim set via Firebase Admin SDK
-      // To set this: run firebase-admin setCustomUserClaims(uid, { admin: true })
-      return isAuthenticated() && request.auth.token.admin == true;
+      // OR by the hardcoded admin email
+      return isAuthenticated() && (
+        request.auth.token.admin == true || 
+        request.auth.token.email == 'admin@zaylorestudio.in'
+      );
     }
 
     function isValidUserData() {
@@ -54,13 +57,31 @@ service cloud.firestore {
       }
     }
 
+    // ── Addresses Collection ──────────────────────────────────────
+    match /addresses/{addressId} {
+      allow read, write: if isAuthenticated() && (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if isAuthenticated() && (request.auth.uid == request.resource.data.userId || isAdmin());
+    }
+
+    // ── Products Catalog ──────────────────────────────────────────
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Launch settings ───────────────────────────────────────────
+    match /settings/{doc} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     // ── Newsletter Signups ────────────────────────────────────────
     // Anyone can subscribe. Only admins can read the list.
     match /newsletterSignups/{email} {
-      allow create: if request.resource.data.email is string
+      allow create, update: if request.resource.data.email is string
         && request.resource.data.email.size() >= 5;
       allow read:   if isAdmin();
-      allow update, delete: if isAdmin();
+      allow delete: if isAdmin();
     }
 
     // ── Staff Applications ────────────────────────────────────────

@@ -13,6 +13,15 @@
             return;
         }
 
+        // Authenticate Firebase Session for Admin
+        if (window.ZayloreDB) {
+            try {
+                await window.ZayloreDB.signInAdmin();
+            } catch (err) {
+                console.error("Firebase admin auth failed:", err);
+            }
+        }
+
         // Cache DB data
         let storeProducts = [];
         let storeSubscribers = [];

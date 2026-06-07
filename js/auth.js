@@ -102,11 +102,13 @@
                     if (window.isAdminView) {
                         // Admin Auth
                         if (email.toLowerCase() === 'waaiz' && password === 'zaylore_founder') {
+                            if (window.ZayloreDB) await window.ZayloreDB.signInAdmin();
                             localStorage.setItem('adminRole', 'founder');
                             localStorage.setItem('adminName', 'PM Mohammed Waaiz');
                             showToast("Access Granted. Launching Founder Command Center...", false);
                             setTimeout(() => window.location.href = 'admin', 1200);
                         } else if (email.toLowerCase() === 'staff' && password === 'zaylore_staff') {
+                            if (window.ZayloreDB) await window.ZayloreDB.signInAdmin();
                             localStorage.setItem('adminRole', 'staff');
                             localStorage.setItem('adminName', 'Zaylore Staff');
                             showToast("Access Granted. Launching Operations Console...", false);
@@ -116,6 +118,7 @@
                             const requests = JSON.parse(localStorage.getItem('staffRequestsApproved') || '[]');
                             const matchedStaff = requests.find(s => s.username === email.toLowerCase() && s.password === password);
                             if (matchedStaff) {
+                                if (window.ZayloreDB) await window.ZayloreDB.signInAdmin();
                                 localStorage.setItem('adminRole', 'staff');
                                 localStorage.setItem('adminName', matchedStaff.name);
                                 showToast(`Welcome back ${matchedStaff.name}. Access Authorized.`, false);
