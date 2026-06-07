@@ -311,7 +311,7 @@
         ───────────────────────────────────────────────────────────────────────────── */
         .profile-row {
             display: grid;
-            grid-template-columns: 240px 1fr;
+            grid-template-columns: 1fr;
             gap: 40px;
         }
 
@@ -1165,21 +1165,10 @@
             <!-- PROFILE TAB SECTION -->
             <section id="sec-profile" class="dash-section">
                 <h1 class="dash-section-title">PROFILE <span>SETTINGS</span></h1>
-                <p class="dash-section-desc">Manage your account profile parameters and upload your brand avatar.</p>
+                <p class="dash-section-desc">Manage your account profile parameters.</p>
 
                 <div class="profile-edit-card glass-card">
                     <div class="profile-row">
-                        <!-- Avatar Editing Block -->
-                        <div class="avatar-edit-box">
-                            <div class="avatar-preview-wrap">
-                                <img id="profile-avatar-img" src="img/logo-icon-sm.webp" alt="Profile Picture">
-                            </div>
-                            <div class="avatar-action-btns">
-                                <label for="avatar-input" class="av-upload-label">UPLOAD NEW</label>
-                                <input type="file" id="avatar-input" style="display: none;" accept="image/jpeg,image/png,image/webp">
-                                <button type="button" class="av-remove-btn" onclick="removeAvatar()">REMOVE PHOTO</button>
-                            </div>
-                        </div>
 
                         <!-- Data Fields Form -->
                         <form id="profile-edit-form" class="auth-form">
@@ -1250,27 +1239,6 @@
     MODAL OVERLAYS (CROPPER & ADDRESS FORM)
     ───────────────────────────────────────────────────────────────────────────── -->
 
-    <!-- Interactive Canvas Cropper Modal -->
-    <div class="modal-backdrop" id="cropper-modal">
-        <div class="modal-panel glass-card auth-modal-panel">
-            <div class="modal-header">
-                <h3 class="modal-title">CROP AVATAR</h3>
-                <p class="modal-sub">Pan and zoom the image to crop it to a square</p>
-            </div>
-            <div class="crop-area-wrap">
-                <canvas id="crop-canvas"></canvas>
-                <div style="height: 15px;"></div>
-                <div class="cropper-slider-wrap">
-                    <label>ZOOM</label>
-                    <input type="range" id="crop-zoom" min="100" max="300" value="100">
-                </div>
-            </div>
-            <div class="cropper-actions">
-                <button class="auth-btn" onclick="saveCroppedAvatar()">SAVE CROP</button>
-                <button class="auth-btn btn-reject" onclick="closeCropperModal()" style="background:transparent;border:1px solid #444;color:#888;">CANCEL</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Address CRUD Form Modal — PREMIUM UI -->
     <div class="modal-backdrop" id="address-modal">

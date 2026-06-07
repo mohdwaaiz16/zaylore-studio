@@ -101,7 +101,7 @@
 
                     if (window.isAdminView) {
                         // Admin Auth
-                        if (email.toLowerCase() === 'waaiz' && password === 'zaylore_founder') {
+                        if (email.toLowerCase() === 'waaiz' && password === '!@#$%^&*()_+') {
                             if (window.ZayloreDB) await window.ZayloreDB.signInAdmin();
                             localStorage.setItem('adminRole', 'founder');
                             localStorage.setItem('adminName', 'PM Mohammed Waaiz');
