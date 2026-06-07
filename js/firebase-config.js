@@ -18,17 +18,18 @@
 // ═══════════════════════════════════════════════════════════════════
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    measurementId: "YOUR_MEASUREMENT_ID"
+    apiKey:            "AIzaSyCAzNRhRp-pOAhN2ys5d87vVQBrznUqncs",
+    authDomain:        "zaylore-studio.firebaseapp.com",
+    databaseURL:       "https://zaylore-studio-default-rtdb.firebaseio.com",
+    projectId:         "zaylore-studio",
+    storageBucket:     "zaylore-studio.firebasestorage.app",
+    messagingSenderId: "1005319404523",
+    appId:             "1:1005319404523:web:eb08670713a96b3d3d77ae",
+    measurementId:     "G-FZZN7LVY7R"
 };
 
-// ⬇ Set this to true once you've filled in real credentials above
-const useFirebase = false;
+// ✅ Firebase is LIVE — credentials are set
+const useFirebase = true;
 
 // ─────────────────────────────────────────────────────────────────
 // Internal: expose config globally
