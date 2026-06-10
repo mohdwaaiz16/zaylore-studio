@@ -544,6 +544,7 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 320px;
             gap: 20px;
         }
         .gallery-item {
@@ -551,16 +552,13 @@
             background: #090909;
             border-radius: 12px;
             overflow: hidden;
-            aspect-ratio: 3/4;
         }
         .gallery-item.tall {
             grid-row: span 2;
-            aspect-ratio: unset;
             height: 100%;
         }
         .gallery-item.wide {
             grid-column: span 2;
-            aspect-ratio: 16/9;
         }
         .gallery-img {
             width: 100%;
@@ -1028,9 +1026,13 @@
             }
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 280px;
+            }
+            .gallery-item.tall {
+                grid-row: span 1;
             }
             .gallery-item.wide {
-                grid-column: span 2;
+                grid-column: span 1;
             }
             .founder-split {
                 grid-template-columns: 1fr;
@@ -1060,14 +1062,13 @@
             }
             .gallery-grid {
                 grid-template-columns: 1fr;
+                grid-auto-rows: 300px;
             }
             .gallery-item.wide {
                 grid-column: span 1;
-                aspect-ratio: 3/4;
             }
             .gallery-item.tall {
                 grid-row: span 1;
-                aspect-ratio: 3/4;
             }
             .movement-grid {
                 grid-template-columns: 1fr;
@@ -1412,7 +1413,7 @@
                     <div class="gallery-caption">CREATIVE COMMUNITIES</div>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item wide">
                 <img src="img/lookbook_leather_jacket.png" alt="Luxury Fashion" class="gallery-img" loading="lazy">
                 <div class="gallery-overlay">
                     <span class="gallery-tag">06 / APEX</span>
