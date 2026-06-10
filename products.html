@@ -17,23 +17,144 @@
     <link rel="stylesheet" href="/styles.min.css?v=1.1.0">
 
     <style>
-        /* ===== PRODUCTS SHOP STYLES ===== */
-        .shop-page {
-            min-height: 100vh;
-            background-color: transparent;
-            padding: 140px 4% 80px;
-            position: relative;
+        /* ===== PRODUCTS SHOP OVERHAUL STYLES ===== */
+        :root {
+            --bg-dark: #050505;
+            --accent: #d41920;
+            --accent-bright: #ff1a1a;
+            --accent-glow: rgba(212, 25, 32, 0.25);
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --border-color: rgba(255, 255, 255, 0.05);
+            --card-bg: rgba(10, 10, 10, 0.6);
+            --ff-display: 'Anton', sans-serif;
+            --ff-ui: 'Space Grotesk', sans-serif;
+            --ff-body: 'Inter', sans-serif;
         }
 
-        .shop-header {
+        .shop-page {
+            min-height: 100vh;
+            background-color: var(--bg-dark);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- Countdown Banner (Section 1) --- */
+        .prelaunch-countdown-banner {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0.8), rgba(5, 5, 5, 0.95));
+            border-bottom: 1px solid var(--border-color);
+            padding: 80px 24px 70px;
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 50px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .countdown-banner-inner {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .banner-eyebrow {
+            font-family: var(--ff-ui);
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .banner-timer {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .cd-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+
+        .cd-number {
+            font-family: var(--ff-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: #fff;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+        }
+
+        .cd-label {
+            font-family: var(--ff-ui);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .cd-sep {
+            font-family: var(--ff-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent-glow);
+            animation: pulse 1.5s infinite;
+        }
+
+        .banner-title {
+            font-family: var(--ff-ui);
+            font-size: 0.9rem;
+            color: #eee;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .banner-glow-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* --- Locked Collection Section (Section 2) --- */
+        .locked-collection-section {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 0 4%;
             z-index: 2;
             position: relative;
         }
 
-        .shop-eyebrow {
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .section-eyebrow {
             font-family: var(--ff-ui);
             font-size: 0.72rem;
             color: var(--accent);
@@ -44,84 +165,53 @@
             margin-bottom: 12px;
         }
 
-        .shop-title {
+        .section-title {
             font-family: var(--ff-display);
-            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-size: clamp(2.2rem, 5vw, 4rem);
             color: #fff;
-            line-height: 0.95;
+            line-height: 1;
             text-transform: uppercase;
-            text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
             margin-bottom: 15px;
         }
 
-        .shop-subtitle {
-            font-family: var(--ff-ui);
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            color: #ccc;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        /* --- Countdown Layout --- */
-        .countdown-timer-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .drop-banner {
-            font-family: var(--ff-ui);
-            font-size: 0.78rem;
-            color: #fff;
-            background: rgba(212, 25, 32, 0.1);
-            border: 1px solid var(--accent);
-            padding: 10px 24px;
-            border-radius: 4px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            display: inline-block;
-            box-shadow: 0 0 20px var(--accent-glow), inset 0 0 10px rgba(212, 25, 32, 0.1);
-        }
-
-        /* --- Products Grid --- */
-        .products-grid-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+        .section-desc {
+            font-family: var(--ff-body);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .product-card {
-            background: rgba(15, 15, 15, 0.75);
+            background: rgba(10, 10, 10, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 25, 32, 0.25);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 25, 32, 0.05);
+            border-color: rgba(212, 25, 32, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 25, 32, 0.03);
+            transform: translateY(-5px);
         }
 
         .product-media-wrap {
             aspect-ratio: 1;
             width: 100%;
-            background-color: #0c0c0c;
+            background-color: #080808;
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid rgba(255, 255, 255, 0.02);
@@ -132,19 +222,16 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: blur(25px) brightness(0.35) contrast(1.1);
+            transition: filter 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .product-card:hover .product-media-wrap img {
-            transform: scale(1.04);
+            filter: blur(12px) brightness(0.4) contrast(1.15);
+            transform: scale(1.05);
         }
 
-        /* Locked blurs */
-        .product-media-wrap img.blur-lock {
-            filter: blur(20px) brightness(0.35);
-        }
-
-        /* Padlock overlay */
+        /* Lock Overlay styles */
         .product-lock-overlay {
             position: absolute;
             inset: 0;
@@ -152,67 +239,52 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 16px;
             z-index: 3;
             pointer-events: none;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 80%);
         }
 
         .lock-circle {
-            width: 60px;
-            height: 60px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
-            background: rgba(10, 10, 10, 0.9);
-            border: 1.5px solid var(--accent);
-            color: var(--accent);
+            background: rgba(8, 8, 8, 0.95);
+            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            color: #ccc;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .lock-circle svg {
+            width: 20px;
+            height: 20px;
         }
 
         .product-card:hover .lock-circle {
-            transform: scale(1.15) rotate(5deg);
+            transform: scale(1.1) rotate(6deg);
+            border-color: var(--accent);
+            color: var(--accent-bright);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .lock-label {
             font-family: var(--ff-ui);
             font-size: 0.72rem;
-            color: #fff;
+            color: #eee;
             letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 700;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 8px rgba(0,0,0,0.9);
         }
 
-        /* Out of stock tag */
-        .product-outofstock-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(10, 10, 10, 0.75);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .product-outofstock-overlay span {
-            font-family: var(--ff-ui);
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 8px 18px;
-            letter-spacing: 2px;
-            border-radius: 4px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        /* Card details */
         .product-info-wrap {
             padding: 24px;
+            text-align: center;
+            background: rgba(5, 5, 5, 0.3);
         }
 
         .product-card-title {
@@ -220,119 +292,287 @@
             font-size: 0.95rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             letter-spacing: 0.5px;
         }
 
         .product-card-subtitle {
-            font-family: var(--ff-body);
-            font-size: 0.8rem;
-            color: var(--muted);
-            line-height: 1.4;
-        }
-
-        .product-card-price {
-            font-family: var(--ff-ui);
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        /* Action layout inside cards */
-        .product-card-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 16px;
-        }
-
-        .prod-btn {
-            flex: 1;
-            background: transparent;
-            border: 1px solid #444;
-            color: #ccc;
-            padding: 12px;
-            border-radius: 6px;
             font-family: var(--ff-ui);
             font-size: 0.72rem;
+            color: var(--accent);
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        /* --- Zaylore Lookbook Gallery (Section 3) --- */
+        .lookbook-gallery-section {
+            max-width: 1400px;
+            margin: 120px auto 0;
+            padding: 0 4%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lookbook-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-auto-rows: 300px;
+            gap: 24px;
+        }
+
+        .lookbook-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            background-color: #080808;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .prod-btn:hover {
-            color: #fff;
-            border-color: #888;
-            background: rgba(255, 255, 255, 0.02);
+        .lookbook-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(10%) contrast(1.05);
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
         }
 
-        .prod-btn.notify-btn {
-            border-color: var(--accent);
+        .lookbook-item:hover img {
+            transform: scale(1.04);
+            filter: grayscale(0%) contrast(1.15);
+        }
+
+        .lookbook-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 5, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            opacity: 0.8;
+            transition: opacity 0.4s ease;
+        }
+
+        .lookbook-item:hover .lookbook-overlay {
+            opacity: 1;
+        }
+
+        .lookbook-number {
+            font-family: var(--ff-ui);
+            font-size: 0.65rem;
             color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
         }
 
-        .prod-btn.notify-btn:hover {
-            background: var(--accent);
+        .lookbook-caption {
+            font-family: var(--ff-ui);
+            font-size: 0.85rem;
             color: #fff;
-            box-shadow: 0 5px 15px var(--accent-glow);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        .prod-btn.checkout-btn {
-            background: var(--accent);
+        /* Masonry sizing spans */
+        @media (min-width: 900px) {
+            .lookbook-item.tall {
+                grid-row: span 2;
+            }
+            .lookbook-item.wide {
+                grid-column: span 2;
+            }
+        }
+
+        /* --- Pre-launch Manifesto (Section 4) --- */
+        .prelaunch-manifesto-section {
+            max-width: 1400px;
+            margin: 120px auto 0;
+            padding: 0 4%;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .manifesto-card {
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0.55), rgba(10, 10, 10, 0.7));
+            border: 1px solid var(--border-color);
+            padding: 60px 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .manifesto-eyebrow {
+            font-family: var(--ff-ui);
+            font-size: 0.78rem;
+            color: var(--accent);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 24px;
+        }
+
+        .manifesto-text {
+            font-family: var(--ff-ui);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            line-height: 1.7;
+            color: #eee;
+            font-weight: 500;
+            letter-spacing: 1px;
+            max-width: 760px;
+            margin: 0 auto 30px;
+        }
+
+        .manifesto-brand-badge {
+            font-family: var(--ff-ui);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 16px;
+            display: inline-block;
+            border-radius: 3px;
+        }
+
+        /* --- Early Access Form (Section 5) --- */
+        .early-access-section {
+            max-width: 1400px;
+            margin: 120px auto 40px;
+            padding: 0 4%;
+            z-index: 2;
+            position: relative;
+        }
+
+        .early-access-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0.75), rgba(8, 8, 8, 0.95));
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212, 25, 32, 0.04);
+        }
+
+        .access-title {
+            font-family: var(--ff-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .access-subtitle {
+            font-family: var(--ff-ui);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+        }
+
+        .access-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-row {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-label {
+            font-family: var(--ff-ui);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: #fff;
+            padding: 14px 16px;
+            font-family: var(--ff-body);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-input::placeholder {
+            color: #444;
+        }
+
+        .form-input:focus {
+            background: rgba(212, 25, 32, 0.01);
             border-color: var(--accent);
+            box-shadow: 0 0 12px rgba(212, 25, 32, 0.15);
+        }
+
+        .access-submit-btn {
+            background: var(--accent);
+            border: 1px solid var(--accent);
             color: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: var(--ff-ui);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 10px;
             box-shadow: 0 4px 15px var(--accent-glow);
         }
 
-        .prod-btn.checkout-btn:hover {
+        .access-submit-btn:hover {
             background: var(--accent-bright);
             border-color: var(--accent-bright);
-            box-shadow: 0 6px 20px var(--accent-glow);
+            box-shadow: 0 6px 22px var(--accent-glow);
+            transform: translateY(-1px);
         }
 
-        .prod-btn.checkout-btn.disabled {
-            border-color: #222;
-            background: #111;
-            color: #444;
+        .access-submit-btn:disabled {
+            background: #222;
+            border-color: #333;
+            color: #666;
             cursor: not-allowed;
+            transform: none;
             box-shadow: none;
         }
 
-        .prod-wish-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(255, 255, 255, 0.02);
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .prod-wish-icon:hover {
-            border-color: rgba(212, 25, 32, 0.3);
-            color: var(--accent);
-        }
-
-        .prod-wish-icon.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-            background: rgba(212, 25, 32, 0.05);
-        }
-
-        /* ─────────────────────────────────────────────────────────────────────────────
-        MODAL OVERLAYS (NOTIFY ALERT POPUP)
-        ───────────────────────────────────────────────────────────────────────────── */
-        .auth-modal-panel {
-            max-width: 450px;
-            width: 100%;
+        .access-privacy-note {
+            font-family: var(--ff-body);
+            font-size: 0.65rem;
+            color: #444;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
         }
 
         /* --- Auth Toast --- */
@@ -341,19 +581,19 @@
             bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.98);
+            background: rgba(8, 8, 8, 0.98);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #fff;
             padding: 16px 32px;
             border-radius: 8px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
+            font-family: var(--ff-ui);
+            font-size: 0.82rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 25, 32, 0.15);
-            z-index: 10000;
-            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
+            z-index: 100000;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
             white-space: nowrap;
             pointer-events: none;
@@ -364,62 +604,62 @@
         }
 
         .auth-toast.error {
-            border-color: #d41920;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 25, 32, 0.3);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 25, 32, 0.3);
         }
 
         .auth-toast.success {
             border-color: #00ff00;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(0, 255, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(0, 255, 0, 0.2);
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .countdown-timer-container {
+        /* --- Animations & Pulse --- */
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 10px rgba(212,25,32,0.2); }
+            50% { text-shadow: 0 0 25px rgba(212,25,32,0.6); }
+            100% { text-shadow: 0 0 10px rgba(212,25,32,0.2); }
+        }
+
+        .animate-glow {
+            animation: glowPulse 2s infinite;
+        }
+
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 768px) {
+            .prelaunch-countdown-banner {
+                padding: 60px 16px 50px;
+            }
+
+            .banner-timer {
                 gap: 10px;
             }
 
-            .cd-box {
-                min-width: 75px;
-                padding: 10px;
+            .cd-item {
+                min-width: 65px;
             }
 
-            .cd-box span {
-                font-size: 1.8rem;
-            }
-
-            .shop-title {
+            .cd-number {
                 font-size: 2.8rem;
             }
-        }
 
-        @media (max-width: 480px) {
-            .countdown-timer-container {
-                gap: 6px;
-            }
-            .cd-box {
-                min-width: 55px;
-                padding: 6px 4px;
-                border-radius: 8px;
-            }
-            .cd-box span {
-                font-size: 1.3rem;
-            }
-            .cd-label {
-                font-size: 0.55rem;
-                letter-spacing: 0.5px;
-            }
-            .shop-title {
+            .cd-sep {
                 font-size: 2rem;
+                margin-bottom: 12px;
             }
-            .shop-subtitle {
-                font-size: 0.85rem;
-                letter-spacing: 1.5px;
+
+            .lookbook-masonry {
+                grid-auto-rows: 240px;
+                gap: 16px;
             }
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 0 10px;
+
+            .early-access-card {
+                padding: 40px 24px;
             }
         }
     </style>
@@ -470,36 +710,392 @@
         </div>
     </nav>
 
-    <!-- Shop Main Header -->
-    <header class="shop-header">
-        <span class="shop-eyebrow">PRE-LAUNCH ACCESS</span>
-        <h1 class="shop-title">THE FIRST DROP</h1>
-        <h2 class="shop-subtitle">NOT JUST CLOTHING. A MOVEMENT.</h2>
-
-        <!-- Countdown Timer -->
-        <div id="countdown-timer-wrap" style="margin-bottom: 30px;">
-            <div class="countdown-timer-container">
-                <div class="cd-box"><span id="cd-days">00</span><span class="cd-label">DAYS</span></div>
-                <div class="cd-box"><span id="cd-hours">00</span><span class="cd-label">HRS</span></div>
-                <div class="cd-box"><span id="cd-mins">00</span><span class="cd-label">MINS</span></div>
-                <div class="cd-box"><span id="cd-secs">00</span><span class="cd-label">SECS</span></div>
+    <!-- Shop Main Header / Full Width Countdown Banner (Section 1) -->
+    <header class="prelaunch-countdown-banner">
+        <div class="countdown-banner-inner">
+            <span class="banner-eyebrow animate-glow">DROPPING IN</span>
+            
+            <div class="banner-timer" id="prelaunch-countdown">
+                <div class="cd-item">
+                    <span id="cd-days" class="cd-number">00</span>
+                    <span class="cd-label">DAYS</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-item">
+                    <span id="cd-hours" class="cd-number">00</span>
+                    <span class="cd-label">HOURS</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-item">
+                    <span id="cd-mins" class="cd-number">00</span>
+                    <span class="cd-label">MINUTES</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-item">
+                    <span id="cd-secs" class="cd-number">00</span>
+                    <span class="cd-label">SECONDS</span>
+                </div>
             </div>
-        </div>
 
-        <!-- Release alert banner -->
-        <div class="drop-banner" id="drop-status-banner">
-            DROP GOES LIVE ON EVENT DAY
+            <h1 class="banner-title">ZAYLORE STUDIO — FIRST OFFICIAL DROP</h1>
         </div>
+        <div class="banner-glow-line"></div>
     </header>
 
-    <!-- Products Grid Section -->
-    <main class="products-grid-container">
-        <div class="products-grid" id="products-grid">
-            <!-- Loaded dynamically by products.js -->
+    <!-- Locked Collection Showcase Section (Section 2) -->
+    <section class="locked-collection-section">
+        <div class="section-header">
+            <span class="section-eyebrow">THE PRE-LAUNCH DROP</span>
+            <h2 class="section-title">LOCKED COLLECTION</h2>
+            <p class="section-desc">Witness the upcoming premium silhouettes. Releasing August 23rd.</p>
         </div>
-    </main>
 
+        <div class="products-grid-container">
+            <div class="products-grid" id="locked-products-grid">
+                
+                <!-- Card 1: Oversized Tee 01 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/model-tshirt.webp" alt="Oversized Tee 01" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Oversized Tee 01</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
 
+                <!-- Card 2: Oversized Tee 02 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-1.webp" alt="Oversized Tee 02" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Oversized Tee 02</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Oversized Tee 03 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-3.webp" alt="Oversized Tee 03" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Oversized Tee 03</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Oversized Tee 04 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-5.webp" alt="Oversized Tee 04" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Oversized Tee 04</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Hoodie 01 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/hoodie-product.webp" alt="Hoodie 01" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Hoodie 01</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Hoodie 02 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-4.webp" alt="Hoodie 02" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Hoodie 02</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 7: Baggy Denim 01 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-5.webp" alt="Baggy Denim 01" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Baggy Denim 01</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 8: Baggy Denim 02 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-6.webp" alt="Baggy Denim 02" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Baggy Denim 02</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 9: Leather Jacket 01 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/about-hero-bg.webp" alt="Leather Jacket 01" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Leather Jacket 01</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 10: Leather Jacket 02 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-2.webp" alt="Leather Jacket 02" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Leather Jacket 02</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 11: Hero Piece 01 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-1.webp" alt="Hero Piece 01" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Hero Piece 01</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+
+                <!-- Card 12: Hero Piece 02 -->
+                <div class="product-card locked">
+                    <div class="product-media-wrap">
+                        <img src="img/gallery-3.webp" alt="Hero Piece 02" loading="lazy">
+                        <div class="product-lock-overlay">
+                            <div class="lock-circle">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <span class="lock-label">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrap">
+                        <h3 class="product-card-title">Hero Piece 02</h3>
+                        <p class="product-card-subtitle">UNLOCKS ON AUGUST 23</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Zaylore Lookbook Gallery Section (Section 3) -->
+    <section class="lookbook-gallery-section">
+        <div class="section-header">
+            <span class="section-eyebrow">THE CULTURE</span>
+            <h2 class="section-title">EDITORIAL LOOKBOOK</h2>
+            <p class="section-desc">A visual manifesto of style, motorcycles, speed, and street attitude.</p>
+        </div>
+
+        <div class="lookbook-masonry">
+            <div class="lookbook-item tall">
+                <img src="img/lookbook_streetwear.png" alt="Zaylore Culture Streetwear" loading="lazy">
+                <div class="lookbook-overlay">
+                    <span class="lookbook-number">LOOKBOOK // 01</span>
+                    <span class="lookbook-caption">URBAN SHADOWS, BANGALORE NIGHTS</span>
+                </div>
+            </div>
+
+            <div class="lookbook-item wide">
+                <img src="img/lookbook_motorcycle.png" alt="Zaylore Motorcycle Culture" loading="lazy">
+                <div class="lookbook-overlay">
+                    <span class="lookbook-number">LOOKBOOK // 02</span>
+                    <span class="lookbook-caption">RAW LEATHER AND METALLIC HORIZONS</span>
+                </div>
+            </div>
+
+            <div class="lookbook-item">
+                <img src="img/lookbook_baggy_denim.png" alt="Zaylore Baggy Denim" loading="lazy">
+                <div class="lookbook-overlay">
+                    <span class="lookbook-number">LOOKBOOK // 03</span>
+                    <span class="lookbook-caption">BAGGY DENIMS IN MOTION</span>
+                </div>
+            </div>
+
+            <div class="lookbook-item tall">
+                <img src="img/lookbook_leather_jacket.png" alt="Zaylore Leather Jacket" loading="lazy">
+                <div class="lookbook-overlay">
+                    <span class="lookbook-number">LOOKBOOK // 04</span>
+                    <span class="lookbook-caption">DISTRESSED CULTURE SHIELD</span>
+                </div>
+            </div>
+
+            <div class="lookbook-item">
+                <img src="img/gallery-4.webp" alt="Zaylore Editorial Shoot" loading="lazy">
+                <div class="lookbook-overlay">
+                    <span class="lookbook-number">LOOKBOOK // 05</span>
+                    <span class="lookbook-caption">THE GENERATION REFUSING ORDINARY</span>
+                </div>
+            </div>
+
+            <div class="lookbook-item">
+                <img src="img/gallery-6.webp" alt="Zaylore Creators" loading="lazy">
+                <div class="lookbook-overlay">
+                    <span class="lookbook-number">LOOKBOOK // 06</span>
+                    <span class="lookbook-caption">CREATIVE FREEDOM WITHOUT LIMITS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drop Manifesto Section (Section 4) -->
+    <section class="prelaunch-manifesto-section">
+        <div class="manifesto-card">
+            <span class="manifesto-eyebrow">FIRST DROP // AUGUST 23</span>
+            <p class="manifesto-text">
+                "The beginning of something bigger than clothing. <br>
+                ZAYLORE STUDIO is built for creators, riders, dreamers, and people who refuse ordinary. <br><br>
+                This collection remains locked until launch day."
+            </p>
+            <div class="manifesto-brand-badge">ZAYLORE STUDIO</div>
+        </div>
+    </section>
+
+    <!-- Early Access Form Section (Section 5) -->
+    <section class="early-access-section" id="prelaunch-newsletter">
+        <div class="early-access-card glass-card">
+            <h2 class="access-title">GET EARLY ACCESS</h2>
+            <p class="access-subtitle">Be the first to know when the drop goes live.</p>
+
+            <form class="access-form" id="prelaunch-signup-form" onsubmit="handlePrelaunchSignup(event)">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="signup-name" class="input-label">Full Name</label>
+                        <input type="text" id="signup-name" class="form-input" placeholder="Enter your name" required>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="signup-email" class="input-label">Email Address</label>
+                        <input type="email" id="signup-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <button type="submit" class="access-submit-btn" id="signup-submit-btn">
+                    <span>JOIN THE SYNDICATE</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </form>
+            <p class="access-privacy-note">By subscribing, you join the Zaylore Syndicate network.</p>
+        </div>
+    </section>
 
     <!-- Syndicate Footer -->
     <footer id="main-footer">
@@ -565,9 +1161,129 @@
     <!-- Database & Page Controllers -->
     <script defer src="/js/firebase-config.js"></script>
     <script defer src="/js/db.js"></script>
-    <script defer src="/js/products.js"></script>
     <script defer src="/js/auth-state.js"></script>
-<script defer src="/script.min.js?v=1.1.0"></script>
+    <script defer src="/script.min.js?v=1.1.0"></script>
+
+    <!-- Pre-launch Custom Page Controller -->
+    <script>
+    (function () {
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. Drop Countdown Logic (Target: August 23, 2026 10:00:00 IST / GMT+0530)
+            // Note: date parsed in browser will use local timezone if no timezone offset is provided.
+            // Using "August 23, 2026 10:00:00" will default to local timezone which matches IST.
+            const countdownDate = new Date("August 23, 2026 10:00:00").getTime();
+            const elDays = document.getElementById('cd-days');
+            const elHours = document.getElementById('cd-hours');
+            const elMins = document.getElementById('cd-mins');
+            const elSecs = document.getElementById('cd-secs');
+            const countdownContainer = document.getElementById('prelaunch-countdown');
+
+            const timer = setInterval(() => {
+                const now = Date.now();
+                const distance = countdownDate - now;
+
+                if (distance <= 0) {
+                    clearInterval(timer);
+                    if (countdownContainer) {
+                        countdownContainer.innerHTML = `
+                            <div style="font-family:'Anton', sans-serif; font-size:3rem; color:#00ff00; letter-spacing:4px; text-shadow:0 0 25px rgba(0, 255, 0, 0.4); text-transform:uppercase;">
+                                THE DROP IS LIVE
+                            </div>
+                        `;
+                    }
+                    return;
+                }
+
+                if (elDays && elHours && elMins && elSecs) {
+                    elDays.innerText = Math.floor(distance / 86400000).toString().padStart(2, '0');
+                    elHours.innerText = Math.floor((distance % 86400000) / 3600000).toString().padStart(2, '0');
+                    elMins.innerText = Math.floor((distance % 3600000) / 60000).toString().padStart(2, '0');
+                    elSecs.innerText = Math.floor((distance % 60000) / 1000).toString().padStart(2, '0');
+                }
+            }, 1000);
+
+            // 2. Auth Session Check to Hydrate Avatar
+            const currentUser = localStorage.getItem('zs_user') ? JSON.parse(localStorage.getItem('zs_user')) : null;
+            const navAction = document.getElementById('nav-profile-btn');
+            if (currentUser && navAction) {
+                if (currentUser.profilePic) {
+                    navAction.innerHTML = `<img src="${currentUser.profilePic}" alt="Avatar" class="avatar-header-icon" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+                } else {
+                    navAction.innerHTML = `<div class="profile-avatar" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#d41920;color:#fff;border-radius:50%;font-weight:700;">${currentUser.name.charAt(0).toUpperCase()}</div>`;
+                }
+            }
+
+            // 3. Early Access Form Submission Handler
+            window.handlePrelaunchSignup = async function (e) {
+                e.preventDefault();
+                const nameInput = document.getElementById('signup-name');
+                const emailInput = document.getElementById('signup-email');
+                const submitBtn = document.getElementById('signup-submit-btn');
+
+                if (!nameInput || !emailInput || !submitBtn) return;
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+
+                if (!name || !email) return;
+
+                submitBtn.disabled = true;
+                submitBtn.querySelector('span').textContent = 'REGISTERING ACCESS...';
+
+                try {
+                    // Save to Firestore if available
+                    if (window._zsDB) {
+                        await window._zsDB.collection('newsletterSignups').doc(email.toLowerCase()).set({
+                            email: email.toLowerCase(),
+                            name: name,
+                            source: 'prelaunch_product_page',
+                            subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        }, { merge: true });
+                    } else if (window.ZayloreDB) {
+                        await window.ZayloreDB.subscribeNewsletter(email, name);
+                    }
+
+                    // Save to LocalStorage for double safety
+                    const subs = JSON.parse(localStorage.getItem('zs_newsletter') || '[]');
+                    const exists = subs.find(s => s.email.toLowerCase() === email.toLowerCase());
+                    if (!exists) {
+                        subs.push({ email: email.toLowerCase(), name: name, source: 'prelaunch_product_page', subscribedAt: new Date().toISOString() });
+                        localStorage.setItem('zs_newsletter', JSON.stringify(subs));
+                    }
+
+                    showToast("WELCOME TO THE SYNDICATE. ACCESS GRANTED.", false);
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    submitBtn.querySelector('span').textContent = 'ACCESS GRANTED ✓';
+                    submitBtn.disabled = true;
+                    submitBtn.style.borderColor = '#00ff00';
+                    submitBtn.style.color = '#00ff00';
+                } catch (err) {
+                    console.error("Failed to sign up", err);
+                    showToast("Failed to register early access. Try again.", true);
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span').textContent = 'JOIN THE SYNDICATE';
+                }
+            };
+
+            function showToast(msg, isError = true) {
+                let toast = document.getElementById('zs-prod-toast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'zs-prod-toast';
+                    document.body.appendChild(toast);
+                }
+                toast.innerText = msg;
+                toast.className = `auth-toast show ${isError ? 'error' : 'success'}`;
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 4000);
+            }
+        });
+    })();
+    </script>
 </body>
 
 </html>
