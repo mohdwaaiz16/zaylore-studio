@@ -22,7 +22,7 @@
             initCountdown(eventConfig.launchDate);
         } catch (e) {
             console.error("Failed to load launch event details", e);
-            initCountdown("August 23, 2026 11:00:00");
+            initCountdown("August 23, 2026 10:00:00");
         }
 
         // 2. Fetch Products and Render Grid

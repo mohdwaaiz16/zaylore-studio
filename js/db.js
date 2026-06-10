@@ -202,7 +202,7 @@
     ];
 
     const DEFAULT_EVENT = {
-        launchDate: "August 23, 2026 11:00:00",
+        launchDate: "August 23, 2026 10:00:00",
         location: "Bangalore Showcase Event Arena",
         date: "23 August 2026",
         ticketLink: "https://www.ticketlink-zaylore.in"
