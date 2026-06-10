@@ -1067,14 +1067,369 @@
             .gallery-item.wide {
                 grid-column: span 1;
             }
-            .gallery-item.tall {
-                grid-row: span 1;
-            }
-            .movement-grid {
-                grid-template-columns: 1fr;
-            }
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* ══════════════════════════════════════════
+           TRUST & CUSTOMER CARE SYSTEM OVERRIDES
+        ══════════════════════════════════════════ */
+        
+        /* Section 1: Trust Bar */
+        .trust-bar {
+            background: #090909;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 24px 4%;
+            position: relative;
+            z-index: 5;
+        }
+        .trust-bar-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .trust-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.3s ease;
+        }
+        .trust-card:hover {
+            transform: translateY(-2px);
+        }
+        .trust-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            background: rgba(212, 25, 32, 0.05);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(212, 25, 32, 0.2);
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(212, 25, 32, 0.1);
+        }
+        .trust-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .trust-title {
+            font-family: var(--ff-ui);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .trust-desc {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Section 2: Premium Customer Care */
+        .care-section {
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .care-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .care-card {
+            background: var(--bg-dark-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px 24px;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .care-card:hover {
+            border-color: rgba(212, 25, 32, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 25, 32, 0.05);
+        }
+        .care-card-title {
+            font-family: var(--ff-display);
+            font-size: 1.3rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .care-card-title::after {
+            content: '';
+            width: 15px;
+            height: 1.5px;
+            background: var(--accent);
+            display: inline-block;
+        }
+        .care-card-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .care-card-desc p {
+            margin-bottom: 8px;
+        }
+        .care-card-desc p:last-child {
+            margin-bottom: 0;
+        }
+        .care-card-desc a {
+            color: #fff;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .care-card-desc a:hover {
+            color: var(--accent);
+        }
+
+        /* Section 3: Contact & Help */
+        .help-section {
+            background: var(--bg-dark-gray);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .help-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .help-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .help-label {
+            font-family: var(--ff-ui);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .help-value {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        .help-value a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .help-value a:hover {
+            color: var(--accent);
+        }
+        .help-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .help-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-family: var(--ff-ui);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .help-btn.email {
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            color: #fff;
+        }
+        .help-btn.email:hover {
+            background: transparent;
+            color: var(--accent);
+            box-shadow: 0 0 20px rgba(212, 25, 32, 0.2);
+        }
+        .help-btn.whatsapp {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        .help-btn.whatsapp:hover {
+            border-color: #25D366;
+            color: #25D366;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.1);
+        }
+
+        /* Section 4: Secure Checkout Visuals */
+        .checkout-visuals {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .checkout-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .checkout-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--ff-ui);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--silver);
+        }
+        .checkout-badge svg {
+            color: var(--accent);
+            width: 14px;
+            height: 14px;
+        }
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0.65;
+            transition: opacity 0.3s;
+        }
+        .payment-icons:hover {
+            opacity: 0.95;
+        }
+        .payment-icon-wrapper {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--ff-ui);
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            height: 32px;
+            min-width: 60px;
+        }
+
+        /* Section 5: FAQ Preview */
+        .faq-section {
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .faq-item {
+            background: var(--bg-dark-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .faq-item:hover {
+            border-color: rgba(212, 25, 32, 0.2);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            text-align: left;
+            font-family: var(--ff-ui);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            background: rgba(255, 255, 255, 0.005);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 150px;
+        }
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .faq-answer-inner a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Section 6: Responsive overrides for trust section */
+        @media (max-width: 1024px) {
+            .trust-bar-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .care-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .help-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        @media (max-width: 600px) {
+            .trust-bar-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .care-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
             }
         }
     </style>
@@ -1595,7 +1950,197 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════ -->
-    <!-- FOOTER (KEPT AS REQUESTED)                     -->
+    <!-- TRUST BAR SECTION                               -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="trust-bar reveal">
+        <div class="trust-bar-grid">
+            <div class="trust-card">
+                <div class="trust-icon">📦</div>
+                <div class="trust-info">
+                    <h4 class="trust-title">Free Shipping</h4>
+                    <p class="trust-desc">On orders of 3 or more products</p>
+                </div>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">🔄</div>
+                <div class="trust-info">
+                    <h4 class="trust-title">Easy Returns</h4>
+                    <p class="trust-desc">3-Day returns, simple & hassle-free</p>
+                </div>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">🛡️</div>
+                <div class="trust-info">
+                    <h4 class="trust-title">Secure Payments</h4>
+                    <p class="trust-desc">100% secure protected checkout</p>
+                </div>
+            </div>
+            <div class="trust-card">
+                <div class="trust-icon">💬</div>
+                <div class="trust-info">
+                    <h4 class="trust-title">Customer Support</h4>
+                    <p class="trust-desc">Fast response via email & WhatsApp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 2 — PREMIUM CUSTOMER CARE SECTION       -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="zs-section care-section reveal" id="customer-care">
+        <div class="zs-section-header">
+            <span class="zs-eyebrow">PREMIUM SERVICE</span>
+            <h2 class="zs-title">SHOP WITH <span>CONFIDENCE</span></h2>
+        </div>
+        <div class="care-grid">
+            <div class="care-card">
+                <h3 class="care-card-title">Shipping</h3>
+                <div class="care-card-desc">
+                    <p>Free shipping available when purchasing 3 or more products.</p>
+                    <p>Fast and reliable delivery across India.</p>
+                </div>
+            </div>
+            <div class="care-card">
+                <h3 class="care-card-title">Returns</h3>
+                <div class="care-card-desc">
+                    <p>Returns accepted within 3 days of delivery.</p>
+                    <p>Products must remain unused and in original condition.</p>
+                </div>
+            </div>
+            <div class="care-card">
+                <h3 class="care-card-title">Secure Payments</h3>
+                <div class="care-card-desc">
+                    <p>Protected checkout experience with secure payment gateways.</p>
+                    <p>Fully encrypted, safe transactions.</p>
+                </div>
+            </div>
+            <div class="care-card">
+                <h3 class="care-card-title">Support</h3>
+                <div class="care-card-desc">
+                    <p>Need help? Our support team is ready to assist.</p>
+                    <p>Email: <a href="mailto:hello@zaylorestudio.in">hello@zaylorestudio.in</a></p>
+                    <p>WhatsApp: +91 8220111609</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 3 & 4 — CONTACT & CHECKOUT VISUALS     -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="zs-section help-section reveal" id="help-and-payment">
+        <div class="help-grid">
+            <!-- Contact Details -->
+            <div class="help-info">
+                <span class="zs-eyebrow">GET IN TOUCH</span>
+                <h2 class="zs-title">WE'RE HERE TO <span>HELP</span></h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+                    <div class="help-item">
+                        <span class="help-label">Support Email</span>
+                        <span class="help-value"><a href="mailto:hello@zaylorestudio.in">hello@zaylorestudio.in</a></span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-label">Support WhatsApp</span>
+                        <span class="help-value">+91 8220111609</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-label">Support Hours</span>
+                        <span class="help-value">Mon – Sat | 10 AM – 7 PM IST</span>
+                    </div>
+                    <div class="help-item">
+                        <span class="help-label">Response Time</span>
+                        <span class="help-value">Usually within 24 hours</span>
+                    </div>
+                </div>
+
+                <div class="help-actions" style="margin-top: 15px;">
+                    <a href="mailto:hello@zaylorestudio.in" class="help-btn email">Email Support</a>
+                    <a href="https://wa.me/918220111609" target="_blank" rel="noopener" class="help-btn whatsapp">WhatsApp Help</a>
+                </div>
+            </div>
+
+            <!-- Secure Checkout visual badges -->
+            <div class="checkout-visuals">
+                <span class="help-label">SECURE TRANSACTION</span>
+                <div class="checkout-badges">
+                    <span class="checkout-badge">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                        Secure Checkout
+                    </span>
+                    <span class="checkout-badge">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 13.17l7.59-7.59L19 7l-9 9z"/></svg>
+                        SSL Protected
+                    </span>
+                    <span class="checkout-badge">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.25z"/></svg>
+                        Trusted Payments
+                    </span>
+                    <span class="checkout-badge">
+                        <svg fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM11 7h2v6h-2V7zm0 8h2v2h-2v-2z"/></svg>
+                        Safe Transactions
+                    </span>
+                </div>
+                <div class="payment-icons">
+                    <div class="payment-icon-wrapper">UPI</div>
+                    <div class="payment-icon-wrapper">GPay</div>
+                    <div class="payment-icon-wrapper">PhonePe</div>
+                    <div class="payment-icon-wrapper">Paytm</div>
+                    <div class="payment-icon-wrapper">Visa</div>
+                    <div class="payment-icon-wrapper">Mastercard</div>
+                    <div class="payment-icon-wrapper">RuPay</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- SECTION 5 — FAQ PREVIEW                         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="zs-section faq-section reveal" id="faqs">
+        <div class="zs-section-header">
+            <span class="zs-eyebrow">COMMON QUESTIONS</span>
+            <h2 class="zs-title">HELP & <span>FAQS</span></h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Do you offer free shipping?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Yes. Orders containing 3 or more products qualify for free shipping. Delivery timelines will be displayed during the checkout process.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What is your return policy?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Returns are accepted within 3 days of delivery. Products must remain unused, unwashed, and in their original packaging with tags intact.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How can I contact support?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        You can email us at <a href="mailto:hello@zaylorestudio.in">hello@zaylorestudio.in</a> or message us on WhatsApp at +91 8220111609. Our team is available Mon-Sat, 10 AM to 7 PM IST.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">When will products be delivered?</button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Delivery timelines vary by location across India and will be displayed during checkout. Generally, orders are processed within 24-48 hours and delivered within 3-7 business days.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- FOOTER                                         -->
     <!-- ═══════════════════════════════════════════════ -->
     <footer id="main-footer">
         <div class="footer-grid">
@@ -1604,7 +2149,9 @@
                     <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
-                <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and authentic street culture to the bold and the fearless.</p>
+                <p class="footer-desc">
+                    BUILT DIFFERENT. Created for creators, dreamers, builders, and those who refuse ordinary.
+                </p>
                 <p class="footer-desc" style="font-size:0.7rem;color:#333;margin-top:8px;">Founded by PM Mohammed Waaiz · MW Zawion Digital Studio</p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/zaylorestudio" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
@@ -1620,35 +2167,31 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-col-title">Shop</h4>
+                <h4 class="footer-col-title">Customer Care</h4>
                 <ul class="footer-menu">
-                    <li><a href="products" class="footer-menu-link">All Products</a></li>
-                    <li><a href="products#oversized" class="footer-menu-link">Oversized T-Shirts</a></li>
-                    <li><a href="products#hoodies" class="footer-menu-link">Hoodies</a></li>
-                    <li><a href="products#jackets" class="footer-menu-link">Jackets</a></li>
-                    <li><a href="products#accessories" class="footer-menu-link">Accessories</a></li>
+                    <li><a href="/products#customer-care" class="footer-menu-link">Shipping Information</a></li>
+                    <li><a href="/products#customer-care" class="footer-menu-link">Returns Policy</a></li>
+                    <li><a href="/products#help-and-payment" class="footer-menu-link">Contact Support</a></li>
+                    <li><a href="/products#faqs" class="footer-menu-link">FAQs</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-col-title">Company</h4>
+                <h4 class="footer-col-title">Contact</h4>
                 <ul class="footer-menu">
-                    <li><a href="about" class="footer-menu-link">About Us</a></li>
-                    <li><a href="creators" class="footer-menu-link">Creators</a></li>
-                    <li><a href="events" class="footer-menu-link">Events</a></li>
-                    <li><a href="contact" class="footer-menu-link">Contact</a></li>
+                    <li><a href="mailto:hello@zaylorestudio.in" class="footer-menu-link">hello@zaylorestudio.in</a></li>
+                    <li><a href="https://wa.me/918220111609" target="_blank" rel="noopener" class="footer-menu-link">+91 8220111609</a></li>
                 </ul>
             </div>
 
-            <div class="footer-col-newsletter">
-                <h4 class="footer-col-title">Newsletter</h4>
-                <p class="footer-desc">Join the studio for exclusive drops and early access.</p>
-                <div class="newsletter-wrap">
-                    <form class="newsletter-form" id="footer-newsletter-form" onsubmit="handleFooterNewsletter(event)">
-                        <input type="email" placeholder="Email Address" class="newsletter-input" required autocomplete="email">
-                        <button type="submit" class="newsletter-btn" id="footer-nl-btn">Join</button>
-                    </form>
-                </div>
+            <div class="footer-col">
+                <h4 class="footer-col-title">Brand</h4>
+                <ul class="footer-menu">
+                    <li><a href="/about" class="footer-menu-link">About ZAYLORE Studio</a></li>
+                    <li><a href="/events" class="footer-menu-link">The Founding Event</a></li>
+                    <li><a href="/#first-drop" class="footer-menu-link">The First Drop</a></li>
+                    <li><a href="/#syndicate-signup" class="footer-menu-link">Join The Syndicate</a></li>
+                </ul>
             </div>
         </div>
 
@@ -1866,6 +2409,16 @@
 
             reveals.forEach(el => observer.observe(el));
         }
+
+        // ── FAQ Collapsible Toggle Controller ──
+        window.toggleFaq = function (btn) {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        };
 
         // Init
         document.addEventListener('DOMContentLoaded', () => {
