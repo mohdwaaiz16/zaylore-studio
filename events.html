@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaylore Studio Events | Premium Streetwear Brand Activations</title>
-    <meta name="description"
-        content="Experience Zaylore Studio's cultural drops, streetwear events, and premium brand activations. Join PM Mohammed Waaiz and the creator community.">
-    <meta name="keywords"
-        content="Zaylore events, streetwear events India, fashion brand activations, clothing brand events, streetwear movement, Zaylore Studio activities, PM Mohammed Waaiz events">
+    <title>The Founding Event | Zaylore Studio</title>
+    <meta name="description" content="Experience the Zaylore Studio Founding Event on August 23rd in Bangalore. Join the creator movement, see the runway debut, and reserve your founding spot.">
+    <meta name="keywords" content="Zaylore events, streetwear launch, Bangalore fashion, creator community, clothing launch, Zaylore Studio, Mohd Waaiz">
     <meta name="author" content="PM Mohammed Waaiz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.zaylorestudio.in/events">
@@ -17,589 +15,1065 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.zaylorestudio.in/events">
-    <meta property="og:title" content="Zaylore Studio Events | Premium Streetwear Activations">
-    <meta property="og:description"
-        content="Experience Zaylore Studio's cultural drops, streetwear events, and premium brand activations.">
+    <meta property="og:title" content="The Founding Event | Zaylore Studio">
+    <meta property="og:description" content="Witness the official launch of Zaylore Studio. Join us on August 23rd in Bangalore for the runway, creator activations, and community launch.">
     <meta property="og:site_name" content="Zaylore Studio">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@zaylorestudio">
     <meta name="twitter:creator" content="@md_waaizz">
-    <meta name="twitter:title" content="Zaylore Studio Events">
-    <meta name="twitter:description"
-        content="Experience Zaylore Studio's cultural drops, streetwear events, and premium brand activations.">
+    <meta name="twitter:title" content="The Founding Event | Zaylore Studio">
+    <meta name="twitter:description" content="Witness the official launch of Zaylore Studio on August 23rd in Bangalore.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"></noscript>
     <link rel="stylesheet" href="/styles.min.css?v=1.1.0">
+
     <style>
-        /* ===== EVENTS PAGE STYLES ===== */
-        .events-page {
-            overflow-x: hidden;
-            position: relative;
+        /* ===== EVENTS SHOP OVERHAUL STYLES ===== */
+        :root {
+            --bg-dark: #050505;
+            --bg-darker: #020202;
+            --accent: #d41920;
+            --accent-bright: #ff1a1a;
+            --accent-glow: rgba(212, 25, 32, 0.25);
+            --silver: #b0b0b0;
+            --text-light: #ffffff;
+            --text-muted: #888888;
+            --border-color: rgba(255, 255, 255, 0.05);
+            --ff-display: 'Anton', sans-serif;
+            --ff-ui: 'Space Grotesk', sans-serif;
+            --ff-body: 'Inter', sans-serif;
         }
 
-        /* --- Ambient Glow Backdrops --- */
+        .events-page {
+            background-color: var(--bg-dark);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            font-family: var(--ff-body);
+            color: var(--text-light);
+        }
+
+        /* Ambient Glow backdrops */
         .glow {
             position: absolute;
-            width: clamp(250px, 45vw, 600px);
-            height: clamp(250px, 45vw, 600px);
+            width: clamp(300px, 50vw, 700px);
+            height: clamp(300px, 50vw, 700px);
             border-radius: 50%;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.85;
+            opacity: 0.6;
             mix-blend-mode: screen;
         }
         .glow-1 {
-            top: 5%;
+            top: 10%;
             left: -15%;
             background: radial-gradient(circle, rgba(212, 25, 32, 0.15) 0%, rgba(212, 25, 32, 0) 70%);
-            filter: blur(100px);
-        }
-        .glow-2 {
-            top: 40%;
-            right: -20%;
-            background: radial-gradient(circle, rgba(212, 25, 32, 0.12) 0%, rgba(212, 25, 32, 0) 70%);
             filter: blur(120px);
         }
+        .glow-2 {
+            top: 50%;
+            right: -20%;
+            background: radial-gradient(circle, rgba(212, 25, 32, 0.12) 0%, rgba(212, 25, 32, 0) 70%);
+            filter: blur(140px);
+        }
         .glow-3 {
-            bottom: 10%;
-            left: 10%;
+            bottom: 5%;
+            left: 5%;
             background: radial-gradient(circle, rgba(212, 25, 32, 0.08) 0%, rgba(212, 25, 32, 0) 70%);
-            filter: blur(90px);
+            filter: blur(100px);
         }
 
-        /* --- Header --- */
-        .events-header {
+        /* --- Section 1: Hero Section --- */
+        .event-hero {
             position: relative;
-            padding: 50px 40px 40px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        .events-title {
-            font-family: 'Anton', sans-serif;
-            font-size: clamp(3.8rem, 9vw, 7.5rem);
-            line-height: 0.95;
-            color: #ffffff;
-            margin-bottom: 12px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            letter-spacing: 2px;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.08), 0 0 50px rgba(212, 25, 32, 0.15);
-        }
-
-        .events-subtitle {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(0.75rem, 2vw, 0.9rem);
-            font-weight: 700;
-            letter-spacing: 8px;
-            color: #d41920;
-            text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-            text-shadow: 0 0 10px rgba(212, 25, 32, 0.3);
-        }
-
-        /* --- Events Text Content --- */
-        .events-content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px 100px;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-        }
-
-        .event-section {
-            background: rgba(15, 15, 15, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 45px 50px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .event-section:hover {
-            border-color: rgba(212, 25, 32, 0.15);
-            box-shadow: 0 30px 60px rgba(212, 25, 32, 0.05);
-        }
-
-        .section-heading {
-            font-family: 'Anton', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            color: #fff;
-            margin-bottom: 35px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-bottom: 2px solid #d41920;
-            padding-bottom: 12px;
-            display: inline-block;
-            text-shadow: 0 0 15px rgba(212, 25, 32, 0.15);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .info-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 8px;
-            border-left: 4px solid #d41920;
-        }
-
-        .info-icon {
+            min-height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            padding: 130px 4% 80px;
+            background: linear-gradient(180deg, rgba(5, 5, 5, 0.5) 0%, rgba(5, 5, 5, 0.98) 100%), 
+                        url('img/event_hero_bg.png') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--ff-ui);
+            font-size: clamp(0.8rem, 2vw, 1.1rem);
+            color: var(--accent);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(212, 25, 32, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-family: var(--ff-display);
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 0.95;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1), 0 0 50px rgba(212, 25, 32, 0.25);
+        }
+
+        .hero-subtitle {
+            font-family: var(--ff-body);
+            font-size: clamp(0.95rem, 2.2vw, 1.3rem);
+            color: var(--silver);
+            max-width: 800px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px 0;
+        }
+
+        .hero-meta-card {
+            background: rgba(10, 10, 10, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 24px 16px;
             border-radius: 12px;
-            background: rgba(212, 25, 32, 0.05);
-            border: 1.5px solid rgba(212, 25, 32, 0.15);
-            box-shadow: 0 0 15px rgba(212, 25, 32, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
-        .info-card:hover .info-icon {
-            transform: scale(1.05);
-            border-color: #d41920;
-            background: rgba(212, 25, 32, 0.1);
+        .hero-meta-card:hover {
+            border-color: rgba(212, 25, 32, 0.25);
+            box-shadow: 0 10px 30px rgba(212, 25, 32, 0.05);
+            transform: translateY(-3px);
         }
 
-        .info-svg {
-            width: 22px;
-            height: 22px;
-            stroke: #d41920;
-        }
-
-        .info-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            color: #888;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            min-width: 150px;
-        }
-
-        .info-value {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            color: #eee;
-            font-weight: 600;
-        }
-
-        .text-red {
-            color: #d41920;
-            font-weight: 700;
-        }
-
-        .bold-motto {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            text-align: center;
-            margin-top: 40px;
-            letter-spacing: 8px;
-            color: #777;
+        .meta-label {
+            font-family: var(--ff-ui);
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
             text-transform: uppercase;
         }
 
-        .details-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 0;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            backdrop-filter: none;
+        .meta-value {
+            font-family: var(--ff-ui);
+            font-size: clamp(0.85rem, 1.5vw, 1.15rem);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .highlights-box,
-        .matters-box {
-            background: rgba(15, 15, 15, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-        }
-
-        .highlights-list {
-            list-style: none;
-            padding: 0;
+        .hero-actions {
             display: flex;
-            flex-direction: column;
             gap: 20px;
-            margin: 0;
+            margin-top: 15px;
         }
 
-        .highlights-list li {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.5rem;
-            color: #ddd;
-            padding-left: 28px;
+        .btn-primary {
+            background: var(--accent);
+            border: 1.5px solid var(--accent);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-family: var(--ff-ui);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-bright);
+            border-color: var(--accent-bright);
+            box-shadow: 0 6px 25px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-family: var(--ff-ui);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* --- Section 2: Countdown Banner --- */
+        .countdown-section {
+            background: #090909;
+            border-bottom: 1px solid var(--border-color);
+            padding: 80px 24px;
+            text-align: center;
             position: relative;
-            letter-spacing: 1px;
-            line-height: 1.2;
+            z-index: 3;
         }
 
-        .highlights-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 7px;
-            width: 8px;
-            height: 8px;
-            background: #d41920;
-            border-radius: 1.5px;
-            box-shadow: 0 0 8px #d41920;
+        .countdown-subtitle {
+            font-family: var(--ff-ui);
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 25px;
+            font-weight: 500;
         }
 
-        .matter-svg {
-            width: 28px;
-            height: 28px;
-            stroke: #d41920;
+        /* Countdown Grid Styles */
+        .cd-grid {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 900px;
         }
 
-        .matters-list {
+        .cd-box {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            align-items: center;
+            min-width: 110px;
         }
 
-        .matter-item {
+        .cd-digit {
+            font-family: var(--ff-display);
+            font-size: clamp(3.2rem, 9vw, 6.5rem);
+            color: #fff;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+        }
+
+        .cd-txt {
+            font-family: var(--ff-ui);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .cd-divider {
+            font-family: var(--ff-display);
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px var(--accent-glow);
+            animation: pulse 1.5s infinite;
+        }
+
+        /* --- Common Section Styling --- */
+        .page-sec {
+            max-width: 1200px;
+            margin: 120px auto 0;
+            padding: 0 4%;
+            position: relative;
+            z-index: 3;
+        }
+
+        .sec-head {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .sec-eyebrow {
+            font-family: var(--ff-ui);
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .sec-title {
+            font-family: var(--ff-display);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            color: #fff;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .sec-desc {
+            font-family: var(--ff-body);
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- Section 3: More Than A Brand Launch --- */
+        .culture-overview {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .culture-text h3 {
+            font-family: var(--ff-ui);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .culture-text p {
+            font-family: var(--ff-body);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .culture-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .pillar-badge {
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
             display: flex;
             align-items: center;
             gap: 20px;
+            transition: all 0.3s ease;
         }
 
-        .matter-icon {
-            font-size: 2.5rem;
-            color: #d41920;
+        .pillar-badge:hover {
+            background: rgba(212, 25, 32, 0.04);
+            border-color: rgba(212, 25, 32, 0.2);
+            border-left-width: 5px;
+            transform: translateX(5px);
         }
 
-        .matter-item p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.2rem;
-            color: #fff;
+        .pillar-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: rgba(212, 25, 32, 0.05);
+            border: 1.5px solid rgba(212, 25, 32, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .pillar-icon-wrap svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .pillar-title {
+            font-family: var(--ff-ui);
+            font-size: 0.92rem;
             font-weight: 700;
-            margin: 0;
+            color: #fff;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
         }
 
-        .cultural-drop {
-            text-align: center;
-            margin-top: 20px;
-            padding: 40px;
-            background: linear-gradient(90deg, transparent, rgba(212, 25, 32, 0.1), transparent);
-        }
-
-        .cultural-drop p {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
-            color: #fff;
-            letter-spacing: 3px;
-            margin: 0;
-        }
-
-        .cultural-title {
-            font-family: 'Anton', sans-serif;
-            font-size: 5rem;
-            color: #fff;
-            margin-top: 10px;
-            text-shadow: 0 5px 15px rgba(212, 25, 32, 0.5);
-        }
-
-        .event-gallery {
+        /* --- Section 4: Why Attend Feature Cards --- */
+        .features-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: rgba(10, 10, 10, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(212, 25, 32, 0.25);
+            background: rgba(12, 12, 12, 0.8);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 25, 32, 0.03);
+        }
+
+        .feature-icon-wrap {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            background: rgba(212, 25, 32, 0.06);
+            border: 1.5px solid rgba(212, 25, 32, 0.15);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(212, 25, 32, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon-wrap {
+            color: var(--accent-bright);
+            border-color: var(--accent-bright);
+            background: rgba(212, 25, 32, 0.12);
+            box-shadow: 0 0 25px var(--accent-glow);
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .feature-icon-wrap svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .feature-title {
+            font-family: var(--ff-ui);
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .feature-desc {
+            font-family: var(--ff-body);
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* --- Section 5: Timeline --- */
+        .timeline-wrap {
+            max-width: 900px;
+            margin: 50px auto 0;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 120px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.05) 5%, rgba(255, 255, 255, 0.05) 95%, transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-time {
+            width: 100px;
+            text-align: right;
+            padding-right: 30px;
+            font-family: var(--ff-ui);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 120px;
+            top: 8px;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #111;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:hover .timeline-marker {
+            background: var(--accent-bright);
+            border-color: var(--accent-bright);
+            box-shadow: 0 0 15px var(--accent);
+            transform: translateX(-50%) scale(1.25);
+        }
+
+        .timeline-content {
+            margin-left: 45px;
+            background: rgba(10, 10, 10, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 24px 30px;
+            flex-grow: 1;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            border-color: rgba(255, 255, 255, 0.05);
+            background: rgba(15, 15, 15, 0.6);
+            transform: translateX(4px);
+        }
+
+        .timeline-title {
+            font-family: var(--ff-ui);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- Section 6: Zaylore Vision Manifesto --- */
+        .vision-manifesto {
+            background: linear-gradient(180deg, #070707 0%, #030303 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+            margin-top: 120px;
+        }
+
+        .manifesto-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .vision-badge {
+            font-family: var(--ff-ui);
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 1.5px solid rgba(212, 25, 32, 0.3);
+            padding: 8px 20px;
+            border-radius: 4px;
+        }
+
+        .vision-manifesto-title {
+            font-family: var(--ff-display);
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(212,25,32,0.15);
+        }
+
+        .vision-manifesto-text {
+            font-family: var(--ff-ui);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            line-height: 1.7;
+            color: #eee;
+            font-weight: 500;
+            max-width: 800px;
+            letter-spacing: 1px;
+        }
+
+        /* --- Section 7: Attendee Expectations --- */
+        .expectations-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 40px;
         }
 
-        .event-image-wrapper {
+        .attendance-stat-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(15,15,15,0.7), rgba(8,8,8,0.9));
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 60px;
+            min-width: 280px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
             position: relative;
-            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(212, 25, 32, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
 
-        .event-image-wrapper:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(212, 25, 32, 0.4);
-            border-color: #d41920;
+        .stat-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(212,25,32,0.08) 0%, transparent 80%);
         }
 
-        .event-image-wrapper img {
+        .stat-number {
+            font-family: var(--ff-display);
+            font-size: clamp(4rem, 10vw, 6.5rem);
+            color: #fff;
+            line-height: 1;
+            text-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .stat-label {
+            font-family: var(--ff-ui);
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .demographics-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            width: 100%;
+        }
+
+        .demo-badge {
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            font-family: var(--ff-ui);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ddd;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .demo-badge:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+            transform: scale(1.03);
+        }
+
+        /* --- Section 8: Event Gallery Preview --- */
+        .editorial-gallery {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+        }
+
+        .gallery-img-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            background-color: #080808;
+            aspect-ratio: 1.6;
+        }
+
+        .gallery-img-card.tall {
+            aspect-ratio: 1.25;
+        }
+
+        .gallery-img-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            filter: grayscale(20%) contrast(110%);
-            transition: filter 0.4s ease, transform 0.8s ease;
+            filter: grayscale(20%) contrast(1.05) brightness(0.9);
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.5s ease;
         }
 
-        .event-image-wrapper:hover img {
-            filter: grayscale(0%) contrast(120%);
-            transform: scale(1.05);
+        .gallery-img-card:hover img {
+            transform: scale(1.04);
+            filter: grayscale(0%) contrast(1.15) brightness(1);
         }
 
-        .honors-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            text-align: left;
-        }
-
-        .honors-text p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .honors-text strong {
-            color: #d41920;
-        }
-
-        .sub-heading {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            color: #d41920;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .represents-list {
-            list-style: none;
-            padding: 0;
+        .gallery-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 5, 0.8) 100%);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0.85;
+            transition: opacity 0.4s ease;
         }
 
-        .represents-list li {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+        .gallery-img-card:hover .gallery-img-overlay {
+            opacity: 1;
+        }
+
+        .gallery-img-tag {
+            font-family: var(--ff-ui);
+            font-size: 0.65rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .gallery-img-title {
+            font-family: var(--ff-ui);
+            font-size: 0.92rem;
             color: #fff;
-            padding-left: 25px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* --- Section 9: Founder Invitation --- */
+        .founder-invitation-wrap {
+            background: linear-gradient(180deg, rgba(15,15,15,0.4), rgba(8,8,8,0.7));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 60px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 50px;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .founder-media {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1.5px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            aspect-ratio: 0.95;
+        }
+
+        .founder-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1) brightness(0.9);
+            display: block;
+        }
+
+        .founder-inv-msg-box {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .founder-quote {
+            font-family: var(--ff-ui);
+            font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+            line-height: 1.7;
+            color: #fff;
+            font-style: italic;
+            font-weight: 500;
             position: relative;
         }
 
-        .represents-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #d41920;
+        .founder-signature {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 20px;
         }
 
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .exp-item {
-            background: rgba(15, 15, 15, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 20px 24px;
-            border-radius: 12px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.8rem;
+        .founder-sig-name {
+            font-family: var(--ff-ui);
+            font-size: 1.05rem;
+            color: #fff;
             font-weight: 700;
-            color: #fff;
-            letter-spacing: 1.5px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .exp-item:hover {
-            border-color: rgba(212, 25, 32, 0.3);
-            background: rgba(212, 25, 32, 0.04);
-            box-shadow: 0 15px 35px rgba(212, 25, 32, 0.06);
-            transform: translateY(-5px);
-        }
-
-        .exp-svg {
-            width: 24px;
-            height: 24px;
-            stroke: #d41920;
-            flex-shrink: 0;
-        }
-
-        .vision-statement {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .vision-statement p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            color: #aaa;
-            line-height: 1.7;
-            margin-bottom: 40px;
-        }
-
-        .vision-quote {
-            font-family: 'Anton', sans-serif;
-            font-size: 2.2rem;
-            color: #fff;
+        .founder-sig-title {
+            font-family: var(--ff-ui);
+            font-size: 0.75rem;
+            color: var(--accent);
             letter-spacing: 2px;
             text-transform: uppercase;
-            border-top: 1px solid rgba(212, 25, 32, 0.2);
-            padding-top: 30px;
+            font-weight: 700;
+            margin-top: 4px;
         }
 
-        .vision-quote span {
-            display: block;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.8rem;
-            color: #d41920;
-            letter-spacing: 5px;
-            margin-top: 10px;
-        }
-
-        /* --- Brand Elements --- */
-        .events-marquee {
-            width: 100%;
-            background: #d41920;
-            padding: 14px 0;
-            overflow: hidden;
+        /* --- Section 10: Registration CTA --- */
+        .register-card-wrap {
+            max-width: 650px;
+            margin: 50px auto 0;
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0.75), rgba(8, 8, 8, 0.96));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 60px 48px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 50px rgba(212, 25, 32, 0.05);
+            text-align: center;
             position: relative;
-            margin-top: 120px;
-            left: 0;
-            z-index: 10;
-            box-shadow: 0 10px 30px rgba(212, 25, 32, 0.35);
-            transform: rotate(-1.5deg) scale(1.02);
         }
 
-        .marquee-track {
+        .register-form {
             display: flex;
-            gap: 50px;
-            white-space: nowrap;
-            animation: marqueeScroll 15s linear infinite;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 35px;
         }
 
-        .marquee-track span {
-            font-family: 'Anton', sans-serif;
-            font-size: 1.5rem;
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            gap: 8px;
+        }
+
+        .form-lbl {
+            font-family: var(--ff-ui);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-in {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
             color: #fff;
-            letter-spacing: 4px;
+            padding: 15px 18px;
+            font-family: var(--ff-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 100%;
         }
 
-        @keyframes marqueeScroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
+        .form-in::placeholder {
+            color: #444;
         }
 
-        .brand-watermark {
+        .form-in:focus {
+            background: rgba(212, 25, 32, 0.01);
+            border-color: var(--accent);
+            box-shadow: 0 0 12px rgba(212, 25, 32, 0.15);
+        }
+
+        .submit-btn-cta {
+            background: var(--accent);
+            border: 1px solid var(--accent);
+            color: #fff;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: var(--ff-ui);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .submit-btn-cta:hover {
+            background: var(--accent-bright);
+            border-color: var(--accent-bright);
+            box-shadow: 0 6px 22px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn-cta:disabled {
+            background: #222;
+            border-color: #333;
+            color: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* --- Auth Toast --- */
+        .auth-toast {
             position: fixed;
-            top: 50%;
+            bottom: -100px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Anton', sans-serif;
-            font-size: 80vw;
-            color: rgba(212, 25, 32, 0.03);
-            z-index: 0;
+            transform: translateX(-50%);
+            background: rgba(8, 8, 8, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: var(--ff-ui);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
+            z-index: 100000;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            white-space: nowrap;
             pointer-events: none;
-            user-select: none;
-            line-height: 1;
-            text-shadow: 0 0 50px rgba(212, 25, 32, 0.1);
         }
 
-        /* --- Footer --- */
-
-
-        /* --- Reveal Animation --- */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .auth-toast.show {
+            bottom: 40px;
         }
 
-        .reveal.visible {
-            animation: fadeUp 0.8s ease forwards;
+        .auth-toast.error {
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 25, 32, 0.3);
         }
 
-        /* --- Responsive --- */
+        .auth-toast.success {
+            border-color: #00ff00;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        /* --- Animations & Pulse --- */
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        /* --- Responsive Tweaks --- */
         @media (max-width: 900px) {
-            .honors-grid {
+            .culture-overview {
                 grid-template-columns: 1fr;
-                text-align: center;
+                gap: 40px;
             }
 
-            .represents-list {
-                align-items: center;
+            .demographics-container {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .details-split {
+            .editorial-gallery {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
 
-            .event-gallery {
+            .founder-invitation-wrap {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
+                padding: 40px 30px;
             }
 
-            .info-card {
+            .timeline-line, .timeline-glow {
+                left: 30px;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+
+            .timeline-time {
+                width: auto;
+                text-align: left;
+                padding-right: 0;
+                margin-left: 55px;
+                margin-bottom: 8px;
+            }
+
+            .timeline-content {
+                margin-left: 55px;
+            }
+
+            .timeline-item {
                 flex-direction: column;
-                text-align: center;
-                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
-            .info-label {
-                min-width: auto;
+            .demographics-container {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .section-heading {
-                font-size: 3rem;
+            .cd-grid {
+                gap: 12px;
             }
 
-            .cultural-title {
-                font-size: 3.5rem;
+            .cd-box {
+                min-width: 65px;
             }
 
-            .events-header {
-                padding: 120px 20px 20px;
+            .cd-digit {
+                font-size: 2.8rem;
             }
 
-            .events-content-wrapper {
-                padding: 0 20px 60px;
+            .cd-divider {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .register-card-wrap {
+                padding: 40px 24px;
             }
         }
     </style>
@@ -609,23 +1083,24 @@
     {
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": "Zaylore Studio: The Inaugural Showcase",
-      "startDate": "2026-08-23T10:00",
+      "name": "Zaylore Studio: The Founding Event",
+      "startDate": "2026-08-23T10:00:00+05:30",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "Bangalore",
+        "name": "Bangalore Arena",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Bangalore",
+          "addressRegion": "Karnataka",
           "addressCountry": "IN"
         }
       },
       "image": [
-        "https://www.zaylorestudio.in/img/logo-full.webp"
+        "https://www.zaylorestudio.in/img/event_hero_bg.png"
       ],
-      "description": "Live fashion rampwalk showcase, influencer attendance, pop-up shopping experience, and immersive vibe by premium streetwear brand Zaylore Studio.",
+      "description": "The official launch event of Zaylore Studio. A cultural gathering of creators, entrepreneurs, fashion enthusiasts, and riders featuring a live fashion showcase.",
       "organizer": {
         "@type": "Organization",
         "name": "Zaylore Studio",
@@ -644,13 +1119,9 @@
     <div class="glow glow-2"></div>
     <div class="glow glow-3"></div>
 
+    <div class="grain"></div>
 
-    <!-- Navigation -->
-
-    <!-- Navigation -->
-
-    
-    <!-- Navigation -->
+    <!-- Navigation Header -->
     <nav id="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">
@@ -669,9 +1140,8 @@
             </div>
 
             <div class="nav-right">
-                <a href="account" class="nav-action mobile-visible" id="nav-profile-btn"  aria-label="Account">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                <a href="account" class="nav-action mobile-visible" id="nav-profile-btn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
@@ -685,179 +1155,399 @@
         </div>
     </nav>
 
+    <!-- SECTION 1: HERO SECTION -->
+    <header class="event-hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">ZAYLORE STUDIO PRESENTS</span>
+            <h1 class="hero-title">THE FOUNDING EVENT</h1>
+            <p class="hero-subtitle">
+                The official launch of ZAYLORE Studio. <br>
+                A gathering of creators, entrepreneurs, riders, artists, photographers, fashion enthusiasts, and future culture builders.
+            </p>
 
+            <!-- Metadata Grid -->
+            <div class="hero-meta-grid">
+                <div class="hero-meta-card">
+                    <span class="meta-label">DATE</span>
+                    <span class="meta-value">23 August 2026</span>
+                </div>
+                <div class="hero-meta-card">
+                    <span class="meta-label">TIME</span>
+                    <span class="meta-value">10:00 AM IST</span>
+                </div>
+                <div class="hero-meta-card">
+                    <span class="meta-label">LOCATION</span>
+                    <span class="meta-value">Bangalore, India</span>
+                </div>
+                <div class="hero-meta-card">
+                    <span class="meta-label">ATTENDANCE</span>
+                    <span class="meta-value">2000+ Attendees</span>
+                </div>
+            </div>
 
-
-
-    <!-- Brand Watermark -->
-    <div class="brand-watermark">Z</div>
-
-    <!-- Marquee Brand Element -->
-    <div class="events-marquee">
-        <div class="marquee-track">
-            <span>ZAYLORE STUDIO</span>
-            <span>BUILT FOR THE BOLD</span>
-            <span>THE SYNDICATE</span>
-            <span>CULTURAL DROP</span>
-            <span>ZAYLORE STUDIO</span>
-            <span>BUILT FOR THE BOLD</span>
-            <span>THE SYNDICATE</span>
-            <span>CULTURAL DROP</span>
-            <span>ZAYLORE STUDIO</span>
-            <span>BUILT FOR THE BOLD</span>
-            <span>THE SYNDICATE</span>
-            <span>CULTURAL DROP</span>
+            <!-- CTA Actions -->
+            <div class="hero-actions">
+                <a href="#event-registration" class="btn-primary">Reserve Your Spot</a>
+                <a href="#vision" class="btn-secondary">Join The Syndicate</a>
+            </div>
         </div>
-    </div>
-
-    <!-- Header -->
-    <header class="events-header">
-        <h1 class="events-title">EVENTS</h1>
-        <p class="events-subtitle">THE MOVEMENT IN REAL LIFE</p>
     </header>
 
-    <!-- Events Content -->
-    <div class="events-content-wrapper">
-
-        <!-- Event Overview (Image 4 Data) -->
-        <section class="event-section overview-section">
-            <h2 class="section-heading">EVENT OVERVIEW</h2>
-
-            <div class="info-grid">
-                <div class="info-card">
-                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
-                    <span class="info-label">EVENT NAME:</span>
-                    <span class="info-value text-red">ZAYLORE STUDIO: THE INAUGURAL SHOWCASE</span>
+    <!-- SECTION 2: EVENT COUNTDOWN -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <div class="cd-grid" id="event-countdown-timer">
+                <div class="cd-box">
+                    <span id="ev-days" class="cd-digit">00</span>
+                    <span class="cd-txt">DAYS</span>
                 </div>
-                <div class="info-card">
-                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 6.42V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2.42L3.62 3.46A2 2 0 0 0 1 5.16v4.6a2 2 0 0 0 1.28 1.87l4.72 1.83V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6.54l4.72-1.83A2 2 0 0 0 23 9.76V5.16a2 2 0 0 0-2.62-1.7z"></path></svg></span>
-                    <span class="info-label">TYPE:</span>
-                    <span class="info-value">FASHION + LIFESTYLE + EXPERIENCE</span>
+                <div class="cd-divider">:</div>
+                <div class="cd-box">
+                    <span id="ev-hours" class="cd-digit">00</span>
+                    <span class="cd-txt">HOURS</span>
                 </div>
-                <div class="info-card">
-                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-                    <span class="info-label">EXPECTED CROWD:</span>
-                    <span class="info-value">1500+</span>
+                <div class="cd-divider">:</div>
+                <div class="cd-box">
+                    <span id="ev-mins" class="cd-digit">00</span>
+                    <span class="cd-txt">MINUTES</span>
                 </div>
-                <div class="info-card">
-                    <span class="info-icon"><svg class="info-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
-                    <span class="info-label">AUDIENCE:</span>
-                    <span class="info-value">CREATORS • STUDENTS • INFLUENCERS • GEN Z</span>
+                <div class="cd-divider">:</div>
+                <div class="cd-box">
+                    <span id="ev-secs" class="cd-digit">00</span>
+                    <span class="cd-txt">SECONDS</span>
                 </div>
             </div>
+            <p class="countdown-subtitle">The countdown to the beginning of the ZAYLORE era.</p>
+        </div>
+    </section>
 
-            <div class="bold-motto">
-                BUILT FOR THE <span class="text-red">BOLD.</span>
-            </div>
-        </section>
-
-        <!-- Event Details (Image 5 Data) -->
-        <section class="event-section details-split">
-            <!-- Highlights -->
-            <div class="highlights-box">
-                <h2 class="section-heading">EVENT HIGHLIGHTS</h2>
-                <ul class="highlights-list">
-                    <li>LIVE FASHION RAMPWALK SHOWCASE</li>
-                    <li>INFLUENCER (حضور) ATTENDANCE</li>
-                    <li>POP-UP SHOPPING EXPERIENCE</li>
-                    <li>CONTENT CREATION ZONES</li>
-                    <li>HIGH-ENERGY MUSIC & IMMERSIVE VIBE</li>
-                </ul>
-            </div>
-
-            <!-- Why It Matters -->
-            <div class="matters-box">
-                <h2 class="section-heading">WHY THIS EVENT MATTERS</h2>
-                <div class="matters-list">
-                    <div class="matter-item">
-                        <span class="matter-icon"><svg class="matter-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
-                        <p>STREETWEAR IS <span class="text-red">BOOMING</span> IN INDIA</p>
-                    </div>
-                    <div class="matter-item">
-                        <span class="matter-icon"><svg class="matter-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-                        <p>GEN Z DRIVES FASHION <span class="text-red">TRENDS</span></p>
-                    </div>
-                    <div class="matter-item">
-                        <span class="matter-icon"><svg class="matter-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="12" r="3"></circle></svg></span>
-                        <p>BANGALORE = YOUTH + CULTURE + CREATORS</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- The Zaylore Creator Honors -->
-        <section class="event-section honors-section">
-            <h2 class="section-heading">THE ZAYLORE CREATOR HONORS</h2>
-            <div class="honors-grid">
-                <div class="honors-text">
-                    <p>The Zaylore Creator Honors is a signature recognition platform presented as part of
-                        <strong>ZAYLORE STUDIO: THE INAUGURAL SHOWCASE</strong>, created to celebrate the creators,
-                        entertainers, visionaries, and digital personalities redefining the future of modern media and
-                        youth culture.</p>
-                    <p>The honors are dedicated to recognizing individuals who continue to shape conversations, inspire
-                        audiences, build communities, and influence the next generation through digital platforms.</p>
-                </div>
-                <div class="honors-represents">
-                    <h3 class="sub-heading">THIS CELEBRATION REPRESENTS:</h3>
-                    <ul class="represents-list">
-                        <li>Creativity without limits</li>
-                        <li>The rise of youth-driven culture</li>
-                        <li>Digital storytelling and innovation</li>
-                        <li>Fashion, lifestyle, and social influence</li>
-                        <li>Community building and connection</li>
-                        <li>The future of India’s creator ecosystem</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Event Experience -->
-        <section class="event-section experience-section">
-            <h2 class="section-heading">THE EVENT EXPERIENCE</h2>
-            <div class="experience-grid">
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> CREATOR RECOGNITION & HONORS</div>
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg> RED CARPET EXPERIENCES</div>
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> MEDIA & PRESS COVERAGE</div>
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg> LIVE STAGE MOMENTS</div>
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M20.4 12.3a4.2 4.2 0 0 0-.4-1.8H14M16.5 16.5H22v-3.5a4.2 4.2 0 0 0-3.5-3.5H16"></path></svg> NETWORKING & COLLABORATIONS</div>
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> DIGITAL CULTURE CELEBRATION</div>
-                <div class="exp-item"><svg class="exp-svg" viewBox="0 0 24 24" fill="none" stroke="#d41920" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"></path><path d="M11 3 8 9l4 12 4-12-3-6"></path><path d="M2 9h20"></path></svg> EXCLUSIVE SHOWCASE EXPERIENCES</div>
-            </div>
-            <div class="vision-statement">
-                <p>The Zaylore Creator Honors is envisioned as more than an awards presentation; it is the beginning of
-                    a platform designed to support, recognize, and elevate the voices shaping the future generation.</p>
-                <div class="vision-quote">
-                    "Honoring the creators inspiring tomorrow."
-                    <span>Zaylore Studio</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Image Gallery -->
-        <section class="event-gallery">
-            <div class="event-image-wrapper">
-                <img src="Sponsorimages/rampwalk.webp" alt="Zaylore Studio Fashion Rampwalk" loading="lazy" srcset="Sponsorimages/rampwalk-sm.webp 480w, Sponsorimages/rampwalk-md.webp 800w, Sponsorimages/rampwalk.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw">
-            </div>
-            <div class="event-image-wrapper">
-                <img src="Sponsorimages/stunt.webp" alt="Zaylore Studio Stunt & Action" loading="lazy" srcset="Sponsorimages/stunt-sm.webp 480w, Sponsorimages/stunt-md.webp 800w, Sponsorimages/stunt.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw">
-            </div>
-        </section>
-
-        <!-- Cultural Drop -->
-        <div class="cultural-drop">
-            <p>THIS ISN'T JUST AN EVENT</p>
-            <h2 class="cultural-title">IT'S A <span class="text-red">CULTURAL DROP.</span></h2>
+    <!-- SECTION 3: WHAT IS THIS EVENT? -->
+    <section class="page-sec">
+        <div class="sec-head">
+            <span class="sec-eyebrow">THE MOVEMENT IN REAL LIFE</span>
+            <h2 class="sec-title">MORE THAN A BRAND LAUNCH</h2>
+            <p class="sec-desc">A new standard is being established in the intersection of fashion, design, and culture.</p>
         </div>
 
-    </div>
+        <div class="culture-overview">
+            <div class="culture-text">
+                <h3>CREATOR-DRIVEN MOVEMENT</h3>
+                <p>
+                    This is not simply the launch of a clothing label. The ZAYLORE Founding Event is the official beginning of a new creator-driven culture.
+                </p>
+                <p>
+                    We are bringing together ambitious individuals from fashion, business, photography, content creation, automotive culture, art, and entrepreneurship to celebrate the birth of a brand built for those who refuse ordinary.
+                </p>
+            </div>
+            <div class="culture-pillars">
+                <div class="pillar-badge">
+                    <div class="pillar-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.82 2.82a3 3 0 0 0-4.24 0L3.72 17.68a3 3 0 1 0 4.24 4.24L22.82 7.06a3 3 0 0 0 0-4.24zM16.45 6.09l1.46 1.46M12.09 10.45l1.46 1.46M7.73 14.82l1.46 1.46"/></svg>
+                    </div>
+                    <span class="pillar-title">Fashion Launch</span>
+                </div>
+                <div class="pillar-badge">
+                    <div class="pillar-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <span class="pillar-title">Networking Opportunity</span>
+                </div>
+                <div class="pillar-badge">
+                    <div class="pillar-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                    </div>
+                    <span class="pillar-title">Creator Gathering</span>
+                </div>
+                <div class="pillar-badge">
+                    <div class="pillar-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 12a11 11 0 1 1-22 0 11 11 0 0 1 22 0z"/><path d="M12 2v20M2 12h20"/></svg>
+                    </div>
+                    <span class="pillar-title">Culture-Building Movement</span>
+                </div>
+                <div class="pillar-badge">
+                    <div class="pillar-icon-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span class="pillar-title">Start of the Zaylore Community</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- SECTION 4: WHY ATTEND? -->
+    <section class="page-sec">
+        <div class="sec-head">
+            <span class="sec-eyebrow">THE EXPERIENCE</span>
+            <h2 class="sec-title">WHY ATTEND?</h2>
+            <p class="sec-desc">Position yourself at the starting point of the next major cultural phase.</p>
+        </div>
 
+        <div class="features-grid">
+            <!-- Card 1 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>
+                </div>
+                <h3 class="feature-title">Fashion Launch</h3>
+                <p class="feature-desc">Be among the first to witness the debut of ZAYLORE Studio.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 class="feature-title">Exclusive First Look</h3>
+                <p class="feature-desc">Get access to the upcoming collection before the public.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M20.4 12.3a4.2 4.2 0 0 0-.4-1.8H14M16.5 16.5H22v-3.5a4.2 4.2 0 0 0-3.5-3.5H16"/></svg>
+                </div>
+                <h3 class="feature-title">Creator Networking</h3>
+                <p class="feature-desc">Meet creators, photographers, founders, and innovators.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="feature-title">Community Building</h3>
+                <p class="feature-desc">Connect with ambitious individuals who share a growth mindset.</p>
+            </div>
+            <!-- Card 5 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3 class="feature-title">Live Experiences</h3>
+                <p class="feature-desc">Interactive activities, entertainment, and special moments.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>
+                </div>
+                <h3 class="feature-title">Founding Member Opportunity</h3>
+                <p class="feature-desc">Become one of the earliest members of the ZAYLORE journey.</p>
+            </div>
+        </div>
+    </section>
 
-    
+    <!-- SECTION 5: EVENT EXPERIENCE TIMELINE -->
+    <section class="page-sec">
+        <div class="sec-head">
+            <span class="sec-eyebrow">CHRONOLOGY</span>
+            <h2 class="sec-title">EVENT EXPERIENCE TIMELINE</h2>
+            <p class="sec-desc">Plan your day at the founding event. Doors open at 10:00 AM.</p>
+        </div>
 
-    
-    <!-- Footer -->
-    
+        <div class="timeline-wrap">
+            <div class="timeline-line"></div>
+            <div class="timeline-glow" id="timeline-scroll-glow"></div>
+
+            <!-- Item 1 -->
+            <div class="timeline-item">
+                <div class="timeline-time">10:00 AM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Guest Arrival & Registration</h3>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="timeline-item">
+                <div class="timeline-time">11:00 AM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Opening Experience</h3>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="timeline-item">
+                <div class="timeline-time">12:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Founder Address</h3>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="timeline-item">
+                <div class="timeline-time">1:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Community Networking</h3>
+                </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="timeline-item">
+                <div class="timeline-time">3:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Brand Reveal & Vision Showcase</h3>
+                </div>
+            </div>
+            <!-- Item 6 -->
+            <div class="timeline-item">
+                <div class="timeline-time">5:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Creator Sessions</h3>
+                </div>
+            </div>
+            <!-- Item 7 -->
+            <div class="timeline-item">
+                <div class="timeline-time">7:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Entertainment & Community Activities</h3>
+                </div>
+            </div>
+            <!-- Item 8 -->
+            <div class="timeline-item">
+                <div class="timeline-time">9:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Closing Celebration</h3>
+                </div>
+            </div>
+            <!-- Item 9 -->
+            <div class="timeline-item">
+                <div class="timeline-time">10:00 PM</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Event Conclusion</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: THE ZAYLORE VISION -->
+    <section class="vision-manifesto" id="vision">
+        <div class="manifesto-inner">
+            <span class="vision-badge">MANIFESTO</span>
+            <h2 class="vision-manifesto-title">BUILDING SOMETHING BIGGER THAN FASHION</h2>
+            <p class="vision-manifesto-text">
+                "ZAYLORE Studio is not being built as another clothing company. <br>
+                Our vision is to create a global community driven by creativity, ambition, individuality, and culture. <br><br>
+                Fashion is only the beginning. <br>
+                The mission is to inspire people to build, create, and live differently. <br>
+                This event marks the first chapter of that journey."
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: ATTENDEE EXPECTATIONS -->
+    <section class="page-sec">
+        <div class="sec-head">
+            <span class="sec-eyebrow">WHO WILL BE IN THE ROOM</span>
+            <h2 class="sec-title">ATTENDEE EXPECTATIONS</h2>
+            <p class="sec-desc">A convergence of India's most ambitious creative sectors.</p>
+        </div>
+
+        <div class="expectations-wrap">
+            <div class="attendance-stat-box">
+                <div class="stat-glow"></div>
+                <span class="stat-number">2000+</span>
+                <span class="stat-label">Expected Attendees</span>
+            </div>
+
+            <div class="demographics-container">
+                <div class="demo-badge">Fashion Enthusiasts</div>
+                <div class="demo-badge">College Students</div>
+                <div class="demo-badge">Content Creators</div>
+                <div class="demo-badge">Photographers</div>
+                <div class="demo-badge">Models</div>
+                <div class="demo-badge">Entrepreneurs</div>
+                <div class="demo-badge">Business Owners</div>
+                <div class="demo-badge">Riders & Automotive</div>
+                <div class="demo-badge">Artists & Designers</div>
+                <div class="demo-badge">Community Builders</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: EVENT GALLERY PREVIEW -->
+    <section class="page-sec">
+        <div class="sec-head">
+            <span class="sec-eyebrow">EDITORIALS</span>
+            <h2 class="sec-title">EVENT GALLERY PREVIEW</h2>
+            <p class="sec-desc">Visual glimpses of the energy, community, and design aesthetics driving the launch.</p>
+        </div>
+
+        <div class="editorial-gallery">
+            <div class="gallery-img-card">
+                <img src="Sponsorimages/rampwalk.webp" alt="Zaylore Studio Fashion Runway" loading="lazy">
+                <div class="gallery-img-overlay">
+                    <span class="gallery-img-tag">RUNWAY // BANGALORE</span>
+                    <h3 class="gallery-img-title">THE REDEFINED STREET SHOWCASE</h3>
+                </div>
+            </div>
+            <div class="gallery-img-card tall">
+                <img src="Sponsorimages/stunt.webp" alt="Zaylore Stunts and Action Culture" loading="lazy">
+                <div class="gallery-img-overlay">
+                    <span class="gallery-img-tag">SPEED // CULTURE</span>
+                    <h3 class="gallery-img-title">MOTORCYCLE CULTURE ACTIVATION</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: FOUNDER INVITATION -->
+    <section class="page-sec">
+        <div class="sec-head">
+            <span class="sec-eyebrow">INVITATION</span>
+            <h2 class="sec-title">FOUNDER'S ADDRESS</h2>
+        </div>
+
+        <div class="founder-invitation-wrap">
+            <div class="founder-media">
+                <img src="img/founder.webp" alt="Mohd Waaiz Founder Zaylore Studio" loading="lazy">
+            </div>
+            <div class="founder-inv-msg-box">
+                <span class="sec-eyebrow" style="margin-bottom: 0;">A MESSAGE FROM THE FOUNDER</span>
+                <p class="founder-quote">
+                    "ZAYLORE was created for people who dream bigger, think differently, and refuse average. <br><br>
+                    This event is more than a launch. It is the beginning of a community and a movement. <br><br>
+                    I personally invite you to be part of the first chapter."
+                </p>
+                <div class="founder-signature">
+                    <h4 class="founder-sig-name">Mohd Waaiz</h4>
+                    <span class="founder-sig-title">Founder, ZAYLORE Studio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: REGISTRATION CTA -->
+    <section class="page-sec" id="event-registration" style="margin-bottom: 120px;">
+        <div class="sec-head">
+            <span class="sec-eyebrow">RESERVE</span>
+            <h2 class="sec-title">BE PART OF THE FOUNDING MOMENT</h2>
+            <p class="sec-desc">History starts with the first chapter. Join thousands of creators, dreamers, and innovators as we launch ZAYLORE Studio.</p>
+        </div>
+
+        <div class="register-card-wrap">
+            <form class="register-form" id="founding-event-form" onsubmit="handleEventBooking(event)">
+                <div class="form-row">
+                    <label for="book-name" class="form-lbl">Full Name</label>
+                    <input type="text" id="book-name" class="form-in" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-row">
+                    <label for="book-email" class="form-lbl">Email Address</label>
+                    <input type="email" id="book-email" class="form-in" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-row">
+                    <label for="book-phone" class="form-lbl">Phone Number</label>
+                    <input type="tel" id="book-phone" class="form-in" placeholder="Enter your phone number (e.g. +91 99999 99999)" required>
+                </div>
+                <button type="submit" class="submit-btn-cta" id="booking-submit-btn">
+                    <span>RESERVE MY SPOT</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Syndicate Footer -->
     <footer id="main-footer">
         <div class="footer-grid">
             <div class="footer-col-brand">
@@ -865,18 +1555,16 @@
                     <img src="img/logo-icon-sm.webp" alt="Zaylore Studio" class="footer-logo-img">
                     <span class="footer-brand-name">ZAYLORE</span>
                 </a>
-                <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and aesthetic
-                    culture to the bold and the fearless.</p>
+                <p class="footer-desc">Premium streetwear brand delivering luxury oversized fashion and aesthetic culture to the bold and the fearless.</p>
                 <div class="footer-socials">
-                    <a href="#" class="social-btn" aria-label="Instagram">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
+                    <a href="https://www.instagram.com/zaylorestudio" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0 3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
                     <a href="#" class="social-btn" aria-label="Twitter">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                        </svg>
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mohd-waaiz/" class="social-btn" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
                     </a>
                 </div>
             </div>
@@ -920,12 +1608,138 @@
         </div>
     </footer>
 
+    <!-- Database & Page Controllers -->
+    <script defer src="/js/firebase-config.js"></script>
+    <script defer src="/js/db.js"></script>
+    <script defer src="/js/auth-state.js"></script>
+    <script defer src="/script.min.js?v=1.1.0"></script>
 
+    <!-- Page Controller -->
     <script>
+    (function () {
+        'use strict';
 
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. Event Countdown Logic (Target: August 23, 2026 10:00:00 IST / GMT+0530)
+            const countdownDate = new Date("August 23, 2026 10:00:00").getTime();
+            const elDays = document.getElementById('ev-days');
+            const elHours = document.getElementById('ev-hours');
+            const elMins = document.getElementById('ev-mins');
+            const elSecs = document.getElementById('ev-secs');
+            const countdownContainer = document.getElementById('event-countdown-timer');
+
+            const timer = setInterval(() => {
+                const now = Date.now();
+                const distance = countdownDate - now;
+
+                if (distance <= 0) {
+                    clearInterval(timer);
+                    if (countdownContainer) {
+                        countdownContainer.innerHTML = `
+                            <div style="font-family:'Anton', sans-serif; font-size:3rem; color:#00ff00; letter-spacing:4px; text-shadow:0 0 25px rgba(0, 255, 0, 0.4); text-transform:uppercase;">
+                                THE EVENT IS LIVE
+                            </div>
+                        `;
+                    }
+                    return;
+                }
+
+                if (elDays && elHours && elMins && elSecs) {
+                    elDays.innerText = Math.floor(distance / 86400000).toString().padStart(2, '0');
+                    elHours.innerText = Math.floor((distance % 86400000) / 3600000).toString().padStart(2, '0');
+                    elMins.innerText = Math.floor((distance % 3600000) / 60000).toString().padStart(2, '0');
+                    elSecs.innerText = Math.floor((distance % 60000) / 1000).toString().padStart(2, '0');
+                }
+            }, 1000);
+
+            // 2. Auth Session Check to Hydrate Avatar
+            const currentUser = localStorage.getItem('zs_user') ? JSON.parse(localStorage.getItem('zs_user')) : null;
+            const navAction = document.getElementById('nav-profile-btn');
+            if (currentUser && navAction) {
+                if (currentUser.profilePic) {
+                    navAction.innerHTML = `<img src="${currentUser.profilePic}" alt="Avatar" class="avatar-header-icon" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+                } else {
+                    navAction.innerHTML = `<div class="profile-avatar" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#d41920;color:#fff;border-radius:50%;font-weight:700;">${currentUser.name.charAt(0).toUpperCase()}</div>`;
+                }
+            }
+
+            // 3. Event Registration Form Submission Handler
+            window.handleEventBooking = async function (e) {
+                e.preventDefault();
+                const nameInput = document.getElementById('book-name');
+                const emailInput = document.getElementById('book-email');
+                const phoneInput = document.getElementById('book-phone');
+                const submitBtn = document.getElementById('booking-submit-btn');
+
+                if (!nameInput || !emailInput || !phoneInput || !submitBtn) return;
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const phone = phoneInput.value.trim();
+
+                if (!name || !email || !phone) return;
+
+                submitBtn.disabled = true;
+                submitBtn.querySelector('span').textContent = 'RESERVING YOUR SPOT...';
+
+                try {
+                    // Save to Firestore if available
+                    if (window._zsDB) {
+                        await window._zsDB.collection('newsletterSignups').doc(email.toLowerCase()).set({
+                            email: email.toLowerCase(),
+                            name: name,
+                            phone: phone,
+                            source: 'founding_event_registration',
+                            subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        }, { merge: true });
+                    }
+
+                    // Save to LocalStorage fallback for double safety
+                    const subs = JSON.parse(localStorage.getItem('zs_newsletter') || '[]');
+                    const exists = subs.find(s => s.email.toLowerCase() === email.toLowerCase());
+                    if (!exists) {
+                        subs.push({ 
+                            email: email.toLowerCase(), 
+                            name: name, 
+                            phone: phone, 
+                            source: 'founding_event_registration', 
+                            subscribedAt: new Date().toISOString() 
+                        });
+                        localStorage.setItem('zs_newsletter', JSON.stringify(subs));
+                    }
+
+                    showToast("RESERVATION CONFIRMED. WELCOME TO THE FOUNDING CHAPTER.", false);
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    phoneInput.value = '';
+                    submitBtn.querySelector('span').textContent = 'RESERVATION CONFIRMED ✓';
+                    submitBtn.disabled = true;
+                    submitBtn.style.borderColor = '#00ff00';
+                    submitBtn.style.color = '#00ff00';
+                } catch (err) {
+                    console.error("Failed to register for founding event", err);
+                    showToast("Failed to reserve your spot. Please try again.", true);
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span').textContent = 'RESERVE MY SPOT';
+                }
+            };
+
+            function showToast(msg, isError = true) {
+                let toast = document.getElementById('zs-prod-toast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'zs-prod-toast';
+                    document.body.appendChild(toast);
+                }
+                toast.innerText = msg;
+                toast.className = `auth-toast show ${isError ? 'error' : 'success'}`;
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 4000);
+            }
+        });
+    })();
     </script>
-<script defer src="/js/auth-state.js"></script>
-<script defer src="/script.min.js?v=1.1.0"></script>
 </body>
 
 </html>
