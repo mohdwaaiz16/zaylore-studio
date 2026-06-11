@@ -3075,3 +3075,101 @@ html, body {
         font-size: 0.5rem;
     }
 }
+
+/* ==========================================
+   ADVANCED SEO OPTIMIZATION GLOBAL STYLES
+========================================== */
+
+/* Global SEO footer link cloud */
+.footer-seo-links {
+    max-width: 1400px;
+    margin: 0 auto 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+    font-family: var(--font-ui, var(--ff-ui, 'Space Grotesk', sans-serif));
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.footer-seo-links .seo-label {
+    color: var(--accent, var(--red-primary, #d41920));
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+.footer-seo-links a {
+    color: var(--text-muted, var(--muted, #888888));
+    text-decoration: none;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+
+.footer-seo-links a:hover {
+    color: #ffffff;
+    border-bottom-color: var(--accent, var(--red-primary, #d41920));
+}
+
+@media (max-width: 768px) {
+    .footer-seo-links {
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 0 15px 20px;
+        gap: 10px 14px;
+    }
+}
+
+/* Homepage & Global SEO Paragraph Blocks */
+.seo-section {
+    background: var(--bg-dark-gray, #0c0c0c);
+    border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
+}
+
+.seo-content-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 40px 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.seo-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.seo-content-paragraph {
+    font-family: var(--font-body, var(--ff-body, 'Inter', sans-serif));
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--text-muted, var(--muted, #888888));
+    text-align: justify;
+}
+
+.seo-content-paragraph strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .seo-content-card {
+        padding: 30px 20px;
+    }
+    .seo-content-paragraph {
+        font-size: 0.82rem;
+        text-align: left;
+    }
+}
