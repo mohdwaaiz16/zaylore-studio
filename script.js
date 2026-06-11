@@ -296,6 +296,183 @@
     
     highlightActiveLink();
 
+    // ---- Global Syndicate Modal System ----
+    function initSyndicateModal() {
+        // 1. Inject Modal HTML
+        if (!document.getElementById('syndicate-modal')) {
+            const modalOverlay = document.createElement('div');
+            modalOverlay.id = 'syndicate-modal';
+            modalOverlay.className = 'zs-modal-overlay';
+            modalOverlay.innerHTML = `
+                <div class="zs-modal-card">
+                    <button class="zs-modal-close" id="close-syndicate-modal" aria-label="Close modal">&times;</button>
+                    <span class="zs-cta-eyebrow">THE INNER CIRCLE</span>
+                    <h2 class="zs-cta-title" style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; font-family: 'Anton', sans-serif; letter-spacing: 1.5px; text-transform: uppercase;">GET INSIDE <span style="color: #d41920; text-shadow: 0 0 15px rgba(212,25,32,0.35);">BEFORE THE DROP.</span></h2>
+                    <p class="zs-cta-desc" style="font-size: 0.95rem; margin-bottom: 20px;">Receive exclusive access to the first chapter of ZAYLORE Studio.</p>
+                    <ul class="zs-list-perks">
+                        <li>First Drop Announcements</li>
+                        <li>Event Invitations</li>
+                        <li>Founder Updates</li>
+                        <li>Behind-The-Scenes Content</li>
+                        <li>Community Opportunities</li>
+                    </ul>
+                    <form class="zs-modal-form" id="modal-syndicate-form">
+                        <div class="zs-modal-input-wrap">
+                            <input type="text" id="modal-syn-name" class="zs-modal-input" placeholder="Your Name" required autocomplete="name">
+                        </div>
+                        <div class="zs-modal-input-wrap">
+                            <input type="email" id="modal-syn-email" class="zs-modal-input" placeholder="Your Email Address" required autocomplete="email">
+                        </div>
+                        <button type="submit" class="zs-btn-primary zs-modal-submit" id="modal-syn-submit-btn">
+                            <span>GET EARLY ACCESS</span>
+                        </button>
+                    </form>
+                    <p class="zs-modal-privacy">By joining, you agree to our <a href="privacy" target="_blank">Privacy Policy</a>. Unsubscribe at any time.</p>
+                </div>
+            `;
+            document.body.appendChild(modalOverlay);
+        }
 
+        const modal = document.getElementById('syndicate-modal');
+        const closeBtn = document.getElementById('close-syndicate-modal');
+        const form = document.getElementById('modal-syndicate-form');
+
+        // Open Modal Function
+        window.showSyndicateModal = function (e) {
+            if (e) e.preventDefault();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Close Modal Function
+        window.hideSyndicateModal = function () {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', window.hideSyndicateModal);
+        }
+
+        // Close on overlay click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) window.hideSyndicateModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                window.hideSyndicateModal();
+            }
+        });
+
+        // Intercept all "Join The Syndicate" triggers across the site
+        document.addEventListener('click', (e) => {
+            const target = e.target.closest('a, button');
+            if (!target) return;
+            
+            const href = target.getAttribute('href') || '';
+            const text = (target.textContent || '').toUpperCase();
+            
+            // If the element matches Syndicate join actions
+            if (
+                target.classList.contains('trigger-syndicate-modal') ||
+                href === '#syndicate-signup' ||
+                href === '/#syndicate-signup' ||
+                (text.includes('JOIN THE SYNDICATE') && !target.closest('#homepage-syndicate-form') && !target.closest('#syndicate-join-form') && !target.closest('#prelaunch-signup-form'))
+            ) {
+                e.preventDefault();
+                window.showSyndicateModal();
+            }
+        });
+
+        // Form Submit Handler
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const nameInput = document.getElementById('modal-syn-name');
+                const emailInput = document.getElementById('modal-syn-email');
+                const submitBtn = document.getElementById('modal-syn-submit-btn');
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                if (!name || !email) return;
+
+                submitBtn.disabled = true;
+                submitBtn.querySelector('span').textContent = 'JOINING...';
+
+                try {
+                    // Try Firestore/ZayloreDB if available
+                    if (window.ZayloreDB) {
+                        if (typeof window.ZayloreDB.subscribeNewsletter === 'function') {
+                            await window.ZayloreDB.subscribeNewsletter(email, name);
+                        } else if (typeof window.ZayloreDB.addSubscriber === 'function') {
+                            await window.ZayloreDB.addSubscriber(email, 'syndicate');
+                        }
+                    }
+
+                    // Backup to LocalStorage
+                    const subs = JSON.parse(localStorage.getItem('zs_newsletter') || '[]');
+                    const exists = subs.find(s => s.email.toLowerCase() === email.toLowerCase());
+                    if (!exists) {
+                        subs.push({
+                            email: email.toLowerCase(),
+                            name: name,
+                            source: 'global_syndicate_modal',
+                            subscribedAt: new Date().toISOString()
+                        });
+                        localStorage.setItem('zs_newsletter', JSON.stringify(subs));
+                    }
+
+                    showToast("WELCOME TO THE SYNDICATE. MEMBERSHIP APPROVED.", false);
+                    submitBtn.querySelector('span').textContent = 'JOINED ✓';
+                    submitBtn.style.background = '#00ff00';
+                    submitBtn.style.borderColor = '#00ff00';
+                    submitBtn.style.color = '#000000';
+
+                    nameInput.value = '';
+                    emailInput.value = '';
+
+                    setTimeout(() => {
+                        window.hideSyndicateModal();
+                        // Reset button
+                        submitBtn.disabled = false;
+                        submitBtn.querySelector('span').textContent = 'GET EARLY ACCESS';
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                        submitBtn.style.color = '';
+                    }, 2000);
+
+                } catch (err) {
+                    console.error("Failed to join syndicate modal", err);
+                    showToast("Failed to join. Please try again.", true);
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span').textContent = 'GET EARLY ACCESS';
+                }
+            });
+        }
+    }
+
+    // Toast Notification helper
+    function showToast(msg, isError = true) {
+        let toast = document.getElementById('zs-prod-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'zs-prod-toast';
+            document.body.appendChild(toast);
+        }
+        toast.innerText = msg;
+        toast.className = `auth-toast show ${isError ? 'error' : 'success'}`;
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 4000);
+    }
+
+    // Run on load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSyndicateModal);
+    } else {
+        initSyndicateModal();
+    }
 
 })();

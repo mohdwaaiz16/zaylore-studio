@@ -1614,31 +1614,36 @@
         </div>
     </section>
 
-    <!-- Early Access Form Section (Section 5) -->
-    <section class="early-access-section" id="prelaunch-newsletter">
-        <div class="early-access-card glass-card">
-            <h2 class="access-title">GET EARLY ACCESS</h2>
-            <p class="access-subtitle">Be the first to know when the drop goes live.</p>
+    <!-- Early Access Form Section (Section 5 - Upgraded) -->
+    <section class="zs-cta-section reveal" id="prelaunch-newsletter">
+        <div class="zs-cta-glow"></div>
+        <div class="zs-cta-container">
+            <div class="zs-cta-card">
+                <span class="zs-cta-eyebrow">EXCLUSIVE ACCESS</span>
+                <h2 class="zs-cta-title">ACCESS IS <span>LIMITED.</span></h2>
+                <p class="zs-cta-desc">The collection remains locked. Members receive first access, private drop links, and event invitations.</p>
 
-            <form class="access-form" id="prelaunch-signup-form" onsubmit="handlePrelaunchSignup(event)">
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="signup-name" class="input-label">Full Name</label>
-                        <input type="text" id="signup-name" class="form-input" placeholder="Enter your name" required>
+                <form class="zs-modal-form" id="prelaunch-signup-form" onsubmit="handlePrelaunchSignup(event)">
+                    <div class="zs-modal-input-wrap">
+                        <input type="text" id="signup-name" class="zs-modal-input" placeholder="Your Name" required autocomplete="name">
                     </div>
-                </div>
-                <div class="input-row">
-                    <div class="input-group">
-                        <label for="signup-email" class="input-label">Email Address</label>
-                        <input type="email" id="signup-email" class="form-input" placeholder="Enter your email" required>
+                    <div class="zs-modal-input-wrap">
+                        <input type="email" id="signup-email" class="zs-modal-input" placeholder="Your Email Address" required autocomplete="email">
                     </div>
+                    <button type="submit" class="zs-btn-primary" id="signup-submit-btn" style="width: 100%;">
+                        <span>UNLOCK EARLY ACCESS</span>
+                    </button>
+                </form>
+
+                <div class="zs-cta-btn-group" style="margin-top: 24px;">
+                    <a href="https://chat.whatsapp.com/F8ZO55B3glEHsguZoaBDvl" target="_blank" class="zs-btn-secondary" style="width: 100%; max-width: 420px; margin: 0 auto;">
+                        <span>JOIN THE WAITLIST</span>
+                    </a>
                 </div>
-                <button type="submit" class="access-submit-btn" id="signup-submit-btn">
-                    <span>JOIN THE SYNDICATE</span>
-                    <span class="btn-glow"></span>
-                </button>
-            </form>
-            <p class="access-privacy-note">By subscribing, you join the Zaylore Syndicate network.</p>
+                
+                <span class="zs-cta-smalltext">Priority waiting list details will be shared on WhatsApp and email.</span>
+                <p class="zs-modal-privacy" style="margin-top: 20px;">By subscribing, you join the Zaylore Syndicate network.</p>
+            </div>
         </div>
     </section>
 

@@ -3173,3 +3173,312 @@ html, body {
         text-align: left;
     }
 }
+
+/* ==========================================
+   UPGRADED CALL-TO-ACTION (CTA) BRAND STYLES
+========================================== */
+
+.zs-cta-section {
+    position: relative;
+    padding: 100px 5%;
+    background: var(--bg-dark-gray, #0c0c0c);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+
+/* Red ambient glow backdrops inside CTA sections */
+.zs-cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212, 25, 32, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.zs-cta-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.zs-cta-card {
+    background: rgba(18, 18, 18, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 60px 40px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 25, 32, 0.03);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.zs-cta-card:hover {
+    border-color: rgba(212, 25, 32, 0.25);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 40px rgba(212, 25, 32, 0.08);
+}
+
+.zs-cta-eyebrow {
+    font-family: var(--font-ui, var(--ff-ui, 'Space Grotesk', sans-serif));
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 6px;
+    color: var(--accent, var(--red-primary, #d41920));
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.zs-cta-title {
+    font-family: var(--ff-display, 'Anton', sans-serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+}
+
+.zs-cta-title span {
+    color: var(--accent, var(--red-primary, #d41920));
+    text-shadow: 0 0 20px rgba(212, 25, 32, 0.4);
+}
+
+.zs-cta-desc {
+    font-family: var(--font-body, var(--ff-body, 'Inter', sans-serif));
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--text-muted, var(--muted, #888888));
+    max-width: 760px;
+    margin: 0 auto 36px;
+}
+
+.zs-cta-desc strong {
+    color: #ffffff;
+}
+
+.zs-cta-btn-group {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Premium Upgraded Buttons */
+.zs-btn-primary, .zs-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-family: var(--font-ui, var(--ff-ui, 'Space Grotesk', sans-serif));
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.zs-btn-primary {
+    background: var(--accent, var(--red-primary, #d41920));
+    color: #ffffff;
+    border: 1px solid var(--accent, var(--red-primary, #d41920));
+    box-shadow: 0 10px 30px rgba(212, 25, 32, 0.25);
+}
+
+.zs-btn-primary:hover {
+    background: #ff1a1a;
+    border-color: #ff1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(212, 25, 32, 0.5), 0 0 20px rgba(255, 26, 26, 0.2);
+    letter-spacing: 4px;
+}
+
+.zs-btn-secondary {
+    background: transparent;
+    color: #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.zs-btn-secondary:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    letter-spacing: 4px;
+}
+
+/* Premium Sign-up Modal Overlay */
+.zs-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 2, 2, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 99990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.zs-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zs-modal-card {
+    width: min(580px, 92vw);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(15, 15, 15, 0.99) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(212, 25, 32, 0.08);
+    position: relative;
+    transform: translateY(30px) scale(0.96);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.zs-modal-overlay.active .zs-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.zs-modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.25s;
+    line-height: 1;
+    padding: 4px;
+}
+
+.zs-modal-close:hover {
+    color: #fff;
+}
+
+.zs-list-perks {
+    list-style: none;
+    padding: 0;
+    margin: 25px auto 30px;
+    max-width: 380px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.zs-list-perks li {
+    font-family: var(--font-body, var(--ff-body, 'Inter', sans-serif));
+    font-size: 0.9rem;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.zs-list-perks li::before {
+    content: '✓';
+    color: var(--accent, var(--red-primary, #d41920));
+    font-weight: 800;
+}
+
+.zs-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.zs-modal-input-wrap {
+    position: relative;
+}
+
+.zs-modal-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: var(--font-body, var(--ff-body, 'Inter', sans-serif));
+    font-size: 0.9rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.zs-modal-input:focus {
+    border-color: var(--accent, var(--red-primary, #d41920));
+    background: rgba(212, 25, 32, 0.01);
+}
+
+.zs-modal-submit {
+    margin-top: 8px;
+    width: 100%;
+}
+
+.zs-modal-privacy {
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: #555;
+    text-align: center;
+}
+
+.zs-modal-privacy a {
+    color: #888;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s;
+}
+
+.zs-modal-privacy a:hover {
+    border-bottom-color: #888;
+}
+
+/* Small helper for waitlist text */
+.zs-cta-smalltext {
+    display: block;
+    margin-top: 15px;
+    font-family: var(--font-body, var(--ff-body, 'Inter', sans-serif));
+    font-size: 0.76rem;
+    color: #555;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .zs-cta-section {
+        padding: 60px 4%;
+    }
+    .zs-cta-card {
+        padding: 40px 20px;
+    }
+    .zs-cta-glow {
+        width: 300px;
+        height: 300px;
+    }
+    .zs-modal-card {
+        padding: 40px 24px;
+    }
+    .zs-btn-primary, .zs-btn-secondary {
+        width: 100%;
+        padding: 14px 24px;
+    }
+}
