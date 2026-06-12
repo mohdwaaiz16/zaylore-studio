@@ -26,19 +26,16 @@
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: "";
-    display: table;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
 }
 
 body {
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flow-root;
     font-family: var(--ff-body);
     background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('img/global-bg.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -73,10 +70,10 @@ body {
 
 /* --- Navigation --- */
 #main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     height: 90px;
     display: flex;
     align-items: center;
@@ -2667,8 +2664,10 @@ body {
 
 /* Failsafe to prevent any horizontal scroll on viewports */
 html, body {
-    max-width: 100%;
+    max-width: 100% !important;
     overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* Base text elements wrapping and adjustments */
